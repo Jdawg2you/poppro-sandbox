@@ -1,0 +1,454 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Presentation Script</title>
+<style>
+body{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.65;color:#1a1a1a;max-width:900px;margin:0 auto;padding:26px 22px 60px}
+h1{font-size:23px;margin:0 0 3px;border-bottom:3px solid #16203c;padding-bottom:7px}
+.sub0{color:#666;font-size:12.5px;margin:0 0 22px}
+h2{font-size:18px;margin:34px 0 10px;padding-bottom:5px;border-bottom:2px solid #c9a24e}
+h2 .n{display:inline-block;background:#16203c;color:#fff;min-width:26px;height:26px;line-height:26px;text-align:center;border-radius:4px;font-size:14px;margin-right:9px;vertical-align:1px;padding:0 5px}
+h3{font-size:13px;margin:18px 0 5px;color:#16203c;text-transform:uppercase;letter-spacing:.7px}
+p{margin:0 0 11px}
+.say{background:#f7f9fb;border-left:4px solid #16203c;padding:12px 16px;margin:9px 0;font-size:16px;line-height:1.6}
+.say:before{content:"SAY";display:block;font-weight:700;color:#16203c;font-size:10px;letter-spacing:1.2px;margin-bottom:5px}
+.do{position:relative;background:#f6f8f6;border:1px solid #cfdcd3;border-radius:5px;padding:11px 34px 11px 36px;margin:9px 0;font-size:14px;color:#33493c}
+.do:before{content:"(";position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:52px;font-weight:300;color:#a8c4b3;line-height:0}
+.do:after{content:")";position:absolute;right:11px;top:50%;transform:translateY(-50%);font-size:52px;font-weight:300;color:#a8c4b3;line-height:0}
+.do .lab{display:block;font-weight:700;color:#2f5f42;font-size:9.5px;letter-spacing:1.2px;margin-bottom:3px}
+.aside{position:relative;background:#fbfbf9;border:1px dashed #cfcfc4;border-radius:5px;padding:8px 30px 8px 32px;margin:7px 0 11px;font-size:13.5px;color:#555;font-style:italic}
+.aside:before{content:"(";position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:44px;font-weight:300;color:#c9c9bc;line-height:0}
+.aside:after{content:")";position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:44px;font-weight:300;color:#c9c9bc;line-height:0}
+details.exp{border:2px solid #146b6b;border-radius:6px;margin:11px 0;background:#f1f8f8}
+details.exp>summary{cursor:pointer;padding:11px 16px 11px 34px;position:relative;font-weight:700;color:#0f4f4f;font-size:14px;list-style:none}
+details.exp>summary::-webkit-details-marker{display:none}
+details.exp>summary::before{content:"\25B8";position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#146b6b;font-size:13px}
+details.exp[open]>summary::before{transform:translateY(-50%) rotate(90deg)}
+details.exp .body{padding:0 16px 14px;font-size:13.5px}
+.cpy{display:inline-block;background:#146b6b;color:#fff;text-decoration:none;font-weight:700;font-size:12.5px;padding:7px 13px;border-radius:5px;margin:4px 0}
+.cpy.dim{background:#c3d4d4;color:#5d6f6f}
+.blank{display:inline-block;min-width:150px;border-bottom:1px dashed #a8452f;color:#a8452f;font-size:12.5px}
+.needs{background:#fdf2ef;border:1px solid #e3b4a8;border-radius:5px;padding:9px 12px;margin:8px 0;font-size:13px;color:#7a2d1c}
+.flag{background:#fdf2ef;border-left:4px solid #a8452f;padding:10px 14px;margin:10px 0;font-size:14px}
+.flag:before{content:"FLAGGED \2014 WE AGREED TO COME BACK TO THIS";display:block;font-weight:700;color:#a8452f;font-size:9.5px;letter-spacing:1px;margin-bottom:4px}
+.tip{border:0;border-left:2px solid #c9a94f;border-right:2px solid #c9a94f;border-radius:0;background-color:#fffcf2;background-image:linear-gradient(#c9a94f,#c9a94f),linear-gradient(#c9a94f,#c9a94f),linear-gradient(#c9a94f,#c9a94f),linear-gradient(#c9a94f,#c9a94f);background-position:left top,left bottom,right top,right bottom;background-size:12px 2px;background-repeat:no-repeat;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:10px 18px;margin:11px 0;font-size:13.5px;color:#4b4636}
+.tip:before{content:"\1F4A1 TOP TIP \2014 NOT SPOKEN";display:block;font-weight:700;color:#8a6d1f;font-size:10px;letter-spacing:1.2px;margin-bottom:4px}
+.story{background:#fdfaf1;border:1px dashed #8a6d1f;border-radius:5px;padding:10px 14px;margin:11px 0;font-size:14.5px}
+.story:before{content:"OPTIONAL \2014 USE IF THEY HESITATE";display:block;font-weight:700;color:#8a6d1f;font-size:10px;letter-spacing:1px;margin-bottom:4px}
+.cue{color:#8a6d1f;font-weight:700;font-size:12.5px;letter-spacing:.3px;text-transform:uppercase;margin:16px 0 3px}
+.who{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.8px;padding:1px 5px;border-radius:3px;color:#fff;margin-left:6px;vertical-align:2px}
+.wK{background:#16203c}.wM{background:#8a6d1f}.wJ{background:#5b3a8a}
+var{font-style:normal;font-weight:700;background:#eef2fb;color:#1d4e79;border-bottom:2px solid #9ab6dd;padding:0 3px;border-radius:2px}
+.pinmark{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;background:#fdfaf1;color:#8a6d1f;border:1px solid #d8c48a;border-radius:3px;padding:0 4px;margin-left:5px;vertical-align:2px}
+.prov{background:#fdfaf1;border-left:4px solid #c9a24e;padding:10px 14px;margin:9px 0;font-size:14.5px}
+.prov:before{content:"PROVISIONAL \2014 WAITING ON YOUR ANSWER";display:block;font-weight:700;color:#8a6d1f;font-size:10px;letter-spacing:1px;margin-bottom:4px}
+.btnrow{margin:12px 0 4px}
+.btnrow a{display:inline-block;background:#16203c;color:#fff;text-decoration:none;padding:8px 14px;border-radius:5px;font-size:13.5px;font-weight:600;margin:0 7px 7px 0}
+.prep{background:#eef0f4;border:1px solid #c7cdd9;border-radius:6px;padding:14px 17px;margin:12px 0 22px}
+.prep h4{margin:0 0 8px;font-size:12.5px;letter-spacing:.8px;text-transform:uppercase;color:#16203c}
+.prep li{margin-bottom:6px}
+.two{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0}
+.two>div{flex:1 1 380px;border:1px solid #d8d8d8;border-top-width:4px;border-radius:5px;padding:12px 15px;background:#fff}
+.two h4{margin:0 0 7px;font-size:14.5px}
+.pathA{border-top-color:#8a6d1f}.pathB{border-top-color:#16203c}
+.q{font-weight:700;color:#16203c;margin:16px 0 3px;font-size:15px}
+.fff{margin:0 0 12px;font-size:14.5px}
+.ask{font-style:italic;color:#16203c;font-weight:600}
+.legend{font-size:12.5px;color:#555;background:#f8f8f6;border-radius:5px;padding:10px 14px;margin:0 0 20px}
+ul,ol{margin:0 0 11px;padding-left:22px}li{margin-bottom:6px}
+@media print{body{padding:0;font-size:11.5px;max-width:none}.say,.do,.tip,.story,.prov,.prep,.two>div{page-break-inside:avoid}h2{page-break-after:avoid}.btnrow a{background:#fff;color:#16203c;border:1px solid #16203c}}
+</style></head><body>
+
+<h1>Presentation Call &mdash; the script</h1>
+<p class="sub0">Kyle Course's HealthFirst presentation script as the spine, kept verbatim, with Big Mike's additions and Jesse's decisions applied over seven rounds of notes on 8 October 2026. Thirteen sections, about 7&ndash;10 minutes of talking. Source tags show whose words each block is; figures verified against AFC7010-FLBR_1125 page 4 (Florida, Elite). This folder is the source of truth &mdash; POP Pro renders a copy and hides this line, the source tags and the working flags. Held to an gate ledger; run every checker in this folder after any edit.</p>
+
+<p class="legend"><var>Blue</var> = filled automatically from the selected plan or the client's intake &mdash; you never type or remember these.
+<span class="pinmark">1.2</span> = still waiting on your answer; the line is my best guess until you settle it.<br>
+Source tags show where each piece came from: <span class="who wK">KYLE</span> his script, unchanged &nbsp;
+<span class="who wM">MIKE</span> his addition &nbsp; <span class="who wJ">JESSE</span> your decision.</p>
+
+<div class="btnrow">
+<a href="#">HealthSherpa</a><a href="#">First Health locator</a><a href="#">SingleCare &mdash; Rx pricing</a><a href="#">ManhattanLife package quote</a>
+<p style="margin:4px 0 0;font-size:12.5px;color:#555">Each opens in a <b>separate window</b> so this script stays on screen behind it. Open them before you dial.</p>
+</div>
+
+<div class="prep">
+<h4>Before you dial <span class="pinmark">1.2</span></h4>
+<ul>
+<li><b>Drug pricing looked up</b> &mdash; their actual prescription, cash price and coupon price. Not checked off? It links straight to the intake section.</li>
+<li><b>Their doctor found</b> in the First Health locator &mdash; screenshot saved, with the street address showing.</li>
+<li><b>Provider count filtered to their ZIP</b>, and the names of their two nearest hospitals.</li>
+<li><b>Marketplace screenshot</b> &mdash; their cheapest healthcare.gov option with the premium and deductible visible.</li>
+<li><b>Quote-tool screenshots</b> for one tier up and one tier down, in case they push on price.</li>
+<li><b>Screen share ready</b> in case you need CrankWheel or Zoom &mdash; but most people will prefer you send them screenshots by phone.</li>
+</ul>
+<p style="margin:8px 0 0;font-size:13.5px;color:#555">All of it built <i>before</i> the call. The point is that it looks effortless because none of it is being done live.</p>
+</div>
+
+<h2 data-screen="open"><span class="n">1</span>Open</h2>
+
+<div class="say">Hi <var data-k="client.first">&lt;client first name&gt;</var>, this is <var data-k="agent.first">&lt;your first name&gt;</var> calling about your private health insurance options. I&rsquo;m glad we could make this time work. Before we jump in &mdash; are you next to your computer, or would you rather I send information to your phone as we talk through your plan?<span class="who wJ">JESSE</span><span class="pinmark">1.1</span></div>
+
+<div class="aside">Their answer decides how you show things from here &mdash; quick text messages, or jumping on CrankWheel or Zoom. Most people say their phone.</div>
+
+
+
+
+
+
+
+<h2><span class="n">2</span>Set the stage</h2>
+
+<div class="say">To review, I specialize in helping small business owners / 1099 employees / <b><i>(insert their situation)</i></b> find affordable private health coverage. Marketplace plans are good for families who qualify for big subsidies &mdash; but they must include 10 government-mandated Essential Health Benefits, even ones you may never use. If you&rsquo;re not pregnant, why pay for maternity coverage? Our private PPO options let you pay for what you need and skip what you don&rsquo;t. Make sense?<span class="who wK">KYLE</span><span class="pinmark">2.3</span></div>
+
+<div class="aside" data-author="note">Those three are <b>options you pick from while speaking</b>, not a blank the tool fills &mdash; say whichever fits and move on. &ldquo;(insert their situation)&rdquo; is your prompt to use their own trade or reason in your own words. Nothing here is highlighted, because nothing here gets filled in for you.<span class="who wJ">JESSE</span><span class="pinmark">2.3</span></div>
+
+<div class="flag" data-author="note"><b>The 1099 wording &mdash; raised, read, and settled your way.</b> Kyle wrote &ldquo;1099 <i>professionals</i>&rdquo;; you asked for &ldquo;1099 <i>employees</i>&rdquo;. My objection was that a 1099 contractor is specifically <b>not</b> an employee &mdash; that is the whole distinction from a W-2 &mdash; so a self-employed client filing their own Schedule C might hear it as someone who does not quite understand their situation. <b>You read that and kept &ldquo;employees&rdquo; (8 Oct).</b> Settled; it stays. Recorded here only so the reasoning is on file if a client ever reacts to it &mdash; the alternatives were &ldquo;professionals&rdquo; or &ldquo;contractors&rdquo;.<span class="pinmark">2.3 settled</span></div>
+
+<h2 data-screen="reason"><span class="n">3</span>Their reason, in their words</h2>
+
+<div class="say">Last time we talked, <span data-needs="client.why_facts_bare">you told me <var data-k="client.why_facts_bare">you&rsquo;re paying $1,005 a month, with a $5,000 deductible to get through first</var> &mdash; and </span>you said, &ldquo;<var data-k="client.why_quote">healthcare has just gotten so flippin&rsquo; expensive</var>.&rdquo; That&rsquo;s what I went looking for.<span class="who wJ">JESSE</span><span class="pinmark">1.3 settled</span></div>
+<p style="margin:-4px 0 11px;font-size:12.5px;color:#1d4e79" data-author="note">&#8627; <b>Their own words, verbatim.</b> The quote is pulled <b>from their intake</b> and read straight back &mdash; their phrasing, not a tidied version of it, with only the trailing punctuation trimmed. <b>Their numbers come first, their words second</b> &mdash; your ruling of 17 October. The facts are built from <b>what they told you</b> &mdash; what they pay now, the deductible, the date their cover ends, a doctor they named &mdash; and the whole clause, down to the &ldquo;and&rdquo;, <b>disappears when there is nothing factual to add</b>, leaving &ldquo;Last time we talked, you said&hellip;&rdquo;. Nothing in it is ever a claim about our plan; that comes later. The household variant (<b>to you and your spouse</b>, <b>to you and your family</b>) now lives only on Kyle&rsquo;s line below, because a quotation needs no pronoun.</p>
+<div class="flag" data-author="note"><b>&ldquo;You said&rdquo; is only safe while the why box holds <i>their</i> words.</b> The preview this change came from read: <i>you said, &ldquo;Wants less expensive with better coverage.&rdquo;</i> <b>Nobody says that about themselves.</b> That is an agent&rsquo;s shorthand in a field that is read back as a quotation, and a client who hears it thinks &mdash; correctly &mdash; <i>I didn&rsquo;t say that.</i> It is the same failure we already closed once, when the story was stopped from being quoted: the data cannot tell a client&rsquo;s phrasing from an agent&rsquo;s note. The fix is not in this line, it is at capture, and <b>MyPopPro now makes that call before the quote reaches this script</b> (23 Oct). <b>What it quotes:</b> anything in the first person, and a <b>bare-verb start</b> &mdash; <i>&ldquo;need to find more affordable coverage&rdquo;</i>, <i>&ldquo;want to keep my doctor&rdquo;</i> &mdash; where the <i>I</i> is simply left unspoken. <b>What it refuses:</b> a note written <i>about</i> them &mdash; <i>Needs dental</i>, <i>Wants cheaper</i>, <i>Looking for&hellip;</i>, <i>Client&hellip;</i>, <i>He/She&hellip;</i> &mdash; and the quote is served empty, so the whole clause drops and you ask instead. Discovery shows the same check live under the why box, so an agent sees the ruling as they type.<span class="pinmark">watch</span></div>
+
+<div class="do"><span class="lab">NOT SPOKEN</span>Stop here. You are waiting to hear &ldquo;yes, that&rsquo;s what matters to me.&rdquo; Do not move until you get it.</div>
+
+<div class="say">I think you&rsquo;ll be pleasantly surprised by the options I found <var data-k="client.household_for">for you and your family</var>. Depending on what you like, I can email you brochures afterward. Sound good? Let&rsquo;s walk through it together.<span class="who wK">KYLE</span></div>
+<p style="margin:-4px 0 11px;font-size:12.5px;color:#1d4e79" data-author="note">&#8627; <b>for you and your family</b> follows the profile too &mdash; <b>for you</b>, <b>for you and your spouse</b>, or <b>for you and your family</b>.</p>
+
+
+
+<h2 data-screen="price"><span class="n">4</span>Price the marketplace, then set it aside</h2>
+
+<p class="cue">This step exists because you asked where the price gets said. <span class="pinmark">Q1</span></p>
+
+<p class="cue">Two anchors &mdash; the script serves whichever fits what they actually have.<span class="pinmark">Q2</span></p>
+
+<div class="say" data-anchor-say="aca"><span data-leadin>If they have no coverage, or are shopping the marketplace.</span> The first thing I looked at was healthcare.gov &mdash; great if you qualify for discounts, but with your income it looks like you&rsquo;d pay full price. The cheapest plan that came back for you was <var data-k="aca.premium">$897</var> a month with a <var data-k="aca.deductible">$10,000</var> deductible.<span class="who wK">KYLE</span></div>
+
+<div class="say" data-anchor-say="cur"><span data-leadin>If they are on something now and paying for it themselves.</span> You told me you&rsquo;re paying <var data-k="cur.premium">$1,400</var> a month right now with a <var data-k="cur.deductible">$6,000</var> deductible. I also checked healthcare.gov, and at your income you&rsquo;d pay full price there too &mdash; <var data-k="aca.premium">$897</var> with a <var data-k="aca.deductible">$10,000</var> deductible. So neither of those is where I&rsquo;d leave you.<span class="who wJ">JESSE</span></div>
+
+<div style="border:2px solid #5b3a8a;border-radius:6px;padding:12px 16px;margin:11px 0;background:#faf8fd">
+<p style="margin:0 0 8px;font-weight:700;color:#5b3a8a;font-size:11px;letter-spacing:1px">PICK THE ANCHOR &mdash; THIS NUMBER DRIVES THE CLOSE<span class="pinmark">Q2</span></p>
+<p style="margin:0 0 9px;font-size:13.5px">Click one. Whatever you pick becomes the &ldquo;you were at&rdquo; figure in the arithmetic at step 9 and in the saving, so it has to be set here rather than remembered. The one marked <b>&#9733; Suggested</b> is whichever of the two has the higher <i>yearly</i> true cost &mdash; that is the honest comparison, and your pick also sets POP Pro's own anchor.</p>
+<table style="margin:0;font-size:13.5px">
+<tr><th style="width:34px">&nbsp;</th><th>Anchor</th><th>Figure</th><th>When</th></tr>
+<tr data-anchor="aca"><td style="text-align:center;font-size:15px">&#9898;</td><td><b>Marketplace, full price</b> <span data-suggested-slot style="font-size:11px;color:#8a6d1f;font-weight:700">&#9733; SUGGESTED</span></td><td><var data-k="aca.premium">$897</var> / <var data-k="aca.deductible">$10,000</var> ded</td><td><b>Always shown</b> &mdash; the typed healthcare.gov figure, or POP Pro's national-average estimate<br><span data-truecost-slot style="font-size:11px;color:#8a6d1f;font-weight:700">$&lt;yearly&gt;/yr true cost</span></td></tr>
+<tr data-anchor="cur"><td style="text-align:center;font-size:15px">&#9898;</td><td><b>What they pay today</b> <span data-suggested-slot style="font-size:11px;color:#8a6d1f;font-weight:700"></span></td><td><var data-k="cur.premium">$1,400</var> / <var data-k="cur.deductible">$6,000</var> ded</td><td>Only if a current premium was entered<br><span data-truecost-slot style="font-size:11px;color:#8a6d1f;font-weight:700">$&lt;yearly&gt;/yr true cost</span></td></tr>
+
+<tr data-anchor="none"><td style="text-align:center;font-size:15px">&#9898;</td><td><b>No anchor &mdash; context only</b></td><td>&mdash;</td><td><b>Employer was paying most of it.</b> Say it once, do not compare.</td></tr>
+</table>
+<p data-author="note" style="margin:9px 0 0;font-size:12.5px;color:#8a6d1f"><b>Each candidate row also carries a <code>data-truecost-slot</code></b> for the &ldquo;$X/yr true cost&rdquo; line, so the agent can see <i>why</i> the star is where it is. MyPopPro was injecting that into the When cell; a slot means a later change to this table cannot land it in the wrong place.<br><br><b>The &#9733; SUGGESTED marker moves &mdash; it is not fixed to the marketplace row.</b> Both candidate rows carry a <code>data-suggested-slot</code>; the tool puts the star on whichever has the higher <i>yearly</i> true cost, per Jesse's rule. It is shown on the marketplace row here only as an example. Found while checking whether the hard-coded copy-gate bug existed elsewhere &mdash; it did, here, and would have pointed the agent at the wrong anchor whenever a client's own plan costs more per year than the marketplace.</p>
+<p style="margin:9px 0 0;font-size:12.5px;color:#555">That last row matters. A subsidised employer premium is not a price they can buy, and rating against it makes everything you show look expensive. Picking it suppresses the saving line rather than printing a flattering fake one.</p>
+</div>
+
+<div class="do"><span class="lab">NOT SPOKEN</span>Share the marketplace screenshot. Let the number sit for a second before you say anything else.<span class="who wJ">JESSE</span></div>
+
+<div class="say">So let's put <var data-k="anchor.aside_obj">that one</var> to the side.<span class="who wM">MIKE</span></div>
+
+
+
+<h2 data-screen="networks"><span class="n">5</span>Networks &amp; providers</h2>
+
+<div class="say">So I checked your private PPO options &mdash; that is to say, you can pick your doctor out of network if you choose. The one that stood out is through an A-rated carrier, ManhattanLife. The plan, <var data-k="afc.name">Affordable Choice Elite</var>, gives you day-one, first-dollar benefits and <var data-k="afc.visits">10</var> annual doctor visits per person &mdash; and up to <var data-k="afc.rollover">5</var> unused visits roll over.<span class="pinmark">5.1</span><span class="who wK">KYLE</span></div>
+
+<div class="say">It uses the First Health Network &mdash; the same network Aetna uses. That&rsquo;s 810,000 providers, 6,000 hospitals and 125,000 urgent cares, and you can look up your own doctors at firsthealthlbp.com.<span class="pinmark">3.4</span><span class="who wK">KYLE</span></div>
+
+<div class="say" data-docnet="in">And I already found <var data-k="doctor.name">Dr &lt;their doctor&gt;</var> &mdash; <var data-k="doctor.in_network">they&rsquo;re in the network</var>. Let me send you that now. <span style="font-style:italic;color:#2f5f42;font-weight:600">&#8595; see below</span><span class="who wM">MIKE</span></div>
+<div class="say" data-docnet="out">I did check <var data-k="doctor.name">Dr &lt;their doctor&gt;</var>, and <var data-k="doctor.out_who">they&rsquo;re</var> not in the First Health network. That doesn&rsquo;t mean you can&rsquo;t keep seeing them. <b>There&rsquo;s no network restriction on this plan</b> &mdash; any doctor, any hospital, and the benefit pays the same either way. The only difference is how it gets paid. In network, they bill the plan directly. Out of network, you book as a self-pay patient, ask them for the self-pay price, photograph the receipt in the app, and the plan pays you back.<span class="who wJ">JESSE</span></div>
+<div class="do" data-docnet="out"><span class="lab">NOT SPOKEN</span><b>Call the practice before this call, not after.</b> Ask them two things: <i>&ldquo;How do you handle it when a patient is out of network &mdash; do you bill, or does the patient pay up front and claim it back?&rdquo;</i> and <i>&ldquo;What would the visit be as a self-pay patient?&rdquo;</i> With those two answers you can tell the client exactly what happens and what it costs. <b>Without them, say the mechanism and stop</b> &mdash; do not put a number on a visit you have not priced.<span class="who wJ">JESSE</span></div>
+<div class="flag" data-author="note"><b>Why there is no reimbursement timing in the out-of-network line.</b> Section 6 already says <i>&ldquo;usually a week or two&rdquo;</i>, hedged on purpose, and that is Kyle&rsquo;s figure rather than anything ManhattanLife publishes. Saying it twice would make it sound like a commitment the carrier has given. The client hears it once, in the next section, where it belongs.<span class="pinmark">5.4</span></div>
+<div class="do">Calling these <b>PPO</b> is fine &mdash; and <b>early on, and now and again after that</b>, follow it with the plain-English version: <b>&ldquo;that is to say, you can pick your doctor out of network if you choose.&rdquo;</b> Not on every mention; just enough that they understand what the word buys them.</div>
+
+<div class="do"><span class="lab">NOT SPOKEN</span>Send the locator screenshot showing the doctor's name <i>and</i> street address, by whichever method they chose at the top of the call. Most clients will tell you their doctor's name; almost none can tell you the address. Showing it is what earns the trust.<span class="who wM">MIKE</span></div>
+
+
+
+
+
+<h2 data-screen="questions"><span class="n">6</span>The two questions everyone asks</h2>
+
+<div class="say">And regarding out-of-network providers &mdash; you&rsquo;re covered either way. In-network is direct billing; out-of-network is reimbursed to you, usually a week or two, and I&rsquo;ll walk you through exactly how to file it if it ever comes up.<span class="pinmark">4.3</span><span class="who wK">KYLE</span></div>
+
+
+
+<div class="say">And people usually ask whether they need a physical, or to do bloodwork, to get this type of plan. You don&rsquo;t &mdash; there&rsquo;s no exam and no labs. There <i>is</i> underwriting, but that just means this isn&rsquo;t a plan everyone can get: you have to be healthy enough to qualify, and that&rsquo;s exactly why the price is what it is. They&rsquo;re rewarding you for being in good shape. I already reviewed your info and you should be good to go.<span class="who wM">MIKE</span><span class="who wJ">JESSE</span></div>
+
+
+
+
+
+<h2 data-screen="coverage"><span class="n">7</span>How the coverage works</h2>
+
+<p class="cue">Four buckets, in order. Every figure below is the plan you actually selected.</p>
+
+<h3>Day to day</h3>
+<div class="say">Each person gets <var data-k="afc.visits">10</var> doctor visits a year at <var data-k="afc.visit_amt">$175</var> each &mdash; family doctor, specialist, and yes, chiropractic counts. If you don't use them all, <var data-k="afc.rollover">5</var> of them carry into next year. Good thing to have in your back pocket.<span class="who wK">KYLE</span></div>
+
+<details class="exp"><summary>Optional &mdash; what a doctor visit actually costs them, and what comes back</summary>
+<div class="body">
+<p>Use this if they ask what they will pay at the desk, or if they are comparing to a copay plan. It is the single most disbelieved thing about a fixed-benefit plan, so say it slowly and with their own numbers.<span class="pinmark">3.3</span></p>
+<div class="say" style="font-size:15px">The plan pays <var data-k="afc.visit_amt">$175</var> a visit, and that is paid regardless of what the doctor charges. So if your doctor bills <var data-k="example.billed">$125</var>, the plan still pays <var data-k="afc.visit_amt">$175</var> &mdash; and that extra <var data-k="example.visit_diff">$50</var> is yours, not the insurance company&rsquo;s. If they bill more than <var data-k="afc.visit_amt">$175</var>, you pay the difference. Most primary care visits land under it.<span class="who wM">MIKE</span></div>
+<div class="do"><span class="lab">NOT SPOKEN</span>Set it up so the benefit is paid to them rather than assigned to the provider, and this is a check in the mail. Assigned to the provider, it just settles the bill. Worth asking which they want.</div>
+</div></details>
+
+<h3>Preventive</h3>
+<div class="say">Wellness checks, mammograms, Pap, PSA, colonoscopy &mdash; all covered.<span class="who wK">KYLE</span></div>
+
+
+
+<h3 data-screen="rx">Prescriptions</h3>
+<p class="cue">Two versions &mdash; the script serves whichever matches their profile.<span class="pinmark">5.3</span></p>
+
+<div class="say" data-rx="has"><b>If they listed prescriptions.</b> <span data-repeat="meds">Your <var data-k="drug.name">&lt;drug&gt;</var> runs about <var data-k="drug.now">$&lt;now&gt;</var> at the pharmacy. With the coupon I already texted you it&rsquo;s <var data-k="drug.coupon">$&lt;coupon&gt;</var>.</span> The plan carries a <var data-k="afc.rx_day">$50</var>-a-day prescription benefit up to <var data-k="afc.rx_cap">$750</var> a year, so you&rsquo;re comfortably under it &mdash; and the rest of that benefit is sitting there if something unexpected gets added.<span class="who wM">MIKE</span></div>
+
+<div class="say" data-rx="none"><b>If they listed none.</b> You&rsquo;re not on anything regular right now, which is the best place to be. If that changes, the plan carries a <var data-k="afc.rx_day">$50</var>-a-day prescription benefit up to <var data-k="afc.rx_cap">$750</var> a year &mdash; and I can show you how to easily get a pretty significant coupon for most meds you&rsquo;d be prescribed, so you&rsquo;re rarely paying anywhere near retail in the first place.<span class="who wJ">JESSE</span></div>
+
+
+
+<h3 data-screen="catastrophic">Catastrophic &mdash; walk it as layers</h3>
+<div class="say">Now I&rsquo;m going to go through the bigger things &mdash; and I want to walk you through this one layer at a time rather than just read you a list.<span class="who wJ">JESSE</span><span class="pinmark">5.2</span></div>
+
+
+
+
+<details class="exp"><summary>Example words &mdash; read this if you want a script for walking one real event through all four layers</summary>
+<div class="body">
+<p style="margin:-4px 0 11px;font-size:12.5px;color:#1d4e79" data-author="note">&#8627; <b>A draft, not a fixed script.</b> One event, in order, each layer landing before the next. Say it in your own words.<span class="pinmark">5.2</span></p>
+<div class="say" style="font-size:15px">Let me do a real one, because these numbers only mean something when you can picture them.<br><br>
+Say you get appendicitis. Nobody plans it. You end up in the emergency room &mdash; that&rsquo;s the first layer, <var data-k="afc.er">$300</var> the moment you walk in.<br><br>
+They admit you. Second layer: <var data-k="afc.admission">$2,000</var>, just for being admitted. That&rsquo;s before anybody has treated you for anything.<br><br>
+You&rsquo;re in for two nights. Third layer: <var data-k="afc.inpatient_day">$4,000</var> a day, so that&rsquo;s <var data-k="example.two_days">$8,000</var>.<br><br>
+And you had surgery, so the fourth layer sits on top of all of that &mdash; the surgery benefit pays <var data-k="afc.surgery_mult">2.5&times;</var> the scheduled amount for that procedure.<br><br>
+So before we even count the surgery, that is <var data-k="example.total">$10,300</var> paid out. No deductible to hit first. No coinsurance to work out afterwards. And no argument about networks on any of it.<br><br>
+Now compare that to where you are today. On a <var data-k="anchor.deductible">$10,000</var> deductible, that same trip pays you nothing until you have spent ten thousand dollars of your own money first. That is the whole difference.<span class="who wJ">JESSE</span><span class="who wM">MIKE</span></div>
+<div class="do"><span class="lab">NOT SPOKEN</span>Pause after each layer. The effect comes from them watching it stack, not from the total. And finish on the anchor comparison &mdash; that is the sentence that does the work.</div>
+<p style="font-size:13px;color:#555;margin:9px 0 0"><b>Why these figures and not others:</b> the <var data-k="afc.er">$300</var>, <var data-k="afc.admission">$2,000</var> and <var data-k="afc.inpatient_day">$4,000</var> are the selected tier&rsquo;s real numbers, so the <var data-k="example.total">$10,300</var> is arithmetic you can defend. I deliberately did not put a dollar figure on the surgery &mdash; that depends on the scheduled amount for the procedure, and inventing one is how a presentation becomes a complaint later.</p>
+</div></details>
+
+<details class="exp"><summary>If they want to go over the big stuff &mdash; compare a real diagnosis against their anchor</summary>
+<div class="body">
+<p>The same tool section as the quote page, mirrored here, so you never have to leave the script mid-call. Pick a condition and it lines up <b>their anchor</b> against <b>the selected plan</b>, with the CareGuide treatment applied, exactly as it prints on the quote page.<span class="pinmark">5.4</span></p>
+
+<div data-mount="conditions"><table style="margin:0;font-size:13.5px">
+<tr><th>&nbsp;</th><th>Their anchor<br><span style="font-weight:400">marketplace, $10,000 ded</span></th><th>The selected plan<br><span style="font-weight:400">AFC Elite package</span></th></tr>
+<tr><td>Emergency room</td><td><var>they pay it</var></td><td><var>$300</var></td></tr>
+<tr><td>Admission</td><td><var>they pay it</var></td><td><var>$2,000</var></td></tr>
+<tr><td>2 inpatient days</td><td><var>they pay it</var></td><td><var>$8,000</var></td></tr>
+<tr><td>Surgery</td><td><var>they pay it</var></td><td><var>2.5&times; schedule</var></td></tr>
+<tr><td><b>Out of their pocket</b></td><td><b><var>up to $10,000</var></b></td><td><b><var>the balance after $10,300+</var></b></td></tr>
+</table></div>
+<p style="margin:9px 0 0;font-size:13px;color:#555">Pick one condition and stay on it. The point is one clear comparison they can hold in their head, not a tour of the drop-list.</p>
+</div></details>
+
+
+
+
+<h2 data-screen="bonus"><span class="n">8</span>Bonus benefits</h2>
+
+
+
+<div class="say">Now I also want to go over the pieces that make everything else stretch further.<span class="who wJ">JESSE</span></div>
+
+<div class="say">You&rsquo;ll use <b>Green Imaging</b> for things like an MRI &mdash; savings there can be <var>50&ndash;90%</var> off, depending on the type of imaging.<span class="who wJ">JESSE</span></div>
+
+<div class="aside" data-author="note"><b>Where the 50&ndash;90% comes from &mdash; SETTLED, Jesse, 24 Oct:</b> <i>&ldquo;I&rsquo;m fine to say that green imaging can be savings&hellip; of 50 to 90% off, that&rsquo;s fine. Lock that in.&rdquo;</i> Say it as a range &mdash; <var>50&ndash;90%</var> &mdash; and as what it <i>can</i> be, the way the line is written. <b>The source is his ruling, not a document we hold</b> &mdash; unlike the old CareGuide 62%, which was removed because nobody stood it up and nobody owned it. This one has an owner. <b>Do not re-ask, and do not round it up or call it guaranteed.</b></div>
+
+<div class="say">And <b>Direct Labs</b> for bloodwork &mdash; that&rsquo;ll save you huge there too.<span class="who wJ">JESSE</span></div>
+
+<div class="say">You get <b>free telehealth 24/7</b> through a service called <b>EasyCare2Go</b> &mdash; so any hour, from your phone, you can see someone without going anywhere. And that does <i>not</i> count against your doctor visits, so it&rsquo;s another saving on top.<span class="who wJ">JESSE</span><span class="pinmark">6.1</span></div>
+
+<div class="do">Say the telehealth and the prescription discount as <b>two benefits reached through one login</b> &mdash; not as one item, and not as two separate services to register for. The brochure lists the whole set generically (24/7 telemedicine, health advocacy, discounted imaging, discounted labs, discount pharmacy); the Enhanced slide names the same set by vendor. One set, two ways of naming it.</div>
+
+<div class="say">There&rsquo;s a <b data-screen="bonus-rx">prescription discount program</b> called <b>Rx Valet</b> that will usually save you even more than programs like GoodRx &mdash; the ones you often have to pay for. It opens straight from that same EasyCare2Go login, and you get it no matter which plan you end up on.<span class="who wJ">JESSE</span></div>
+
+<div class="tip"><b>Where the two bonus benefits actually live.</b> Both the telehealth and the prescription discount run through <b>one login</b>: <b>manhattanlife.myeasycare2go.com</b>, Group ID <b>mlins2023</b>. Rx Valet opens from inside it &mdash; single sign-on, no separate account and no second password. <b>Every ManhattanLife client has it</b>, whichever products they hold. Rx Valet support is <b>1-855-798-2538</b> if they would rather ring someone.<br><br>Say it saves them money; <b>say no percentage and no pharmacy count</b>. The &ldquo;up to 80%&rdquo; and &ldquo;67,000+ pharmacies&rdquo; figures belonged to RxEDO, the program this replaced, and a different company does not inherit them.</div>
+
+<div class="say" data-needs="drx.drug">And you mentioned you&rsquo;re on <var data-k="drx.drug">Wegovy</var> for weight loss. Once you&rsquo;re approved I&rsquo;ll walk you through a pharmacy program for that too &mdash; we&rsquo;ll look at what it does to what you&rsquo;re paying.<span class="who wJ">JESSE</span></div>
+<div class="do"><b>On this call Direction Rx is a mention and nothing more.</b> The program by name, the discount, the code and the how-to all belong on the <b>Benefits Review, after they are approved</b> &mdash; which is what keeps a pre-sale inducement question off the table, because nothing of value is offered here in exchange for buying. The line does not even name the pharmacy, and a gate keeps it that way. The whole block disappears when there is no weight-loss GLP-1.</div>
+<div class="flag" data-author="note"><b>Your phrase was &ldquo;we will go over some big savings in that area too&rdquo;, and the line says &ldquo;we&rsquo;ll look at what it does to what you&rsquo;re paying&rdquo; instead.</b> One reason: the discount is 30% off <b>Direction Rx&rsquo;s own price</b>, which is not the same as 30% off what this client pays now, and on some drugs and doses it may not beat their current price at all. A savings promise made <i>before</i> they buy, that the Benefits Review then cannot deliver, costs more than saying nothing &mdash; and it would be the first thing they remember. If you want your wording back it is a one-line change and a gate to retire; this is recorded so the choice stays yours.<span class="pinmark">DRX settled &mdash; 30% confirmed 16 Oct</span></div>
+<div class="say">And you get <b>CareGuide</b>, which will negotiate your larger medical bills for you &mdash; so before you pay a big hospital or ER bill, you call them and they go to work on the retail price. On average, CareGuide saves its members 82%.<span class="who wJ">JESSE</span><span class="pinmark">6.3</span></div>
+
+
+
+<div class="say">Not to mention they don&rsquo;t re-rate you if your health changes &mdash; plenty of carriers do what they call a re-rate, and this plan doesn&rsquo;t. Your premium does step up a little each year as you get older, the way any age-rated plan does, but <b>ManhattanLife hasn&rsquo;t raised the rate on this plan since 2023</b>, so a substantive jump is unlikely.<span class="who wJ">JESSE</span></div>
+
+<div class="flag" data-author="note"><b>&ldquo;No increase&rdquo; is now barred, in all three places it appeared.</b> Jesse&rsquo;s ruling of <b>23 Oct</b>: <i>&ldquo;we should not ever say the price will not increase, but could say unlikely to have any substantive increase as they haven&rsquo;t gone up since 2023.&rdquo;</i> It reverses his own earlier line here, and it is right &mdash; the brochure rates this product on <b>attained age</b>, which changes annually on the policy anniversary, so &ldquo;fixed to 65&rdquo; contradicted the carrier at the first renewal. <b>Keep the age step-up clause in.</b> Without it &ldquo;unlikely to increase&rdquo; fails the same way one anniversary later. <b>The 2023 figure is Jesse&rsquo;s statement, not a carrier document</b> &mdash; say &ldquo;hasn&rsquo;t raised the rate since 2023&rdquo; and never &ldquo;guaranteed&rdquo;, &ldquo;locked&rdquo; or a forecast. Three lines changed: this one, the ACA objection and the healthy-client objection. <b>The fourth instance &mdash; SETTLED, Jesse, 24 Oct:</b> <i>&ldquo;yes, you can say it is locked in but do not say it never changes.&rdquo;</i> So Kyle&rsquo;s package-price line keeps &ldquo;that&rsquo;s locked in&rdquo; <b>exactly as it is</b> &mdash; it means the quoted price is secured, which is true. <b>The line it draws:</b> no line anywhere may say or imply the premium <i>never changes</i>, which is the same ruling as the attained-age one above and the reason the three lines were reworded. <b>Do not re-ask.</b> A checker now scans the spoken text for &ldquo;never changes&rdquo;, &ldquo;never goes up&rdquo;, &ldquo;won&rsquo;t go up&rdquo; and &ldquo;same price&rdquo;, so the ruling outlives this note.<span class="pinmark">watch</span></div>
+
+<div class="say">And of course, as I mentioned &mdash; but it&rsquo;s worth repeating &mdash; there&rsquo;s <b>no coinsurance and no deductible</b> on this plan.<span class="who wJ">JESSE</span></div>
+
+
+
+
+
+<div class="say">To keep the cost where it is, these plans leave out maternity and mental health. Pre-existing conditions aren't covered for the first twelve months &mdash; but your medications are covered from day one. Based on everything you've told me, this puts you in a better spot than you're in now and it covers every box you gave me. Would you agree?<span class="who wK">KYLE</span></div>
+
+<h2 data-screen="close"><span class="n">9</span>Close</h2>
+
+<div class="say">So the entire package &mdash; your <var data-k="plan.products_spoken">AFC Elite health plan (with Specified Disease umbrella for worst-case), DVH Select, ER/accident coverage, out-of-pocket protection, and the Hospital Select rider</var> &mdash; comes to <var data-k="plan.monthly">$850</var> per month. That&rsquo;s locked in, <span data-saving>and you&rsquo;re saving <var data-k="savings.monthly">$550</var> vs. what you were paying. One of the biggest savings I&rsquo;ve seen this week!</span><span class="who wK">KYLE</span></div>
+
+<div class="say" data-needs="why.answer"><var data-k="why.answer">And it comes in $140 a month under what you&rsquo;re paying now &mdash; which is the thing you told me you needed.</var><span class="who wJ">JESSE</span></div>
+<div class="do"><b>Answer their own words, and only where it is true.</b> Each line here claims only what the numbers support: under what they pay now; or more per month but ahead over a year because there is no deductible to get through first; or the doctor they named is out of network but the plan pays a set amount either way. <b>Switch off anything that is not true of this package</b> &mdash; with nothing switched on the block disappears and the close reads as normal.</div>
+<div class="tip">Build the package so the saving lands between <b>$200 and $400</b>, not as high as it will go. The reasoning: a $700 saving reads as fake, and it means you left holes in the coverage you could have filled. Spend the difference on protection. <span class="pinmark">7.4</span><span class="who wM">MIKE</span></div>
+
+<h3 data-screen="lb-pivot">The pivot to living benefits</h3>
+
+<div class="say" data-needs="fam.history">And one more thing, because you mentioned it earlier &mdash; the family history of <var data-k="fam.history">cancer</var><span data-needs="fam.rel"> &mdash; <var data-k="fam.rel">your dad</var></span>. I&rsquo;m not going to make more of that than it deserves. But it is the reason I built this the way I did instead of leaving the piece out &mdash; <var data-k="fam.stat">about 4 in 10 people, men and women alike, are diagnosed with cancer at some point</var>. So that cover is in there on purpose, not as an upsell.<span class="who wJ">JESSE</span></div>
+<div class="do" data-needs="fam.who"><span class="lab">NOT SPOKEN</span><b>Who, and which condition:</b> <var data-k="fam.who">your mom (cancer); your dad (heart attack)</var>. <b>This is your reference, not a line to read</b> &mdash; the spoken sentence above says the relatives without the conditions in brackets, which is how a person talks. Use this if they ask which side it was, or to get it right when more than one condition is in play. &#9888; On an older saved file this box may still hold free text an agent typed; if it reads like a note rather than &ldquo;your mom (cancer)&rdquo;, do not read any of it out.<span class="who wJ">JESSE</span></div>
+<div class="do"><b>Tie the cover to their family history with a figure &mdash; once, here, and nowhere else.</b> This is the only place in the script where cancer, heart attack and stroke are named aloud, and the line that follows lands directly on it, so the history lands directly before the sentence it explains. <b>Do not repeat it at the catastrophic section.</b> The block disappears when there is no family history.</div>
+<div class="flag" data-author="note"><b>How this line is built, and why in that order.</b> Three deliberate choices, because this is the most emotionally loaded sentence in the script and it has a named relative in it.<br><b>1. The person and the statistic are kept apart.</b> &ldquo;Your dad, at 58&rdquo; followed straight by a mortality figure reads as <i>your dad died and you are next</i>. The sentence between them &mdash; <i>&ldquo;I&rsquo;m not going to make more of that than it deserves&rdquo;</i> &mdash; is doing real work: it is what separates naming a true risk from frightening someone with their own family. Do not cut it to save four seconds.<br><b>2. The family history is the reason; the statistic is only context.</b> The line says the cover is there <i>because of their history</i>, and the figure sits underneath as scale. Reversed &mdash; statistic first, as the argument &mdash; it becomes a fear close.<br><b>3. &ldquo;On purpose, not as an upsell&rdquo;</b> is there because the client is about to be asked for more money, and naming that plainly is what keeps the previous sentence from sounding like the set-up for it.<br><b>4. The relative is spoken, but not in the format it is stored in.</b> This moved twice. It was briefly an agent cue only, because <code>fam.who</code> was <b>free text an agent typed</b> &mdash; shorthand, and able to name a <i>heart attack</i> one sentence after the line said <i>cancer</i>. Your change of 17 October replaced that box with <b>clicks</b>, so it is now generated from the same answers as <code>fam.history</code> and the two cannot disagree. The relative is therefore safe to say &mdash; but <b>not as stored</b>: &ldquo;your mom (cancer); your dad (cancer)&rdquo; has brackets and a semicolon in it and repeats the condition the sentence just named. So the spoken line takes <code>fam.rel</code> &mdash; &ldquo;your mom and dad&rdquo; &mdash; and the detailed version stays in the cue below for when they ask which side it was. <b>The defusing sentence still sits between the relative and the figure</b>, which was the point of the original ordering.<span class="pinmark">7.5</span></div>
+<div class="flag"><b>The figures, and when they expire.</b> <b>Cancer:</b> American Cancer Society, <i>Lifetime Risk of Developing or Dying From Cancer</i> &mdash; 39.9% of men and 39.0% of women, incidence years 2018, 2019 and 2021. &ldquo;About 4 in 10&rdquo; is a fair reading of both. <b>Heart and stroke:</b> CDC leading causes of death &mdash; heart disease is first for both men and women. <b>Stroke deliberately carries no number</b>, because its rank moves year to year.<br>&#9888; <b>Your own phrasing was &ldquo;1 in 2 men, 1 in 3 women&rdquo;, and that is an older ACS edition.</b> The current figure is about 4 in 10 for both, and MyPopPro corrected it before it reached a client &mdash; worth knowing, because the old version is still widely repeated and a client may have heard it too.<br>&#9888; <b>And a precision point on the heart line.</b> The CDC figure is for <i>heart disease</i>; the cover is for a <i>heart attack</i>. A heart attack is the acute event, not the whole category, so the statistic is context for the category and should not be said as though it were the rate of heart attacks. <b>ACS updates annually &mdash; recheck both in January.</b><span class="pinmark">7.6</span></div>
+<div class="say">Here&rsquo;s the risk most people don&rsquo;t plan for: a heart attack, a cancer diagnosis, a stroke &mdash; the bills come in and the income stops. So what a lot of people do is take about <var data-k="lb.share">20 to 25%</var> of what we just saved you and protect their income with living-benefit insurance that pays YOU while you&rsquo;re alive if you get cancer, a heart attack, or stroke. Instead of losing income, the company cuts you a check &mdash; $20,000, $50,000, $100,000 depending on the event. Health takes care of the bills; living benefits take care of your income. You really need both.<span class="who wK">KYLE</span></div>
+
+<div class="tip"><b>Sell what they came here for.</b> This governs the whole section: <b>you are not going after an annuity sale in the middle of a health sale.</b> You are almost certainly not selling an annuity on this call, and trying to is not a smart way to do it. But say something &mdash; plant it here and harvest it later.</div>
+<div class="tip" data-author="note"><b>Plant, water, harvest &mdash; and why the discovery call asks things it will not act on.</b> <i>&ldquo;You&rsquo;re always planting seeds that you&rsquo;re gonna water through your trust building in the conversation that you can harvest later. We&rsquo;re always mining for emotional currency that we&rsquo;re gonna cash in later.&rdquo;</i> Trey&rsquo;s note on your delivery of it: <i>&ldquo;you&rsquo;re gaining trust just about every five seconds&hellip; that protected position &mdash; that&rsquo;s something that somebody only that knows how to protect it would ask&rdquo;</i>, and the line he called a write-down moment on the spot: <i>&ldquo;he&rsquo;s not just a life agent, he&rsquo;s just not a health agent. He is the person that&rsquo;s gonna help you accomplish all those things.&rdquo;</i></div>
+<div class="say">So for you, that <var data-k="lb.share">20 to 25%</var> would only be about <var data-k="lb.suggested">$110 to $140</var> a month. Want me to show you what that looks like for your age and health?<span class="who wJ">JESSE</span><span class="pinmark">7.3</span></div>
+
+<div class="aside" data-author="note">The figure in that line is <b>derived from the saving</b>, 20&ndash;25% of it, so it always sounds proportionate &mdash; at a <var data-k="savings.monthly">$550</var> saving it reads &ldquo;<var data-k="lb.suggested_low">$110</var> to <var data-k="lb.suggested_high">$140</var>&rdquo;. <b>Read that against the saving, not against the Top Tip&rsquo;s $200&ndash;$400</b> &mdash; that band is the <i>saving</i> you build to, not the living-benefits premium. Inside it the same rule gives roughly <b>$40 to $100</b> a month, which is about where Kyle&rsquo;s static range sat; the difference is that it now tracks the saving instead of being fixed. Against a big saving the old static figure sounded like lowballing, against a small one it was half the saving. <b>Below about a $20 saving MyPopPro leaves the figure out altogether</b> rather than name a number that small (23 Oct). The module below still produces the exact quote.<span class="pinmark">7.2</span></div>
+
+<div class="tip">If they hesitate, this is the one that moves people: &ldquo;Think about it this way &mdash; if you had a cardiac event tomorrow and the doctor told you six months of rehab, no work, who&rsquo;s paying the mortgage? Health insurance handles the hospital. This handles the six months.&rdquo; It converts &ldquo;I don&rsquo;t need life insurance&rdquo; into &ldquo;I don&rsquo;t have six months of income.&rdquo;<span class="who wM">MIKE</span><span class="pinmark">S1</span></div>
+
+<div class="do" data-screen="lb-price"><span class="lab">NOT SPOKEN</span>Price it here, then do the arithmetic out loud. The numbers are already computed &mdash; don&rsquo;t do mental math on a live call.<span class="who wM">MIKE</span></div>
+
+<div style="border:2px solid #1d4e79;border-radius:6px;padding:13px 16px;margin:11px 0;background:#f7faff">
+<p style="margin:0 0 9px;font-weight:700;color:#1d4e79;font-size:11px;letter-spacing:1px">LIVING BENEFITS &mdash; QUOTE IT WITHOUT LEAVING THE SCRIPT<span class="who wJ">JESSE</span><span class="pinmark">7.2</span></p>
+<div data-mount="lb"><table style="margin:0;font-size:13.5px"><tr><th>&nbsp;</th><th>Face</th><th>Monthly</th></tr>
+<tr><td>Them, age <var>&lt;age&gt;</var></td><td><var>$50,000</var></td><td><var>$70</var></td></tr>
+<tr><td>Spouse, age <var>&lt;age&gt;</var></td><td><var>$50,000</var></td><td><var>$50</var></td></tr>
+<tr><td><b>Add back</b></td><td>&nbsp;</td><td><b><var>$120</var></b></td></tr></table></div>
+<p style="margin:9px 0 0;font-size:12.5px;color:#555">The same module as the quoting tool, mirrored here &mdash; price it and add it on this screen, and it writes back to the same selection. No jumping out and losing your place mid-call.</p>
+</div>
+
+<div class="say">You were at <var data-k="anchor.today">$1,400</var>. I&rsquo;ve got you at <var data-k="plan.monthly">$850</var>. We add <var data-k="lb.addback">$120</var> back for <var data-k="lb.who">the two of you</var> for the living benefits &mdash; which, as we talked about, are of huge importance if any of those really big things happen &mdash; so you&rsquo;re at <var data-k="new.total">$970</var>, <span data-saving>and you&rsquo;re still saving <var data-k="saving">$430</var> a month.</span> Want me to show you what that looks like at your age?<span class="who wM">MIKE</span><span class="who wJ">JESSE</span></div>
+
+
+
+<h2 data-screen="boldstep"><span class="n">10</span>The bold step &mdash; pick one path</h2>
+
+<div class="two" data-closes>
+<div class="pathA" data-close="assumptive">
+<h4>Assumptive Sale Close</h4>
+<p style="font-size:12.5px;color:#8a6d1f;font-weight:700;margin:0 0 7px">Never asks &mdash; just starts</p>
+<div class="say">I&rsquo;m not the smartest guy in the world, so here&rsquo;s what we&rsquo;re going to do &mdash; we&rsquo;re just going to see if you qualify. So I&rsquo;ve got <var data-k="client.first">&lt;first name&gt;</var> &mdash; let me make sure I&rsquo;m spelling that right for you. And the last name, spell that one for me too?<span class="who wM">MIKE</span><span class="who wJ">JESSE</span></div>
+<div class="do"><span class="lab">NOT SPOKEN</span>You are not really checking the spelling. You are starting the application without asking permission to start it &mdash; and confirming something they already know the answer to is the easiest possible first question. Then keep going in the same tone: date of birth, height and weight, street address. Every answer puts them further in. While they keep answering, you keep going, and you do not pause.</div>
+</div>
+<div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-weight:700;color:#8a6d1f;font-size:13px;letter-spacing:1px;padding:0 4px">OR</div>
+<div class="pathB" data-close="bold">
+<h4>Bold Step Close</h4>
+<p style="font-size:12.5px;color:#16203c;font-weight:700;margin:0 0 7px">Read this one word for word</p>
+<div class="say" style="font-size:15px">The next step is simple &mdash; we'll submit your application. No cost to apply, takes about 10 minutes, and I'm your point of contact throughout. Underwriting reviews it and we should have approval in <b>3&ndash;5 business days, though it can take up to 14 depending on where you are</b>. If approved, we set your start date and send your welcome packet. Ready to get that started?<span class="who wK">KYLE</span></div>
+<div class="do" style="font-size:14px">Confidence is key: never pause when it's time to move forward. Clients follow certainty.<span class="who wK">KYLE</span></div>
+</div>
+</div>
+
+<div class="tip" data-screen="lifeapp">Take the <b>life application first</b>, health second. The life app needs <i>them</i> to act &mdash; a code or an e-signature &mdash; so do that part while you still have them on the phone. The health app doesn&rsquo;t. Then collect whatever you still need beyond what is already on their profile, so the health application is quick once they are off the call.<span class="who wJ">JESSE</span><span class="pinmark">8.2</span></div>
+
+<div class="do"><span class="lab">NOT SPOKEN</span>Take the application in <b>POP Pro&rsquo;s own per-person blocks</b> &mdash; one expandable block for the applicant, the spouse and each child. Anything you type into a blank there writes back to the profile. <b>Beneficiaries:</b> name, percentage, phone and date of birth. <b>Relationships are not asked.</b> Bank details, draft date and SSN are read straight into the carrier form and never stored here.</div>
+
+<div class="do"><span class="lab">NOT SPOKEN</span><b>Notes</b> &mdash; anything off script: what they said, what to remember, what to follow up. One box, and it is the same Notes as the Script Navigator profile.</div>
+
+<div class="flag" data-author="note"><b>This changed because two of your instructions collided.</b> On 8 October you said of the code word: &ldquo;you need a place to write it down, so write it in the notes section, so you can use it for the ManhattanLife application.&rdquo; But your standing rule is that the mother&rsquo;s maiden name is typed during the application and <b>never saved</b> &mdash; and the notes field is saved, printed, synced to the Script Navigator profile and headed for the CRM. Following the script instruction would have put a security credential into all four.<br><br>I have taken the safe reading: a box beside the question that is never stored. Your reason for wanting it written down still holds &mdash; they need it again at the health application &mdash; and that works because both applications go in on the same call. If the health app ever slips to another day, asking again is the right behavior for a credential, not retrieving it from a note. <b>Tell me if you want it the other way</b> and I will put it back, but you should make that call knowingly.<span class="pinmark">8.3</span></div>
+
+<div data-render="enroll" data-screen="wrapup">
+<p style="margin:0 0 7px;font-size:12px;color:#8a6d1f;font-weight:700;letter-spacing:.6px">RENDERS ON THE ENROLL PAGE, NOT IN THE PRESENT FLOW &mdash; beside POP Pro&rsquo;s maiden-name box</p>
+<div class="say">For security purposes &mdash; and this'll be the code word you sign the health application with &mdash; what's your mother's maiden name?<span class="who wM">MIKE</span></div>
+
+<div class="tip">If they don&rsquo;t know it or won&rsquo;t give it, any word or name works as long as they&rsquo;ll remember it &mdash; they&rsquo;ll need it again at the health application. Type it in the box beside this question: <b>it is never saved anywhere.</b> It holds for this call, which is all you need, because the health application goes in on the same call. If that ever slips to another day, ask them again rather than keeping it.<span class="who wJ">JESSE</span></div>
+</div>
+
+<div class="say">That's everything I need. You're done &mdash; I'll take it from here.<span class="who wM">MIKE</span></div>
+
+<div class="say">Three to five business days, sometimes seven to ten depending on the product. The moment it's approved you'll get an email from me with a temporary ID card and your benefit book.<span class="who wK">KYLE</span></div>
+
+<div class="tip" data-screen="posttext">Text them <b>the moment you hang up</b>. They almost never book the follow-up, and that is fine &mdash; it stops the day-three panic call, which is the point. It takes away the &ldquo;I just gave a stranger my personal information.&rdquo;<span class="who wJ">JESSE</span><span class="pinmark">8.4</span></div>
+
+<div class="flag" data-author="note"><b>Their Why does not go in this text, and not in the emails either.</b> Your ruling of 16 October, relayed through the MyPopPro thread: <i>once they have bought, we have moved past it.</i> The quote and the facts sentence belong in the discovery read-back at section 3 and in the close at section 9 &mdash; both of those sit <b>before</b> the decision, which is the whole reason they work. Repeating it afterwards reads as a script running on rails, not as a person who listened. Recorded here so that nobody adds it to the post-call message later and calls it a personal touch.<span class="pinmark">settled</span></div>
+<details class="exp" data-mount="posttext"><summary>The text to send &mdash; open and copy</summary>
+<div class="body">
+<p style="background:#fff;border-left:3px solid #146b6b;padding:11px 14px;margin:0 0 10px;font-style:italic">
+Hi <var data-k="client.first">&lt;client first name&gt;</var>, thank you for applying today &mdash; it was a pleasure speaking with you.<br><br>
+I&rsquo;m your point of contact from here. Underwriting usually comes back within <b>3&ndash;5 business days</b>, though it can take up to <b>14 days</b> depending on where you are and I&rsquo;ll let you know the moment I hear.<br><br>
+<b><var data-k="agent.name">&lt;agent name&gt;</var></b><br>
+<var data-k="agency">&lt;agency name&gt;</var><br>
+<var data-k="agent.phone">&lt;phone&gt;</var> &middot; <var data-k="agent.email">&lt;email&gt;</var><br>
+<var class="blank" data-k="agent.website">your website</var><br><br>
+If anything comes up before then, grab a time with me here: <var class="blank" data-k="agent.booking">your booking link</var><br>
+I&rsquo;ve kept a slot open about a week out in case you want to go over anything once it&rsquo;s approved.
+</p>
+<a href="#" class="cpy dim" data-copy="posttext">&#10697; COPY THE TEXT &mdash; <var data-k="agent.blanks_n">2</var> field(s) still blank</a>
+<div class="needs" data-needs><b>Your agent info is not finished.</b> The copy button stays dimmed until it is, because sending this with a blank where your website should be is worse than not sending it. Missing: <span data-needs-list><b>website</b> and <b>booking link</b></span>.
+<br><br><b>&rarr; Set it up once:</b> the same <b>SET UP YOUR AGENT INFO</b> panel on the intake page. Agency name, your name, phone and email come across already. Add the website and booking link and it is remembered on this machine &mdash; every script, every client, from then on. Once it is complete this warning disappears and the button goes live.</div>
+<p style="margin:10px 0 0;font-size:12.5px;color:#555">Edit the wording to sound like you before you send it the first time &mdash; it is a template, not a signature. What you change is saved with your agent info.</p>
+</div></details>
+
+<div class="say"><b>If they need to think, or talk to a spouse.</b> No problem &mdash; I&rsquo;ll email the brochures and the quote summary so you can review tonight. Let&rsquo;s talk same time tomorrow, go over questions, and put in the app then. Sound good?<span class="who wK">KYLE</span></div>
+
+<div class="tip">A <b>ten-second question gets a thirty-second answer</b>. &ldquo;If you give them a five-minute answer to a ten-second question, you&rsquo;re going to create way more confusion.&rdquo; This is the rule that governs the questions step, and it is the main reason a 20-minute call turns into 90.<span class="who wM">MIKE</span></div>
+
+<h2 data-screen="stories"><span class="n">11</span>Story repository<span class="pinmark">S2</span></h2>
+
+<p>Your idea, and it belongs here rather than scattered loose through the script. Each story sits next to the step it serves, and the same one can be pulled from here when a call goes somewhere unexpected.</p>
+
+<div class="aside"><b>The naming rule:</b> never a client&rsquo;s name, ever. &ldquo;A buddy of mine&rdquo;, &ldquo;a coworker of mine&rdquo;, &ldquo;one of my business partners&rdquo;, &ldquo;a client of ours&rdquo;. And <b>client success stories</b> rather than case studies &mdash; a case study sounds like a document, a story sounds like something that happened to someone.</div>
+
+<table>
+<tr><th>Story</th><th>Attaches at</th><th>Status</th></tr>
+<tr><td><b>The six months of rehab</b> &mdash; cardiac event, no work, who pays the mortgage</td><td>Step 9, living benefits</td><td><b>Ready</b> &mdash; already in, as a Top Tip</td></tr>
+<tr><td><b>One trip to the ER</b> &mdash; three to five thousand before anybody treats you</td><td>Objection: &ldquo;I can&rsquo;t afford that&rdquo;</td><td><b>Ready</b> &mdash; already in, in the objection section</td></tr>
+<tr><td><b>$211,000 in intensive care</b> &mdash; and a $33,000 check</td><td>Step 7, catastrophic &mdash; the answer to &ldquo;what if I exhaust it?&rdquo;</td><td style="background:#f3f8f4"><b>Ready</b> &mdash; recovered 14 Oct 2026, see below</td></tr>
+<tr><td colspan="3" style="color:#555"><i>Room for more. Any story you tell on a call that lands, send it to me and it goes in here with where it attaches.</i></td></tr>
+</table>
+
+<div class="flag" data-author="note"><b>Kyle&rsquo;s daughter story is unblocked &mdash; and the figure we were given was wrong.</b> It was held because Mike referenced only the outcome on the training call &mdash; &ldquo;a six-figure bill that came out under $1,000&rdquo; &mdash; with no account of what happened, which products paid, or in what order. <b>Holding it was right.</b> Kyle told the story himself at the Bundle Bootcamp on 13 October 2026, and the real outcome is not under $1,000.<br><br><b>$211,000</b> charged for six nights in intensive care. <b>Eleven months</b> of weekly advocacy brought the allowed amount to <b>$42,000</b>. Affordable Choice Elite Plus paid <b>$75,000</b> &mdash; a fixed benefit pays what it says it pays &mdash; so the <b>$33,000</b> difference was paid to Kyle. He thought the check was a mistake and called the carrier to check.<br><br>Full three-act pack, with the must-say caveats, at <code>_training/bundle-bootcamp-2026-10/stories/negotiated-rate_kyles-daughter.html</code>. Verbatim transcript at <code>raw/06b_daughter-story_RECOVERED.txt</code>. <b>Always say &ldquo;eleven months&rdquo; and never promise the check</b> &mdash; the surplus depends entirely on the final bill.<br><br><b>The standing rule has not changed:</b> I am <b>not going to invent client success stories</b>. This one is told only because Kyle told it himself and the numbers reconcile &mdash; $75,000 paid minus $42,000 owed is the $33,000 check. Any story without that footing stays out.</div>
+
+<div class="prov" data-author="note">How they surface <span class="pinmark">S2</span> &mdash; you floated a right-hand nav, or expansions near the relevant step. My recommendation is both, and it is cheap: the story is written once here, and each step shows a one-line prompt that opens it, exactly like the expansions already on this page. A floating rail works on a laptop and collapses on a phone, so the prompt-in-place has to exist regardless &mdash; which makes it the one to build first.</div>
+
+<h2><span class="n">12</span>Objections &mdash; Feel, Felt, Found</h2>
+<div class="aside" data-author="note">Kyle&rsquo;s ten, kept as written. You said you would edit these next round, so I have not touched them.</div>
+<p>Three sentences, then a question. Clients don't buy insurance, they buy confidence.</p>
+
+<p class="q">&ldquo;That sounds expensive.&rdquo;</p>
+<p class="fff">I understand how you feel &mdash; most people do when they're comparing it to the $0 plans in the ads. What they found is these save money over a year because they pay from the first dollar. There's no $8,000 deductible to get through first. <span class="ask">Can I show you how it pays you back on the visits you actually make?</span></p>
+
+<p class="q">&ldquo;I already have something through work or my spouse.&rdquo;</p>
+<p class="fff">Glad you're already covered. Clients felt the same, and found the work plan left gaps &mdash; dental, accident, income protection &mdash; and a plan that pays them directly filled them. <span class="ask">Open to seeing how this backs up what you've got?</span></p>
+
+<p class="q">&ldquo;I want to think about it.&rdquo;</p>
+<p class="fff">I understand, it's a real decision. What clients found is that having it in writing made it easier, and that approval is based on your health today, not in a month. <span class="ask">Let's reserve your approval while you think it over. No harm done if you pass. Sound fair?</span></p>
+
+<p class="q">&ldquo;I need to talk to my spouse.&rdquo;</p>
+<p class="fff">Smart &mdash; it's a household decision. Clients found it worked better to get the spouse on a short call so you both hear it from me. <span class="ask">Tomorrow evening, or Saturday morning for ten minutes?</span></p>
+
+<p class="q">&ldquo;I can't afford that right now.&rdquo;</p>
+<p class="fff">Budgeting is real and I'd rather you say it. Clients felt that way until they priced one ER visit &mdash; three to five thousand dollars. <span class="ask">If I build something that fits your budget and still protects you, worth looking at together?</span></p>
+
+<p class="q">&ldquo;I want something with no deductible.&rdquo;</p>
+<p class="fff">Most people do. These aren't high-deductible plans &mdash; they're defined-benefit, paying a set amount from day one. <span class="ask">Can I walk you through a real example?</span></p>
+
+<p class="q">&ldquo;Why not just stick with the ACA plan?&rdquo;</p>
+<p class="fff">People feel that way, especially with a subsidy. What they found is narrow networks, high deductibles and a rate rise every year. And this is on the First Health PPO. ManhattanLife hasn't raised the rate on it since 2023, so a big jump is unlikely &mdash; your premium does step up a little each year as you get older, like any age-rated plan, but that's your age, not the carrier re-pricing the plan. <span class="ask">Want to see it side by side?</span></p>
+
+<p class="q">&ldquo;I've never heard of ManhattanLife.&rdquo;</p>
+<p class="fff">Fair &mdash; not a household name. Around since 1850, one of the oldest insurers in the country. Clients found the private PPO through First Health gave them more control and fewer restrictions. <span class="ask">Want to see their AM Best rating and the network?</span></p>
+
+<p class="q">&ldquo;I'm healthy, I don't need insurance.&rdquo;</p>
+<p class="fff">That's exactly why now is the time. People felt that way until an accident or a surprise bill. Being healthy is what qualifies you for this rate &mdash; and it is your health at application that sets it, so it doesn't move later if your health does. <span class="ask">Makes sense to protect your good health while it's cheapest?</span></p>
+
+<p class="q">&ldquo;Can you just send me some information?&rdquo;</p>
+<p class="fff">Absolutely. What clients found is that reading it alone didn't show them what they personally qualify for. <span class="ask">I'll send it and walk you through it in five minutes &mdash; this evening or tomorrow morning?</span></p>
+
+<h2 data-author="note"><span class="n">13</span>Decisions on record<span class="pinmark">6.4</span></h2>
+
+<p data-author="note">Everything in this script fills from data that already exists. The three original fill gaps are settled, and this is kept as the record of what was decided and why. The fourth row is not a question either &mdash; it is a standing constraint on a figure that is spoken.</p>
+
+<table data-author="note">
+<tr><th>Key</th><th>Where it is spoken</th><th>Your options</th></tr>
+<tr style="background:#f3f8f4"><td><b>Green Imaging 50&ndash;90%</b> <span style="font-size:11px;color:#2f5f42;font-weight:700">SETTLED &mdash; JESSE, 24 OCT</span></td><td>Section 8 &mdash; spoken, in your own words</td><td><b>The line stays as it is.</b> Jesse, 24 Oct: <i>&ldquo;I&rsquo;m fine to say that green imaging can be savings&hellip; of 50 to 90% off, that&rsquo;s fine. Lock that in.&rdquo;</i> <b>The source is his ruling, not a document</b> &mdash; that has not changed and is worth knowing if anyone is ever asked where the range comes from. No visible caution, and <b>do not re-ask</b>.</td></tr><tr style="background:#f3f8f4"><td><code>client.situation</code> <span style="font-size:11px;color:#2f5f42;font-weight:700">SETTLED &mdash; NO FIELD NEEDED</span></td><td>Section 2</td><td><b>Gone.</b> It is no longer a blank. The line now offers three spoken options &mdash; small business owners / 1099 employees / (insert their situation) &mdash; which the agent chooses between while talking. Your call, 8 Oct: it must not read like something the system fills.</td></tr>
+<tr style="background:#f3f8f4"><td><code>doctor.street</code> <span style="font-size:11px;color:#2f5f42;font-weight:700">SETTLED &mdash; REMOVED</span></td><td>Section 5 &mdash; was &ldquo;Dr &lt;name&gt; on &lt;street&gt;&rdquo;</td><td><b>Cut, your call 8 Oct.</b> The line is now just &ldquo;And I already found Dr &lt;name&gt; &mdash; he&rsquo;s in the network.&rdquo; I had argued for keeping it. Worth noting the intent survives anyway: the bracket below still tells the agent to send the locator screenshot <i>showing the address</i>, so the client still sees it &mdash; it just is not said out loud.</td></tr>
+<tr style="background:#f3f8f4"><td><code>drug.now</code> <span style="font-size:11px;color:#2f5f42;font-weight:700">SETTLED</span></td><td>Section 7 &mdash; &ldquo;runs about $&lt;now&gt; at the pharmacy&rdquo;</td><td><b>Done, no new field.</b> Was <code>drug.cash</code>, which needed a retail price nobody holds. Renamed <code>drug.now</code> &mdash; &ldquo;what they pay for it today&rdquo; &mdash; and filled from the medication's current copay, which POP Pro already has. True whether they have a copay or pay cash, which the old name was not.</td></tr>
+</table>
+
+
+
+<p style="margin-top:26px;color:#666;font-size:12.5px" data-author="note">Source scripting from HealthFirst Scripts &amp; Forms.docx section 3, 30 June 2026, kept verbatim where asked. Figures from AFC7010-FLBR_1125 page 4 (Florida, Elite), shown as examples &mdash; the live script fills them from the selected plan. Ten items still provisional; the decision log is in the build sheet.</p>
+
+</body></html>
