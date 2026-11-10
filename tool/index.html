@@ -1176,14 +1176,194 @@ body.client #classicWrap>summary{display:none}
 #medFlags .mflag button{font:inherit;font-size:12.5px;font-weight:700;border-radius:7px;padding:5px 10px;cursor:pointer;border:1px solid var(--line);background:#fff}
 #medFlags .mflag button.yes{background:var(--navy);color:#fff;border-color:var(--navy)}
 .condinput{width:100%;font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px}
+
+  /* ===== REDESIGN stage 1 (branch redesign, Jesse 7 Nov 2026) - the look of the design-lab study, nothing else.
+     Colours, type and the shell only: every element, id, handler and word is the one live has (tools/parity-check.mjs). ===== */
+  :root{
+    --navy:#10233e; --navy-strip:#1c3657; --navy-band:#10233e;
+    --gold:#c3a14e; --gold-brand:#c3a14e; --gold-pill:#c3a14e; --gold-lt:#d3b46a;
+    --green:#34745a; --green-soft:#edf4ee;
+    --ink:#15263b; --muted:#6a7480; --line:#dfdfd8; --line2:#ecebe5;
+    --paper:#f6f5f1;
+  }
+  body{background:var(--paper)}
+  .card{border-radius:12px;border-color:var(--line);box-shadow:0 1px 2px rgba(16,35,62,.04)}
+  .brandbar{border-radius:12px 12px 0 0;padding:12px 18px;gap:10px}
+  /* the household strip tucks 16px up under the bar (margin-top:-16px): give those 16px back below, so the navy is even
+     above and below the gold offer and the brand sits in the middle (Jesse, 9 Nov) */
+  html body .brandbar:has(+ #clientStrip:not([style*="none"])){padding-bottom:28px}
+  html body .brandbar .toolbar{margin-bottom:0}
+  @media (max-width:760px){html body table.dt-tab{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}}   /* phone: the Decision Tree table scrolls on its own, the page doesn't */
+  .sharebtn{font:inherit;font-size:12.5px;font-weight:800;letter-spacing:.02em;border-radius:8px;padding:8px 14px;cursor:pointer;border:1.5px solid var(--gold,#c3a14e);background:#fffaf0;color:#10233e;margin-left:8px;white-space:nowrap}
+  .sharebtn:hover{background:var(--gold,#c3a14e)}body.sharing .sharebtn{background:#10233e;color:#fff;border-color:#10233e}
+  body.sharing #verBanner,body.sharing #rail,body.sharing #viewseg,body.sharing .brandbar .toolbar,body.sharing #csCaret,body.sharing .fab-save,body.sharing #qnFab{display:none!important}
+  html body.sharing .brandbar{display:none!important}html body.sharing #clientStrip{background:none!important;border:0!important;padding:0!important;margin:0!important;min-height:0!important;box-shadow:none!important}
+  html body.sharing #clientStrip>*:not(.cs-top),html body.sharing .cs-top>*:not(#shareBtn){display:none!important}
+  html body.sharing #shareBtn{position:fixed;top:10px;right:12px;z-index:9999;opacity:.8;box-shadow:0 2px 10px rgba(0,0,0,.18)}html body.sharing #shareBtn:hover{opacity:1}
+  /* Client View check-offs + the plan as one complete plan (Jesse, 9 Nov) */
+  .po-pick{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin:12px 0 4px;padding:11px 14px;border:1px solid #e3d9bf;border-radius:12px;background:#fffdf7}
+  .po-pickrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.po-pickl{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6b7280);margin-right:2px}
+  .po-chip{font:inherit;font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 9px;border-radius:999px;border:1.5px solid #d6cdb4;background:#fff;color:#4a5568;cursor:pointer}
+  .po-chip .bx{width:18px;height:18px;border-radius:5px;border:1.5px solid #c9bd9b;display:inline-flex;align-items:center;justify-content:center;font-size:12px;line-height:1;background:#fff}
+  .po-chip.on{border-color:var(--navy,#10233e);color:var(--navy,#10233e);background:#f4f1e8}.po-chip.on .bx{background:var(--gold,#c3a14e);border-color:var(--gold,#c3a14e);color:#10233e}
+  @media print{.po-pick{display:none!important}}
+  #printout .po-inchd{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#8a6a1f;padding:4px 16px 4px}
+  #printout .po-li.po-inc{display:flex;gap:9px;align-items:flex-start;justify-content:flex-start}
+  #printout .po-li.po-inc .ck{flex:0 0 18px;height:18px;border-radius:50%;background:#e7f4ec;color:#2f7d4a;font-style:normal;font-weight:800;font-size:11px;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+  #printout .po-li.po-inc>span{display:block;text-align:left;font-weight:600}#printout .po-li.po-inc small.po-sum{display:block;background:none!important;padding:0!important;border:0!important;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:400;color:#6b7280;font-size:12px;margin-top:2px}
+  #printout .po-money{margin:14px 0;border:1px solid #e3dcc8;border-top:4px solid #10233e;border-radius:12px;background:#fff;overflow:hidden}
+  #printout .po-money>.t{padding:12px 16px 8px;font-family:var(--serif,Georgia,serif);font-size:19px;font-weight:700;color:#10233e}#printout .po-money>.t small{display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;font-weight:400;color:#6b7280;margin-top:3px}
+  #printout .po-money table{width:100%;border-collapse:collapse;table-layout:fixed}
+  #printout .po-money th,#printout .po-money td{padding:10px 12px;border-top:1px solid #efe9da;text-align:center;vertical-align:top;font-size:14px}
+  #printout .po-money th{font-family:var(--serif,Georgia,serif);font-size:15.5px;color:#fff;background:#8a3b2e}#printout .po-money th.pl{background:#10233e}#printout .po-money th:first-child{background:#fff}
+  #printout .po-money th small,#printout .po-money td small{display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11.5px;font-weight:400;opacity:.85;margin-top:2px}
+  #printout .po-money td.rl{text-align:left;font-weight:700;color:#10233e;width:20%}#printout .po-money td.cm{background:#fbf3f1}#printout .po-money td.pl{background:#f3f8f4}
+  #printout .po-money tr.yr td{font-size:16px}#printout .po-money tr.sv td b{display:block;font-size:15px}#printout .po-money b.up{color:#2f7d4a}#printout .po-money b.dn{color:#b42318}
+  #printout .po-money tr.pop b.popn{font-family:var(--serif,Georgia,serif);font-size:24px;line-height:1}
+  #printout .po-money i.est{color:#9a5b00;font-size:.8em}#printout .po-money .estnote{padding:6px 16px 10px;font-size:11px;color:#9a5b00;font-style:italic}
+  #printout .evdb{font-size:12.5px;color:#4a5568}#printout .evdb b{display:block;color:#2f7d4a;font-size:14px}
+  .brand b{font-size:22px;letter-spacing:.2px}
+  .btn-ghost,.btn-gold{border-radius:7px}
+  .btn-gold{color:#10233e;border-color:#a98a3e}
+  .seg{border-radius:8px}.seg button{border-radius:6px}
+  .clientbar{border-radius:0 0 12px 12px}
+  .sectitle{font-size:19px;letter-spacing:.1px}
+  .rail-x{display:none}body.client #rail{display:none}
+  .rail-onpage{display:none}.rail-actions{display:none}
+  /* How to use / Setup as pages (only when opened from the sidebar; the toolbar button keeps the old window) */
+  .wl-goatbar{display:none}
+  .wl-card.mode-guide .wl-body,.wl-card.mode-setup .wl-body{padding:26px 28px 6px}
+  .wl-card.mode-guide .wl-goatbar,.wl-card.mode-setup .wl-goatbar{margin:0 0 26px!important}
+  .wl-card.mode-guide .wl-flowbox>summary{margin:0 0 14px;font-size:18px;pointer-events:none;list-style:none}
+  .wl-card.mode-guide .wl-flowbox>summary::-webkit-details-marker{display:none}
+  .wl-card.mode-guide .wl-flow{margin:0}
+  .wl-card.mode-guide .wl-tip{margin:22px 0 0;padding:20px 22px}
+  .wl-card.mode-guide .wl-step{cursor:pointer}
+  .wl-card.tour0 .wl-back{display:none!important}
+  .wl-card.mode-guide .wl-foot,.wl-card.mode-setup .wl-foot{padding:22px 28px 26px}
+  .wl-card.mode-setup .wl-you{margin:0;padding:0;border-top:none}
+  .wl-card.mode-setup .setupfile{margin:14px 0 0}
+  .wl-card.mode-setup .st-tabs{margin:22px 0 0!important}
+  .st-head{display:none}.wl-card.mode-setup .st-head{display:block;margin:22px 0 14px}
+  .st-head b{display:block;font-family:var(--serif);font-size:20px;color:var(--navy)}.st-head span{color:var(--muted);font-size:13.5px}
+  .wl-card.mode-setup .agentsetup{padding:0;margin:0}
+  .wl-card.mode-setup .agentgrid{gap:18px 16px}
+  .wl-card.mode-setup .goatgrab{margin-top:22px}
+  .wl-card.mode-setup .wl-back.st-show{display:inline-block!important}
+  .st-tabs button.maybe em{background:#c3a14e;color:#10233e;animation:agglow 1.8s ease-in-out infinite}
+  @keyframes railbeckon{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+  .wl-once-old,.wl-once-new{font-style:normal}.wl-once-new{display:none}.wl-card.mode-guide .wl-once-old{display:none}.wl-card.mode-guide .wl-once-new{display:inline}
+  .wl-card.mode-guide #wlHint,.wl-card.mode-setup #wlHint{display:none}
+  .wl-card.mode-guide .wl-flowbox>summary::after{content:'  ·  click any step to see how it works';font:400 12.5px -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--muted)}
+  .st-tabs{display:none}
+  .wl-card.mode-guide #wlDetails{display:none}
+  .wl-card.mode-guide .wl-skip{display:none}
+  .wl-card.mode-setup #wlFlowBox,.wl-card.mode-setup .wl-tip,.wl-card.mode-setup .wl-back,.wl-card.mode-setup .wl-skip{display:none!important}
+  .wl-card.mode-guide .wl-goatbar,.wl-card.mode-setup .wl-goatbar{display:flex;align-items:center;gap:14px;margin:0 0 18px;padding:14px 18px;border-radius:12px;background:linear-gradient(90deg,#c3a14e,#d8bc72);color:#10233e;text-decoration:none;box-shadow:0 2px 10px rgba(16,35,62,.12)}
+  .wl-goatbar .gb-star{font-size:20px}.wl-goatbar .gb-t{flex:1;display:flex;flex-direction:column;gap:2px}.wl-goatbar .gb-t b{font-size:15px}.wl-goatbar .gb-t small{font-size:12.5px;opacity:.85}
+  .wl-goatbar .gb-go{background:#10233e;color:#fff;border-radius:7px;padding:9px 14px;font-weight:700;font-size:13px;white-space:nowrap}.wl-goatbar:hover .gb-go{background:#1c3657}
+  .wl-card.mode-setup .st-tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:4px 0 16px}
+  .st-tabs button{background:none;border:none;border-bottom:2px solid transparent;padding:10px 14px;font:600 14px -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:8px}
+  .st-tabs button.on{color:var(--ink);border-bottom-color:var(--gold)}
+  .st-tabs button em{font-style:normal;font-size:11px;font-weight:800;border-radius:999px;padding:1px 7px}
+  .st-tabs button.need em{background:#22a05a;color:#fff;animation:agglow 1.8s ease-in-out infinite}
+  .st-tabs button.done em{color:var(--green)}
+  .wl-card.mode-setup .agentgrid .fld[data-stab]{display:none}
+  .wl-card.mode-setup #agentSetup[data-stab="identity"] .fld[data-stab="identity"],.wl-card.mode-setup #agentSetup[data-stab="links"] .fld[data-stab="links"],.wl-card.mode-setup #agentSetup[data-stab="intro"] .fld[data-stab="intro"]{display:block}
+  .wl-card.mode-setup #agentSetup:not([data-stab="links"]) .goatgrab{display:none}
+  .wl-card.mode-setup #agentSetup[data-stab="intro"] .agentgrid{grid-template-columns:1fr}
+  .cs-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.cs-top .seg{margin-left:auto}
+  .cs-lbl{display:none}
+  @media screen and (min-width:1000px) and (max-width:1349px){html body:not(.client) .brandbar{grid-template-columns:auto 1fr}html body:not(.client) .brandbar .goatpill{justify-self:end}html body:not(.client) .brandbar .toolbar{grid-column:1/-1;justify-content:flex-end}}
+  @media screen and (min-width:1000px) and (max-width:1599px){body:not(.client) .goatpill .glong{display:none}body:not(.client) .goatpill .gshort{display:inline}}@media screen and (min-width:1000px){body:not(.client) .cs-lbl{display:inline}}
+  body.client .cs-top{margin-bottom:8px}
+  @media screen and (min-width:1000px){body:not(.client) .rail-x{display:flex}}
+  /* the workflow rail: the stepper becomes a fixed navy column on a laptop or bigger; phones and tablets keep the strip */
+  @media screen and (min-width:1000px){
+    body:not(.client){padding-left:216px}
+    body:not(.client).rail-min{padding-left:64px}
+    body:not(.client) #rail{position:fixed;left:0;top:0;bottom:0;width:216px;z-index:60;display:flex;flex-direction:column;gap:3px;background:var(--navy);padding:16px 12px 12px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;box-shadow:inset -1px 0 0 rgba(255,255,255,.06)}
+    body:not(.client) #rail::before{content:'Your workflow';display:block;color:#8d99ad;font:700 10.5px -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:0 10px 12px;white-space:nowrap}
+    body:not(.client) .stepper{position:static;margin:0;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:3px;background:transparent;border:none;border-radius:0;padding:0}
+    body:not(.client) .stepper button,body:not(.client) .rail-x{flex:none;display:flex;align-items:center;justify-content:flex-start;gap:12px;color:#d3dae6;background:transparent;border:1px solid transparent;padding:8px 12px;border-radius:7px;font:600 14px -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;letter-spacing:0;text-align:left;cursor:pointer;white-space:nowrap}
+    body:not(.client) .stepper button .n{width:auto;height:auto;min-width:16px;background:transparent;border-radius:0;color:#8d99ad;font-size:11.5px;font-weight:700;font-variant-numeric:tabular-nums;justify-content:flex-start}
+    body:not(.client) .stepper button.on{background:var(--gold);color:#10233e}
+    body:not(.client) .stepper button.on .n{background:transparent;color:#10233e}
+    body:not(.client) .stepper button:not(.on):hover{background:#1c3657;color:#fff}
+    body:not(.client) .rail-x .ri{min-width:16px;color:#8d99ad;font-size:12px}
+    body:not(.client) .rail-x em{font-style:normal;font-size:11px;font-weight:800;margin-left:auto;background:#22a05a;color:#fff;border-radius:999px;padding:1px 7px}body:not(.client) .rail-x em:empty{display:none}
+    body:not(.client) #railSetup.need{border-color:#22a05a;animation:agglow 1.8s ease-in-out infinite}
+    body:not(.client) #railCollapse{margin-top:auto;font-size:12.5px;color:#aeb8c8;flex:none}
+    body:not(.client) .rail-x:hover{background:#1c3657;color:#fff}
+    body:not(.client) .rail-x.on{background:var(--gold);color:#10233e}body:not(.client) .rail-x.on .ri{color:#10233e}
+    body.setup-open:not(.client) .stepper button.on{background:transparent;color:#d3dae6}body.setup-open:not(.client) .stepper button.on .n{color:#8d99ad}
+    body:not(.client) #railGuide{margin-bottom:2px}
+    body:not(.client) .rail-onpage:empty{display:none}
+    body:not(.client) .rail-actions{display:flex;flex-direction:column;gap:1px;margin:10px 0 0;padding:10px 0 0;border-top:1px solid rgba(255,255,255,.1)}
+    body:not(.client) .rail-actions .onp-h{color:#8d99ad;font:700 10.5px -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:0 10px 8px}
+    body:not(.client).rail-min .rail-actions .onp-h{font-size:0;padding:0 0 6px}
+    body:not(.client) #railNews em{background:#c3a14e;color:#10233e}
+    body:not(.client) .rail-onpage{margin:10px 0 0;padding:10px 0 0;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;gap:1px;flex:0 1 auto;min-height:90px;overflow-y:auto;scrollbar-width:thin}
+    body:not(.client) .rail-onpage>*{flex:none}
+    body:not(.client) .stepper,body:not(.client) .rail-actions,body:not(.client) #rail>.rail-x{flex:none}
+    body:not(.client) .rail-onpage .onp-h{color:#8d99ad;font:700 10.5px -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:0 10px 8px}
+    body:not(.client) .rail-onpage button{background:transparent;border:none;border-left:2px solid transparent;color:#b9c3d3;text-align:left;font:500 12.5px -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:5px 10px 5px 26px;cursor:pointer;border-radius:0 6px 6px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    body:not(.client) .rail-onpage button:hover{background:#1c3657;color:#fff}
+    body:not(.client) .rail-onpage button.on{color:#fff;border-left-color:var(--gold);background:rgba(195,161,78,.12)}
+    body:not(.client).rail-min .rail-onpage{display:none}
+    body:not(.client) #railSetup.beckon{background:var(--gold);color:#10233e}body:not(.client) #railSetup.beckon::after{content:'← here';margin-left:auto;font-weight:800;color:#10233e;animation:railbeckon .9s ease-in-out infinite}
+    /* the pages sit in the work area beside the sidebar, on the paper background - not a dimmed pop-up */
+    #setupModal.page{left:216px;background:var(--paper);z-index:55}
+    body.rail-min #setupModal.page{left:64px}
+    #setupModal.page .modal.wl-card{max-width:1100px;margin:22px auto 40px;border-radius:12px;box-shadow:none;border:1px solid var(--line);background:#fff}
+    #setupModal.page .wl-head{border-radius:12px 12px 0 0}
+    #setupModal.page .wl-body{max-height:none;overflow:visible}
+    body:not(.client) .toolbar #setupBtn{display:none}   /* Setup lives in the sidebar on a laptop; the toolbar keeps it on phones and tablets */
+    body:not(.client).rail-min #rail{width:64px;padding:22px 8px 14px}
+    body:not(.client).rail-min #rail::before{content:'';padding:0 0 12px}
+    body:not(.client).rail-min .stepper button,body:not(.client).rail-min .rail-x{font-size:0;justify-content:center;gap:0;padding:11px 0}
+    body:not(.client).rail-min .stepper button .n{font-size:12px;justify-content:center}
+    body:not(.client).rail-min .rail-x .ri{font-size:14px;text-align:center}
+    body:not(.client).rail-min .rail-x em{display:none}
+    body:not(.client).rail-min .rail-x .rl{display:none}
+    body:not(.client).rail-min .stepper .lgl,body:not(.client).rail-min .stepper .sml{display:none}
+    /* the top bar (Jesse 7 Nov, from the design): brand left, the free-website offer in the middle, the actions right - one row */
+    body:not(.client) .brandbar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;padding:12px 18px}
+    body:not(.client) .brandbar .toolbar{flex-basis:auto;grid-column:3;display:flex;flex-wrap:nowrap;gap:8px;align-items:center}
+    body:not(.client) .brandbar .goatpill{grid-column:2;justify-self:center;margin:0;white-space:nowrap}
+    body:not(.client) .brand{flex-wrap:nowrap;white-space:nowrap}
+    body:not(.client) .brand span{display:none}
+    body:not(.client) .brandbar{min-width:0}body:not(.client) .brandbar>*{min-width:0}
+    body:not(.client) .toolbar button{white-space:nowrap}
+    /* the household strip: white, the family on the left, Client details and the view switch on the right */
+    body:not(.client) .clientbar{background:#fff;border:1px solid var(--line);border-top:none}
+    body:not(.client) .cs-sum{color:var(--ink);font-size:13.5px;flex:1;min-width:0}
+    body:not(.client) #csCaret{width:auto;height:auto;white-space:nowrap;text-transform:none;letter-spacing:0;flex:none;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:6px 12px;font:600 12.5px -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;cursor:pointer}
+    body:not(.client) #csCaret:hover{border-color:var(--gold)}
+    body:not(.client) .clientbar.pinned #csCaret{transform:none}
+    body:not(.client) .clientbar .fld label{color:var(--muted)}
+    body:not(.client) .clientbar .fld input{background:var(--paper);border-color:var(--line);color:var(--ink)}
+    body:not(.client) .clientbar .note{color:var(--muted)!important}
+    body:not(.client) .clientbar .seg{background:#f1f0eb;border-color:var(--line)}
+    body:not(.client) .clientbar .seg button{color:var(--muted)}
+    body:not(.client) .clientbar .seg button.on{background:var(--navy);color:#fff}
+    body:not(.client):not(.rail-min) .stepper .lgl{display:inline}body:not(.client):not(.rail-min) .stepper .sml{display:none}
+
+    /* the household strip: one line ("Dana Reyes · FL · …"), details on hover or the ▾ - Present's behaviour, now on every step */
+    body:not(.client) .clientbar{padding:9px 18px}
+    body:not(.client) .cs-sum{display:flex}
+    body:not(.client) .clientbar:not(.pinned) .grid8,body:not(.client) .clientbar:not(.pinned) .note{display:none}
+    body:not(.client) .brandbar:hover + .clientbar .grid8,body:not(.client) .clientbar:hover .grid8,body:not(.client) .clientbar.pinned .grid8{display:grid;margin-top:8px}
+  }
 </style>
 </head>
 <body>
-<button type="button" id="fabSave" class="fab-save noprint hidein-client" onclick="saveQuote()" title="Save Quote — downloads this quote as a file you can load later"><span class="fs-ico">💾</span><span class="fs-txt"><b>Save any time</b><span>Each save makes a new file — when you load later, pick the newest one.</span><small id="fabSaved"></small></span></button>
+<button type="button" id="fabSave" class="fab-save noprint hidein-client" onclick="saveQuote()" title="Save client — downloads this client as a file you can load later"><span class="fs-ico">💾</span><span class="fs-txt"><b>Save any time</b><span>Each save makes a new file — when you load later, pick the newest one.</span><small id="fabSaved"></small></span></button>
 <!-- Local compare label: shows only when served on 127.0.0.1:8766 (version B). Never appears on mypoppro.com. -->
 <button type="button" id="presentBack" onclick="presentBack()">← Back to the script</button>
 <div id="verBanner" style="display:none;position:sticky;top:0;z-index:9999;background:#9c3b2f;color:#fff;font:600 13px -apple-system,sans-serif;text-align:center;padding:6px 10px">VERSION B — in progress · compare with A at 127.0.0.1:8765</div>
 <script>if((location.port==='8767'||location.hostname==='sandbox.mypoppro.com')){ var vb0=document.getElementById('verBanner'); vb0.style.display='block'; vb0.style.background='#1f6b3b'; vb0.textContent='PRESENT SANDBOX — not live · trying out Present mode'; document.title='Present · '+document.title; }
+if(location.port==='8795'||location.pathname.indexOf('/redesign/')===0){ var vr=document.getElementById('verBanner'); vr.style.display='block'; vr.style.background='#c3a14e'; vr.style.color='#10233e'; vr.textContent='REDESIGN SANDBOX — not live · the new look, in progress'; document.title='Redesign · '+document.title.replace(/^Present · /,''); }
 if(location.port==='8766'){ var vb=document.getElementById('verBanner'); vb.style.display='block'; document.title='B · '+document.title;
   /* The file's own timestamp: if this doesn't match the latest change, the browser is showing an old copy. */
   var lm=new Date(document.lastModified); if(!isNaN(lm)) vb.textContent+=' · updated '+lm.toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}); }</script>
@@ -1198,19 +1378,19 @@ if(location.port==='8766'){ var vb=document.getElementById('verBanner'); vb.styl
       <button type="button" class="btn-ghost setupbtn hidein-client" id="setupBtn" title="Your details, and how MyPopPro works step by step">⚙ Setup / How to use<em id="setupNeed"></em></button>
       <button type="button" class="btn-ghost newsbtn hidein-client" id="newsBtn" title="What’s new in MyPopPro">✨ What’s new<em id="newsCount"></em></button>
       <button class="btn-ghost" id="newBtn">New client</button>
-      <button class="btn-ghost" id="loadBtn">Load Quote</button>
-      <button class="btn-gold" id="saveBtn">Save Quote</button>
+      <button class="btn-ghost" id="loadBtn">Load client</button>
+      <button class="btn-gold" id="saveBtn">Save client</button>
       <button class="btn-gold" id="printBtn">Print Quote</button>
-      <div class="seg" id="viewseg">
-        <button data-view="agent" class="on">Agent Setup</button>
-        <button data-view="client">Client View</button>
-      </div>
       <input type="file" id="fileInput" accept="application/json" style="display:none">
     </div>
   </div>
 
   <div class="clientbar" id="clientStrip">
-    <div class="cs-sum noprint"><span id="csSum"></span><button type="button" id="csCaret" aria-expanded="false" title="Show the client details (or hover the header)">▾</button></div>
+    <div class="cs-top"><div class="cs-sum noprint"><span id="csSum"></span><button type="button" id="csCaret" aria-expanded="false" title="Show the client details (or hover the header)"><span class="cs-lbl">Client details </span>▾</button></div>
+      <div class="seg noprint" id="viewseg">
+        <button data-view="agent" class="on">Agent workspace</button>
+        <button data-view="client">Client view</button>
+      </div><button type="button" class="sharebtn noprint" id="shareBtn" onclick="shareScreen()" title="Client View in this window, nothing agent-only showing - for CrankWheel or any screen share. Esc to stop.">🖥 Share screen</button></div>
     <div class="grid8">
       <div class="fld"><label>Primary name</label><input id="c_pname" readonly></div>
       <div class="fld"><label>Spouse name</label><input id="c_sname" readonly></div>
@@ -1224,15 +1404,28 @@ if(location.port==='8766'){ var vb=document.getElementById('verBanner'); vb.styl
     <div class="note" style="color:#8fa1c2;padding:6px 0 0">From the intake — edit on the Intake step.</div>
   </div>
 
+  <nav id="rail" class="noprint" aria-label="Your workflow">
+  <button type="button" id="railGuide" class="rail-x hidein-client" onclick="openSetup('guide')" title="The whole process, start to finish - and where to begin"><span class="ri">?</span><span class="rl">How to use MyPopPro</span></button>
+  <button type="button" id="railNews" class="rail-x hidein-client" onclick="document.getElementById('newsBtn').click()" title="What’s new in MyPopPro"><span class="ri">✨</span><span class="rl">What’s new</span><em id="railNewsCount"></em></button>
+  <button type="button" id="railSetup" class="rail-x hidein-client" onclick="openSetup('setup')" title="Your details: they go on every script, email and text"><span class="ri">⚙</span><span class="rl">Setup</span><em id="railSetupNeed"></em></button>
   <div class="stepper noprint" id="stepper">
     <button data-step="call"><span class="n">1</span> <span class="lgl">Discovery call</span><span class="sml">Call</span></button>
-    <button data-step="intake"><span class="n">2</span> Intake</button>
+    <button data-step="intake"><span class="n">2</span> <span class="lgl">Intake / Profile</span><span class="sml">Intake</span></button>
     <button data-step="tree" id="stepTreeBtn" style="display:none"><span class="n">3</span> <span class="lgl">Decision tree</span><span class="sml">Tree</span></button>
     <button data-step="quote" class="on"><span class="n">3</span> Quote</button>
     <button data-step="present"><span class="n">4</span> Present</button>
     <button data-step="enroll"><span class="n">5</span> Enroll</button>
     <button data-step="review"><span class="n">6</span> <span class="lgl">Benefits Review</span><span class="sml">Review</span></button>
   </div>
+  <div id="railOnPage" class="rail-onpage hidein-client" aria-label="On this page"></div>
+  <div id="railActions" class="rail-actions hidein-client" aria-label="Actions"><div class="onp-h">Actions</div>
+    <button type="button" class="rail-x" onclick="document.getElementById('newBtn').click()"><span class="ri">＋</span><span class="rl">New client</span></button>
+    <button type="button" class="rail-x" onclick="document.getElementById('loadBtn').click()"><span class="ri">⬆</span><span class="rl">Load client</span></button>
+    <button type="button" class="rail-x" onclick="document.getElementById('saveBtn').click()"><span class="ri">💾</span><span class="rl">Save client</span></button>
+    <button type="button" class="rail-x" onclick="document.getElementById('printBtn').click()"><span class="ri">⎙</span><span class="rl">Print quote</span></button>
+  </div>
+  <button type="button" id="railCollapse" class="rail-x" onclick="railToggle()" title="Make the sidebar narrow (or wide again)"><span class="ri">←</span><span class="rl">Collapse navigation</span></button>
+  </nav>
 
   <div id="step-call" class="step">
     <div class="card pad callwrap">
@@ -1243,7 +1436,7 @@ if(location.port==='8766'){ var vb=document.getElementById('verBanner'); vb.styl
   </div>
   <div id="step-intake" class="step">
    <div class="card pad">
-    <div class="sectitle"><span class="dot">●</span> Client Intake</div>
+    <div class="sectitle"><span class="dot">●</span> Client Intake / Profile</div>
     <!-- the call fills this (step 1); the walk-through in ⚙ Setup explains the flow - no How-to or outside-navigator buttons (Jesse, 17 Oct) -->
     <div class="note intro1" style="padding-top:2px">Check what the call filled in, add anything missing, then hit <b>Build Quote</b> — it recommends Good / Better / Best from these answers. <a href="#" class="backcall" onclick="goStep('call');return false;">← Back to the call</a></div>
     <div id="carrierStrip" class="cstrip" style="display:none"></div>
@@ -1682,7 +1875,7 @@ if(location.port==='8766'){ var vb=document.getElementById('verBanner'); vb.styl
   </div>
 
   <div id="step-enroll" class="step">
-    <div class="ensave hidein-client noprint" id="enSaveBar"><span><b>💾 Save Quote/Package of Protection when you’re done</b> — it keeps everything collected here; <b>Load Quote</b> brings it all back later.</span><span id="enNmh"></span><button type="button" class="picbtn" onclick="document.getElementById('saveBtn').click()">💾 Save Quote now</button></div>
+    <div class="ensave hidein-client noprint" id="enSaveBar"><span><b>💾 Save client when you’re done</b> — it keeps everything collected here; <b>Load client</b> brings it all back later.</span><span id="enNmh"></span><button type="button" class="picbtn" onclick="document.getElementById('saveBtn').click()">💾 Save client now</button></div>
    <div class="card pad">
     <div class="sectitle"><span class="dot">●</span> Enroll</div>
     <div class="note" style="padding-top:2px">In call order: the life application first (it has the health questions), each person’s details, the finish — then the health carriers after the call.</div>
@@ -1764,9 +1957,10 @@ if(location.port==='8766'){ var vb=document.getElementById('verBanner'); vb.styl
   <div class="wl-head"><button class="btn-ghost" id="closeSetup" style="float:right">Close</button><h2 id="wlTitle">Welcome to MyPopPro</h2>
     <p>Everything for a health client in one place: the call, the quote, the presentation and the application. Work left to right.</p></div>
   <div class="wl-body">
+  <a class="wl-goatbar" href="https://goatleads.com/registration/new?affiliate_id=66c4aa379e0123651ad2f0e6" target="_blank" rel="noopener"><span class="gb-star">★</span><span class="gb-t"><b>Get your FREE agent website, digital business card &amp; booking calendar</b><small>One free GOAT account &mdash; clients book themselves, and the three links drop straight into your Setup.</small></span><span class="gb-go">Create my free account &rarr;</span></a>
   <details class="wl-flowbox" id="wlFlowBox" open><summary>How MyPopPro works <small>the six steps, start to finish</small></summary>
   <div class="wl-flow">
-    <div class="wl-step once" data-tour="0"><span class="wl-n">⚙</span><b>Setup</b><span>Once, right below. Your name, phone, email, NPN and links go on every page, email and text.</span><em id="wlSetupState"></em></div>
+    <div class="wl-step once" data-tour="0"><span class="wl-n">⚙</span><b>Setup</b><span><i class="wl-once-old">Once, right below. </i><i class="wl-once-new">Once. </i>Your name, phone, email, NPN and links go on every page, email and text.</span><em id="wlSetupState"></em></div>
     <div class="wl-arrow">→</div>
     <div class="wl-step" data-tour="1"><span class="wl-n">1</span><b>Discovery call</b><span>Follow the script. Fill in the blanks as the client talks. The Intake fills itself.</span></div>
     <div class="wl-arrow">→</div>
@@ -2673,8 +2867,8 @@ function acaEstFlags(){ var A=acaIn(), C=curIn(), ov=A.ov, onAca=(A.status==='on
   f.med=(+S.medEstCount>0)&&(+S.aca.med>0);
   f.any=f.prem||f.subsidy||f.ded||f.visit||f.med; return f; }
 /* The one baseline every savings figure uses - builder, client view, printout. */
-function anchorBase(){ var k=(S.intake&&S.intake.anchor)||'aca';
-  if(k==='cur'&&curIn().paying===false) k='aca';   /* not paying for it now: compare against the marketplace, as the script does */
+function anchorBase(force){ var k=force||(S.intake&&S.intake.anchor)||'aca';
+  if(!force&&k==='cur'&&curIn().paying===false) k='aca';   /* not paying for it now: compare against the marketplace, as the script does */
   var aca=function(){ if(!(+S.aca.prem>0)) return null;   // nothing priced yet (a full subsidy still has a gross premium)
       var t=acaTrueParts(), v=+((S.intake||{}).visits)||0, cp=+S.aca.copay||0, cm=v*cp/12;
       return {k:'aca',lab:'ACA bronze',short:'ACA',your:'your marketplace plan',prem:t.net+cm,premOnly:t.net,copayMo:cm,visits:v,copay:cp,mo:t.mo,yr:t.yr,ded:+S.aca.ded||0}; },
@@ -2683,6 +2877,7 @@ function anchorBase(){ var k=(S.intake&&S.intake.anchor)||'aca';
       return {k:'cur',lab:'Current plan',short:'current plan',your:'your current plan',prem:(+C.prem)+cm2,premOnly:+C.prem,copayMo:cm2,visits:v2,copay:cp2,mo:c.mo,yr:c.yr,ded:+C.ded||0}; };
   /* Whatever the agent anchors against drives the whole Quote. If that side has no numbers, fall back to the other one
      rather than comparing nothing, and say so on the anchor strip (Jesse, 3 Nov). */
+  if(force) return k==='aca'?aca():cur();
   if(k==='aca'){ var a=aca(); if(a) return a; var c0=cur(); return c0?Object.assign(c0,{fell:'aca'}):null; }
   if(k==='cur'){ var c1=cur(); if(c1) return c1; var a1=aca(); return a1?Object.assign(a1,{fell:'cur'}):null; }
   return null; }
@@ -3584,7 +3779,7 @@ function blankState(){
       best:{products:[],dropped:[],lb:0,lbCarrier:'',lbCov:'',med:0,rxBenefit:0}
     },
     pension:{monthly:0,note:'e.g., IUL / tax-free retirement savings for your future',cv10:0,cv20:0,cv30:0,leg1:0,leg25:0},
-    ev:[evScn('hosp'),evScn('urgent')],   // the two example cards: same builder, any scenario
+    ev:[evScn('arm'),evScn('append')],   // the two example cards: same builder, any scenario. New clients: broken arm + appendicitis (Jesse, 9 Nov); saved files keep theirs
     negot:{on:true,pct:40,min:2500,cards:{}},   // Medical Bill Saver (CareGuide) - a conservative 40% illustration; no carrier average is published
     intake:{who:{app:true,spouse:false,kids:false},phone:'',email:'',tobaccoP:false,tobaccoS:false,maternityP:false,maternityS:false,maternity:false,dv:false,famcancerP:false,famcancerS:false,famcancer:false,famheartP:false,famheartS:false,famheart:false,mentalP:false,mentalS:false,mental:false,surg2yrP:false,surg2yrS:false,surg2yr:false,majorcond:false,majorcondNote:'',diabetic:false,diabeticNote:'',health:'',income:0,pincome:0,sincome:0,hhManual:false,retage:'',savings:0,invest:0,invprot:false,invsra:false,invnote:'',docs1:'',docs2:'',docs3:'',keepaca:'',keepafc:'',docnote:'',medList:[],budget:0,priority:'coverage',notes:'',carrier:'',plan:'',pheight:'',pweight:'',sheight:'',sweight:'',psex:'',ssex:'',kidsNote:'',routeNote:'',docsNote:'',whyShop:'',whyMatters:'',foundPlan:'',effDate:''},
     recommended:'best',
@@ -4712,6 +4907,12 @@ function applyClientZeroHide(){
   if(medRow) medRow.style.display=(isClient && !(+pk.med)) ? 'none' : '';
 }
 
+/* Share screen (Jesse, 9 Nov - for the agents who present on CrankWheel): Client View in this window, nothing agent-only
+   showing. It does NOT go full screen (Jesse: "just the window"). Esc or Stop sharing ends it and leaves you in Client View. */
+function shareScreen(){ if(document.body.classList.contains('sharing')){ shareOff(); return; }
+  setView('client'); document.body.classList.add('sharing'); var b=$('shareBtn'); if(b) b.textContent='✕ Stop sharing'; window.scrollTo(0,0); }
+function shareOff(){ document.body.classList.remove('sharing'); var b=$('shareBtn'); if(b) b.textContent='🖥 Share screen'; }
+document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&document.body.classList.contains('sharing')) shareOff(); });
 function setView(v){
   if(v!=='client'&&S.negot) S.negot.cards={};   /* setup always runs both examples off the one switch */
   view=v; document.body.classList.toggle('client',v==='client');
@@ -4786,21 +4987,67 @@ function poRecapHTML(showCur,showAca){
     +rows.map(function(r){ return '<div class="r'+(r[2]?' '+r[2]:'')+'"><span class="k">'+r[0]+'</span><span class="v">'+r[1]+'</span></div>'; }).join('')+'</div></div>';
 }
 /* Printout page 1: every option in one table against the anchor, so the page ends on the answer. */
-function poGlanceHTML(tiers,labels,B){
+function poGlanceHTML(tiers,labels,B,B2){
   if(!tiers.length) return '';
-  var showPop=S.showPop!==false, ch=chosenTier();
-  var h='<div class="po-glance"><div class="t">Your options at a glance<small>'+(B?'Each package against '+(B.k==='aca'?'the ACA marketplace bronze plan':'what you have now')+' — the details follow on the next pages':'The details follow on the next pages')+'</small></div>'
+  var showPop=S.showPop!==false, ch=chosenTier(), Bs=B?[B]:[], multi=false, rows=[B,B2].filter(Boolean).sort(function(a,b){ return b.yr-a.yr; });
+  var nm=function(b){ return b.k==='aca'?'ACA marketplace — bronze':'What you have now'; }, tag=function(b){ return multi?' <i>vs '+(b.k==='aca'?'ACA':'current')+'</i>':''; };
+  var h='<div class="po-glance"><div class="t">Your options at a glance<small>'+(B?'Savings against '+(B.k==='aca'?'the ACA marketplace bronze plan':'what you have now')+(B2?' (both shown)':'')+' — the details follow on the next pages':'The details follow on the next pages')+'</small></div>'
     +'<table><thead><tr><th></th><th>Monthly</th>'+(B?'<th>Premium vs today</th><th>True cost, a year</th>':'')+(showPop?'<th>POP Score</th>':'')+'</tr></thead><tbody>';
-  if(B) h+='<tr class="anc"><td>'+(B.k==='aca'?'ACA marketplace — bronze':'What you have now')+'<small>premium'+(B.copayMo>0?' + doctor copays':'')+'</small></td><td>'+fmt2(B.prem)+'</td><td>—</td><td>'+fmt2(B.yr)+'</td>'+(showPop?'<td>—</td>':'')+'</tr>';
-  tiers.forEach(function(x){ var sv=B?anchorSavings(B,pkgPremMo(x.t),x.mo+tierTrue(x.t).extra):null, pop=showPop?computePop(x.t):null;
+  rows.forEach(function(b){ h+='<tr class="anc"><td>'+nm(b)+'<small>premium'+(b.copayMo>0?' + doctor copays':'')+'</small></td><td>'+fmt2(b.prem)+'</td><td>—</td><td>'+fmt2(b.yr)+'</td>'+(showPop?'<td>—</td>':'')+'</tr>'; });
+  tiers.forEach(function(x){ var pop=showPop?computePop(x.t):null;
     var d=function(v,per){ return '<b class="'+(v>=0?'up':'dn')+'">'+(v>=0?'saves ':'costs ')+fmt2(Math.abs(v))+per+(v>=0?'':' more')+'</b>'; };
-    var adds=acaAddsOn(x.t,B);
+    var c1=Bs.map(function(b){ if(acaAddsOn(x.t,b)) return '<b>adds '+fmt2(pkgPremMo(x.t)-b.prem)+'/mo</b>'+tag(b); var sv=anchorSavings(b,pkgPremMo(x.t),x.mo+tierTrue(x.t).extra); return d(sv.actual,'/mo')+tag(b); }).join('<br>');
+    var c2=Bs.map(function(b){ if(acaAddsOn(x.t,b)) return '—'; var sv=anchorSavings(b,pkgPremMo(x.t),x.mo+tierTrue(x.t).extra); return (sv.tru>=0?'<b class="up">ahead '+fmt2(sv.tru*12)+'</b>':'<b class="dn">behind '+fmt2(-sv.tru*12)+'</b>')+tag(b); }).join('<br>');
     h+='<tr'+(ch===x.t?' class="ch"':'')+'><td>'+labels[x.t][0]+'<small>'+esc(labels[x.t][1])+(ch===x.t?' · your choice':'')+'</small></td><td>'+fmt2(x.mo)+'</td>'
-      +(adds?'<td><b>adds '+fmt2(pkgPremMo(x.t)-B.prem)+'/mo</b></td><td>—</td>':'')
-      +(sv&&!adds?'<td>'+d(sv.actual,'/mo')+'</td><td>'+(sv.tru>=0?'<b class="up">ahead '+fmt2(sv.tru*12)+'</b>':'<b class="dn">behind '+fmt2(-sv.tru*12)+'</b>')+'</td>':'')
-      +(pop?'<td><b>'+pop.score+'</b></td>':'')+'</tr>'; });
+      +(Bs.length?'<td>'+c1+'</td><td>'+c2+'</td>':'')+(pop?'<td><b>'+pop.score+'</b></td>':'')+'</tr>'; });
   return h+'</tbody></table></div>';
 }
+/* Client View's check-offs (Jesse, 9 Nov): the one plan they want, against the ACA and/or what they have now. On screen
+   only - the printout and the picture show the result, not the switches. */
+function poPickHTML(hasAca,hasCur,showAca,showCur){ var inc=S.include||{}, LN=LINEUP_NAMES[S.lineup];
+  var nm=function(t){ if(LN&&LN[t]) return LN[t][0]; if(S.lineup==='custom'&&effCfg(t).pick) return effCfg(t).pick.short; var b=planBase(effCfg(t)); return (b==='afc'?((S.lineup||'mh')==='mh'?'':'Manhattan ')+TIER_NAME[t]:(BASE_NAME[b]||TIER_NAME[t]))||t; };
+  var chip=function(attr,on,lab){ return '<button type="button" class="po-chip'+(on?' on':'')+'" '+attr+' aria-pressed="'+(on?'true':'false')+'"><span class="bx">'+(on?'✓':'')+'</span>'+esc(lab)+'</button>'; };
+  var ts=['good','better','best'].filter(function(t){ return tierTotals(t).mo>0; });
+  return '<div class="po-pick noprint"><div class="po-pickrow"><span class="po-pickl">Show</span>'+ts.map(function(t){ return chip('data-poinc="'+t+'"',inc[t]!==false,nm(t)); }).join('')+'</div>'
+    +((hasAca||hasCur)?'<div class="po-pickrow"><span class="po-pickl">Compare with</span>'+(hasAca?chip('data-pocmp="aca"',showAca,'ACA marketplace'):'')+(hasCur?chip('data-pocmp="cur"',showCur,'What they have now'):'')+'</div>':'')
+    +'<div class="po-pickrow"><span class="po-pickl">Also show</span>'+chip('data-popop="1"',S.showPop!==false,'POP Score')+chip('data-potfra="1"',S.showTfra!==false,'Tax-free savings (TFRA)')+'</div></div>'; }
+function poPickBind(){ var po=$('printout'); if(!po) return;
+  po.querySelectorAll('[data-poinc]').forEach(function(b){ b.onclick=function(){ var t=b.dataset.poinc, inc=S.include=S.include||{};
+    var on=['good','better','best'].filter(function(x){ return inc[x]!==false&&tierTotals(x).mo>0; }); if(inc[t]!==false&&on.length<=1) return;   /* always at least one plan */
+    inc[t]=(inc[t]===false); compute(); autosave(); }; });
+  /* POP Score on or off for the client (Jesse, 9 Nov) - the same switch as the Quote's "Show POP Score" */
+  po.querySelectorAll('[data-popop]').forEach(function(b){ b.onclick=function(){ S.showPop=(S.showPop===false); if($('pop_show')) $('pop_show').checked=S.showPop; if(typeof updateTfraVisibility==='function') updateTfraVisibility(); compute(); autosave(); }; });
+  po.querySelectorAll('[data-potfra]').forEach(function(b){ b.onclick=function(){ S.showTfra=(S.showTfra===false); if($('tfra_show')) $('tfra_show').checked=S.showTfra; if(typeof updateTfraVisibility==='function') updateTfraVisibility(); compute(); autosave(); }; });
+  po.querySelectorAll('[data-pocmp]').forEach(function(b){ b.onclick=function(){ var k=b.dataset.pocmp; S.poShow=S.poShow||{}; S.poShow[k]=!b.classList.contains('on'); compute(); autosave(); }; }); }
+/* Jesse, 9 Nov: Client View compares the money side by side - what they have now, the ACA (each only when ticked) and the
+   plan we're recommending, as columns read top to bottom, the most expensive on the left. Savings against the anchor. */
+var PO_MONEY=true;
+function planDedTxt(t){ var c=effCfg(t), b=planBase(c), bus=((S.packages[t]||{}).products||[]).some(function(p){ return (+p.monthly>0)&&/^(his|gap)$/.test(p.k); });
+  var d=b==='triad'?parseFloat(String(c.triadPlan||'7350')):b==='brightlife'?(typeof blDeductible==='function'?blDeductible(t):0):b==='aca'?(+S.aca.ded||0):0;
+  if(!(d>0)) return '<b>None</b><small>fixed benefits — no deductible</small>';
+  return '<b>'+fmt2(d)+'</b>'+(bus?'<small>your deductible buster pays you toward it</small>':''); }
+function poMoneyHTML(tiers,labels,B,showCur,showAca){ if(!tiers.length) return '';
+  var Cu=curIn(), a=S.aca, ef=acaEstFlags(), E=function(k){ return ef[k]?' <i class="est">est.</i>':''; }, cols=[];
+  if(showCur){ var ct=curTrue(); cols.push({k:'cur',lab:'What you have now',sub:[S.intake.carrier,S.intake.plan].filter(Boolean).join(' · ')||'Your current coverage',
+    prem:fmt2(+Cu.prem||0)+'<small>/mo'+((+Cu.emp>0)?' · your employer adds '+fmt2(+Cu.emp):'')+'</small>',ded:(+Cu.ded>0)?'<b>'+fmt2(+Cu.ded)+'</b>':'—',mo:ct.mo,yr:ct.yr}); }
+  if(showAca){ var at=acaTrue(), sub=+a.subsidy||0; cols.push({k:'aca',lab:(acaIn().status==='onaca'?'Your marketplace plan':'ACA marketplace — bronze'),sub:acaIn().plan||'What the exchange plan really costs',
+    prem:fmt2(acaNetPrem())+E('prem')+'<small>/mo'+(sub>0?' after a '+fmt2(sub)+' subsidy':'')+'</small>',ded:(+a.ded>0)?'<b>'+fmt2(+a.ded)+'</b>'+E('ded'):'—',mo:at.mo,yr:at.yr,est:ef.any}); }
+  cols.sort(function(x,y){ return y.yr-x.yr; });
+  tiers.forEach(function(x){ var tt=tierTrue(x.t); cols.push({k:'plan',t:x.t,lab:labels[x.t][0],sub:labels[x.t][1],prem:fmt2(x.mo)+'<small>/mo — everything included</small>',ded:planDedTxt(x.t),mo:tt.mo,yr:tt.mo*12}); });
+  var cell=function(c,v){ return '<td class="'+(c.k==='plan'?'pl':'cm')+(B&&c.k===B.k?' anc':'')+'">'+v+'</td>'; };
+  var h='<div class="po-money"><div class="t">Your plans, side by side<small>'+(B?'Savings are measured against '+esc(B.your)+'.':'What each one costs you.')+' True cost = premium + the deductible &amp; co-pays spread across the year.</small></div><table><thead><tr><th></th>'
+    +cols.map(function(c){ return '<th class="'+(c.k==='plan'?'pl':'cm')+'">'+esc(c.lab)+'<small>'+esc(c.sub||'')+(B&&c.k===B.k?' · compared against':'')+'</small></th>'; }).join('')+'</tr></thead><tbody>'
+    +(S.showPop!==false?'<tr class="pop"><td class="rl">POP Score<small>how well it protects you</small></td>'+cols.map(function(c){ if(c.k!=='plan') return cell(c,'—'); var pp=computePop(c.t), pc=pp.score>=80?'#2f7d4a':pp.score>=60?'#a57a1c':'#b24b4b'; return cell(c,'<b class="popn" style="color:'+pc+'">'+pp.score+'</b>'+(pp.s&&pp.s.provisional?'<small>provisional</small>':'')); }).join('')+'</tr>':'')
+    +'<tr><td class="rl">Monthly premium</td>'+cols.map(function(c){ return cell(c,c.prem); }).join('')+'</tr>'
+    +'<tr><td class="rl">Deductible</td>'+cols.map(function(c){ return cell(c,c.ded); }).join('')+'</tr>'
+    +'<tr><td class="rl">True cost, a month</td>'+cols.map(function(c){ return cell(c,'<b>'+fmt2(c.mo)+'</b>'+(c.est?' <i class="est">est.</i>':'')); }).join('')+'</tr>'
+    +'<tr class="yr"><td class="rl">True cost, a year</td>'+cols.map(function(c){ return cell(c,'<b>'+fmt2(c.yr)+'</b>'); }).join('')+'</tr>';
+  if(B) h+='<tr class="sv"><td class="rl">You save<small>vs '+esc(B.your)+'</small></td>'+cols.map(function(c){ if(c.k!=='plan') return cell(c,c.k===B.k?'<small>the plan we compare against</small>':'');
+      if(acaAddsOn(c.t,B)) return cell(c,'<b>adds '+fmt2(pkgPremMo(c.t)-B.prem)+'/mo</b><small>on top of the marketplace plan</small>');
+      var sv=anchorSavings(B,pkgPremMo(c.t),tierTotals(c.t).mo+tierTrue(c.t).extra);
+      return cell(c,'<b class="'+(sv.actual>=0?'up':'dn')+'">'+(sv.actual>=0?'Saves ':'Costs ')+fmt2(Math.abs(sv.actual))+'/mo'+(sv.actual>=0?'':' more')+'</b><small>on the premium</small>'
+        +'<b class="'+(sv.tru>=0?'up':'dn')+'">'+(sv.tru>=0?'Ahead ':'Behind ')+fmt2(Math.abs(sv.tru*12))+' a year</b><small>on true cost</small>'); }).join('')+'</tr>';
+  return h+'</tbody></table>'+(cols.some(function(c){ return c.est; })?'<div class="estnote">est. = estimated from 2027 state averages — your exact plan may differ.</div>':'')+'</div>'; }
 function buildPrintout(){
   read();
   var a=S.aca, agency=S.agency||'HealthFirst', c=S.client;
@@ -4821,12 +5068,18 @@ function buildPrintout(){
       +'</div>';
 
   /* ---- what they have now, and the ACA — each only when the agent chose to show it ---- */
-  var A=acaIn(), Cu=curIn(), ank=(S.intake&&S.intake.anchor)||'aca', showAca=A.show!==false||(ank==='aca'&&+S.aca.prem>0), showCur=(!!Cu.show||ank==='cur')&&((+Cu.prem>0)||(+Cu.ded>0)), ct=curTrue();   /* the anchor always shows */
+  var A=acaIn(), Cu=curIn(), ank=(S.intake&&S.intake.anchor)||'aca', PS=S.poShow||{}, hasAca=+S.aca.prem>0, hasCur=(+Cu.prem>0)||(+Cu.ded>0);
+  /* Jesse, 9 Nov: Client View has its own check-offs - which plans, and whether to compare with the ACA and/or their current
+     plan. Unset, it shows what it always did. The savings line then compares with whichever one is showing (both: the anchor). */
+  var showAca=hasAca&&(PS.aca!=null?!!PS.aca:(A.show!==false||ank==='aca')), showCur=hasCur&&(PS.cur!=null?!!PS.cur:(!!Cu.show||ank==='cur')), ct=curTrue();
+  var I0=S.intake=S.intake||{}, ank0=I0.anchor;
+  var noCmp=!showAca&&!showCur, kP=(showAca&&showCur)?(ank==='cur'?'cur':'aca'):(showCur?'cur':(showAca?'aca':null));
+  html+=poPickHTML(hasAca,hasCur,showAca,showCur);
   var li=function(lab,sub,amt,cls){ return '<div class="li'+(cls?' '+cls:'')+'"><div class="lab">'+lab+(sub?'<small>'+sub+'</small>':'')+'</div><div class="amt">'+amt+'</div></div>'; };
   html+=poRecapHTML(showCur,showAca);
-  var pair=showCur&&showAca; if(pair) html+='<div class="po-anc2">';
+  var pair=showCur&&showAca&&!PO_MONEY; if(pair) html+='<div class="po-anc2">';
   var solo=(showCur!==showAca)?' solo':'';
-  if(showCur){
+  if(showCur&&!PO_MONEY){
     html+='<div class="po-acabox'+solo+'"><div class="t">What you have now<small>'+esc([S.intake.carrier,S.intake.plan].filter(Boolean).join(' · ')||'Your current coverage')+'</small></div>'
       +li('Monthly premium','What you pay each month',fmt2(+Cu.prem||0)+' /mo')
       +((+Cu.emp>0)?li('Your employer adds','The real cost of the plan is '+fmt2((+Cu.prem||0)+(+Cu.emp||0))+'/mo',fmt2(+Cu.emp)+' /mo'):'')
@@ -4834,7 +5087,7 @@ function buildPrintout(){
       +li('TRUE COST — Monthly','Premium + deductible &amp; co-pays spread across the year',fmt2(ct.mo)+' /mo')
       +li('TRUE COST — Annual','',fmt2(ct.yr)+' /yr','tot')+'</div>';
   }
-  if(showAca){
+  if(showAca&&!PO_MONEY){
     var sub=+a.subsidy||0, ef=acaEstFlags(), E=function(k){ return ef[k]?' <i style="color:#9a5b00;font-size:.85em">est.</i>':''; };
     html+='<div class="po-acabox'+solo+'"><div class="t">'+(A.status==='onaca'?'Your marketplace plan':'The ACA marketplace — bronze')+(A.plan?'<span class="pn">'+esc(A.plan)+'</span>':'')+'<small>What the exchange plan really costs once the deductible &amp; co-pays are counted</small></div>'
       +li('Monthly premium'+E('prem'),sub>0?'The full price of the plan':'What you pay the carrier each month',fmt2(a.prem)+' /mo')
@@ -4846,9 +5099,11 @@ function buildPrintout(){
   }
   if(pair) html+='</div>';
   /* Savings are measured against the ACA when it is shown, otherwise against what they have now. */
-  var B=anchorBase(), base=B?{mo:B.mo,yr:B.yr,prem:B.prem,premOnly:B.premOnly,ded:B.ded,k:B.k,lab:B.k==='aca'?'ACA':'your current plan',your:B.your}:null;
+  var B=kP?anchorBase(kP):null, B2=(showAca&&showCur)?anchorBase(kP==='cur'?'aca':'cur'):null;
+  if(!B&&B2){ B=B2; B2=null; }
+  var base=B?{mo:B.mo,yr:B.yr,prem:B.prem,premOnly:B.premOnly,ded:B.ded,k:B.k,lab:B.k==='aca'?'ACA':'your current plan',your:B.your}:null;
 
-  html+=poGlanceHTML(tiers,labels,B);
+  html+=PO_MONEY?poMoneyHTML(tiers,labels,B,showCur,showAca):poGlanceHTML(tiers,labels,B,B2);
 
   /* ---- Good / Better / Best comparison - page 2 ---- */
   if(tiers.length){
@@ -4858,17 +5113,19 @@ function buildPrintout(){
       var pop=S.showPop!==false?computePop(x.t):null, pc=pop?(pop.score>=80?'#2f7d4a':pop.score>=60?'#a57a1c':'#b24b4b'):'';
       var isCh=chosenTier()===x.t;
       html+='<div class="po-col'+(isCh?' chosen':'')+'">'+(isCh?'<div class="po-ribbon">Your new plan</div>':'')+'<div class="po-hd"><h3>'+lab[0]+'<small>'+esc(lab[1])+'</small></h3>'
-        +(pop?'<div class="popchip" style="border-color:'+pc+';color:'+pc+'"><span>POP Score</span><b>'+pop.score+'</b>'+(pop.s.provisional?'<small>provisional</small>':'')+'</div>':'')+'</div><div class="po-items">';
+        +(pop?'<div class="popchip" style="border-color:'+pc+';color:'+pc+'"><span>POP Score</span><b>'+pop.score+'</b>'+(pop.s.provisional?'<small>provisional</small>':'')+'</div>':'')+'</div><div class="po-items"><div class="po-inchd">Everything in your plan</div>';
       var HF=histFam(), htag=HF.any?'<small class="po-histtag">Because of your family history</small>':'';
       (x.pk.products||[]).forEach(function(p){ if(!(+p.monthly)) return; var hi=HF.any&&HIST_KEYS.indexOf(p.k)>=0;
-        html+='<div class="po-li'+(hi?' po-hist':'')+'"><span>'+esc(p.name)+(hi?htag:'')+'</span><span>'+fmt2(+p.monthly||0)+'</span></div>'; });
-      if(+x.pk.lb>0) html+='<div class="po-li'+(HF.any?' po-hist':'')+'"><span>Living Benefits'+(x.pk.lbCarrier?' — '+esc(x.pk.lbCarrier):'')+(HF.any?htag:'')+'</span><span>'+fmt2(+x.pk.lb)+'</span></div>';
-      html+='</div><div class="po-tot"><div class="m"><span>Monthly</span><b>'+fmt2(x.mo)+'</b></div><div class="a"><span>Annual</span><span>'+fmt2(x.yr)+'</span></div></div>'+rxLineHTML(x.t).replace('class="pbrx"','class="pbrx po-rx"');
+        var sm=''; try{ sm=pbSummary(p.k,effCfg(x.t),p)||''; }catch(e){}
+        html+='<div class="po-li po-inc'+(hi?' po-hist':'')+'"><i class="ck">✓</i><span>'+esc(String(p.name).split(' — ')[0])+(sm?'<small class="po-sum">'+esc(sm)+'</small>':'')+(hi?htag:'')+'</span></div>'; });
+      if(+x.pk.lb>0) html+='<div class="po-li po-inc'+(HF.any?' po-hist':'')+'"><i class="ck">✓</i><span>Living Benefits'+(x.pk.lbCarrier?' — '+esc(x.pk.lbCarrier):'')+(HF.any?htag:'')+'</span></div>';
+      html+='</div><div class="po-tot"><div class="m"><span>Monthly — everything included</span><b>'+fmt2(x.mo)+'</b></div><div class="a"><span>Annual</span><span>'+fmt2(x.yr)+'</span></div></div>'+rxLineHTML(x.t).replace('class="pbrx"','class="pbrx po-rx"');
+      [B].forEach(function(B){ var base=B?{mo:B.mo,yr:B.yr,prem:B.prem,premOnly:B.premOnly,ded:B.ded,k:B.k,lab:B.k==='aca'?'ACA':'your current plan',your:B.your}:null;
       if(acaAddsOn(x.t,B)) html+='<div class="po-save"><div class="vs">On top of your marketplace plan</div><div class="ln"><span>Adds</span><b>'+fmt2(pkgPremMo(x.t)-B.prem)+'/mo</b></div><div class="tn">You keep the same marketplace plan and its deductible. These benefits pay you cash when the accident or hospital stay happens — the examples below show what they pay.</div></div>';
       else if(base){ var ttx=tierTrue(x.t), sv=anchorSavings(base,pkgPremMo(x.t),x.mo+ttx.extra), cpn=copayNote(B,x.t), vs=base.k==='aca'?'your marketplace plan':'your current plan';
         var ln=function(lab,v){ return '<div class="ln"><span>'+lab+'</span><b class="'+(v>=0?'up':'dn')+'">'+(v>=0?'saves ':'costs ')+fmt2(Math.abs(v))+'/mo'+(v>=0?'':' more')+'</b></div>'; };
         html+='<div class="po-save"><div class="vs">Compared with '+vs+'</div>'+ln('Premium',sv.actual)+(cpn?'<div class="tn">'+cpn+'</div>':'')+ln('True cost',sv.tru)+'<div class="tn tcn">'+trueCostNote(x.t,base)+'</div>'
-          +'<div class="yr '+(sv.tru>=0?'up':'dn')+'">'+(sv.tru>=0?'Ahead '+fmt2(sv.tru*12)+' a year':'Behind '+fmt2(-sv.tru*12)+' a year')+'<small>on true cost</small></div></div>'; }
+          +'<div class="yr '+(sv.tru>=0?'up':'dn')+'">'+(sv.tru>=0?'Ahead '+fmt2(sv.tru*12)+' a year':'Behind '+fmt2(-sv.tru*12)+' a year')+'<small>on true cost</small></div></div>'; } });
       var dp=dentalPrice(x.t), hasD=tierHasDental(x.t);
       html+='<div class="po-choose'+(isCh?' on':'')+'" data-choose="'+x.t+'" role="button" tabindex="0"><span class="box">'+(isCh?'☑':'☐')+'</span> This is my plan</div>';
       var dph=dvhPhrase(effCfg(x.t).dvh).replace(/&/g,'&amp;');
@@ -4939,7 +5196,7 @@ function buildPrintout(){
   var tfra=html; html=main;
 
   /* ---- event illustrations, page 3: the two example cards, on a page of their own ---- */
-  var showEvents=false, evs=[evTableHTML(0,{noBtn:true}),evTableHTML(1,{noBtn:true})];
+  var showEvents=false, evs=[evTableHTML(0,{noBtn:true,client:1,noAnchor:noCmp,anchors:B?(B2?[B.k,B2.k]:[B.k]):null}),evTableHTML(1,{noBtn:true,client:1,noAnchor:noCmp,anchors:B?(B2?[B.k,B2.k]:[B.k]):null})]; I0.anchor=ank0;
   if(evs[0]||evs[1]) html+='<div class="po-newpage po-evpage">';
   evs.forEach(function(t,i){ if(!t) return; showEvents=true; var d=(S.ev[i]||{}).desc;
     html+='<div class="po-event"><div class="band">'+(d?'If this happens: <span class="d">'+esc(d)+'</span>':'Example '+(i+1))+negToggleHTML(i)+'</div>'+t+'</div>'; });
@@ -4951,7 +5208,7 @@ function buildPrintout(){
   var partners=renderAfcPartnersHTML(true);
   html+=(tfra||partners)?'<div class="po-last">'+tfra+partners+foot+'</div>':foot;
   $('printout').innerHTML=html;
-  evBindToggles($('printout'));
+  evBindToggles($('printout')); poPickBind();
   $('printout').querySelectorAll('[data-choose]').forEach(function(el){ el.onclick=function(){ chooseTier(el.dataset.choose); }; el.onkeydown=function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); chooseTier(el.dataset.choose); } }; });
   $('printout').querySelectorAll('[data-dental]').forEach(function(b){ b.onclick=function(){ setDental(b.dataset.t,b.dataset.dental==='1'); }; });
   /* Client View: each example has its own Bill Saver On / Off, on top of the agent's master switch. */
@@ -5067,8 +5324,8 @@ var AGENT_BOXES=[['in_agency','agency'],['in_agent','your name'],['in_aphone','p
 function agentGlow(){ var empty=[]; AGENT_BOXES.forEach(function(b){ var el=$(b[0]); if(!el) return; var f=el.closest('.fld'), e=!String(el.value||'').trim(); if(f) f.classList.toggle('needfill',e); if(e) empty.push(b[1]); });
   var st=$('agentSetupState'); if(st){ st.textContent=empty.length?'· fill in: '+empty.join(', '):'· complete'; st.classList.toggle('needfill-sum',!!empty.length); } return empty; }
 /* No fold any more: the box lives in the Setup window. While anything is missing, the Setup button glows and counts it. */
-function agentSetupFold(){ var miss=agentSetupMissing(), b=$('setupBtn'), n=$('setupNeed'); if(b){ b.classList.toggle('need',!!miss.length); b.title=miss.length?'Still to fill in: '+miss.join(', '):'Your agency, name, phone, email, NPN and links'; } if(n) n.textContent=miss.length?String(miss.length):'';
-  var ws=$('wlSetupState'); if(ws){ ws.textContent=miss.length?miss.length+' to fill in ↓':'✓ Done'; ws.className=miss.length?'todo':''; }
+function agentSetupFold(){ var miss=agentSetupMissing(), b=$('setupBtn'), n=$('setupNeed'); if(b){ b.classList.toggle('need',!!miss.length); b.title=miss.length?'Still to fill in: '+miss.join(', '):'Your agency, name, phone, email, NPN and links'; } if(n) n.textContent=miss.length?String(miss.length):''; if(typeof setupTabsPaint==='function') setupTabsPaint(); var rs=$('railSetup'), rn=$('railSetupNeed'); if(rs){ rs.classList.toggle('need',!!miss.length); rs.title=b?b.title:''; } if(rn) rn.textContent=miss.length?String(miss.length):'';
+  var ws=$('wlSetupState'); if(ws){ ws.textContent=miss.length?miss.length+' to fill in':'✓ Done'; ws.className=miss.length?'todo':''; }
   var d=$('agentSetup'); if(d) d.classList.toggle('goat-skipped',goatSkipped()); var sf=$('setupFile'); if(sf) sf.classList.toggle('empty',setupEmpty()); agentGlow(); }
 function fillAgent(){ $('in_agency').value=S.agency||'HealthFirst'; $('in_agent').value=(S.client||{}).agent||''; $('in_aphone').value=S.agentPhone||''; $('in_aemail').value=S.agentEmail||''; $('in_anpn').value=S.agentNPN||''; $('in_aweb').value=S.agentWebsite||''; $('in_acard').value=S.agentCard||''; $('in_abook').value=S.agentBooking||''; $('in_abenefits').value=S.agentBenefits||''; $('in_adrxlink').value=S.agentDrxLink||''; $('in_adrxcode').value=S.agentDrxCode||''; if($('in_ahslink')) $('in_ahslink').value=S.agentHsLink||''; if($('in_aamazelink')) $('in_aamazelink').value=S.agentAmazeLink||''; $('in_abio').value=S.agentBio||''; agentSetupFold(); }
 /* Only the agent fields - captureIntake() would also read the client boxes, which are stale off the Intake step. */
@@ -5675,7 +5932,7 @@ function reviewTokens(t){ t=reviewT()||t; var C=S.client||{}, R=reviewState(), T
   (function(){ var cd=careCardData(); T['card.doctor']=join([cd.md,cd.sd,cd.kd].filter(Boolean)); })();
   T['tier.elected']=actualOn()?actualSnap().name:(TIER_NAME[t]||'');
   var RB=S.rec||(S.recommended&&pkSnap(S.recommended));   /* older files: the tool's recommendation stands in */
-  if(actualOn()&&RB){ var GS=gapSpoken(RB,actualSnap()); T['gap.missing']=GS.missing; T['gap.lowered']=GS.lowered; T['gap.added']=GS.added; T['gap.kind']=GS.kind; } T['tier.recommended']=(function(R){ if(!R) return TIER_NAME[S.recommended]||''; var b=R.cfg?planBase(R.cfg):'afc', LN=R.lineup&&LINEUP_NAMES[R.lineup]; if(LN&&LN[R.tier]) return LN[R.tier][0].replace(/^The /,''); return b==='afc'?(TIER_NAME[R.tier]||''):(BASE_NAME[b]||TIER_NAME[R.tier]||''); })(S.rec);   /* Jesse, 9 Nov: the plan you presented, by name - not the column */
+  if(actualOn()&&RB){ var GS=gapSpoken(RB,actualSnap()); T['gap.missing']=GS.missing; T['gap.lowered']=GS.lowered; T['gap.added']=GS.added; T['gap.kind']=GS.kind; } T['tier.recommended']=(function(R){ if(!R) return TIER_NAME[S.recommended]||''; if(R.lineup==='custom'&&R.cfg&&R.cfg.pick&&R.cfg.pick.short) return R.cfg.pick.short.replace(/^Manhattan /,''); var b=R.cfg?planBase(R.cfg):'afc', LN=R.lineup&&LINEUP_NAMES[R.lineup]; if(LN&&LN[R.tier]) return LN[R.tier][0].replace(/^The /,''); return b==='afc'?(TIER_NAME[R.tier]||''):(BASE_NAME[b]||TIER_NAME[R.tier]||''); })(S.rec);   /* Jesse, 9 Nov: the plan you presented, by name - not the column */
   var DQ=drxParts(); T['drx.drug']=drxWho().length?DQ.drug||drxWho()[0].drug:''; T['drx.pct']=DRX_PCT; T['drx.link']=drxLink(); T['drx.code']=drxCode(); T['drx.howto']=drxWho().length?'1':'';   /* the Direction Rx line has two versions (Jesse, 23 Oct): on a GLP-1 (now or before, either adult - the Intake answer or the medication list) or not */
   var G1=(S.intake&&S.intake.glp1)||{}, onG=['p','s'].some(function(w){ return (G1[w]||{}).on==='Yes'; })||((S.intake&&S.intake.medList)||[]).some(function(m){ return GLP1_RX.test(String((m&&m.name)||'')); });
   T['client.on_glp1']=onG?'1':''; T['client.no_glp1']=onG?'':'1';   /* the block's switch; its words are Health ZONE's */
@@ -6166,12 +6423,13 @@ function blPresentHTML(t){ var first=triadFirst(), c=effCfg(t), prem=triadPremiu
    tight); B = Amaze + accident (unhealthy, funds very tight). Amaze lines are from Amaze's own site and FAQ
    (AMAZE-HEALTH.md): never call it insurance, never repeat its utilisation claims, and don't sell RxValet to a
    ManhattanLife client - they already have it through EasyCare2go. */
-function acaFlowOn(t){ return DT_ON&&!!t&&t!=='actual'&&(S.lineup==='aca'||S.lineup==='vb'); }
+function acaFlowOn(t){ return DT_ON&&!!t&&t!=='actual'&&(S.lineup==='aca'||S.lineup==='vb'||(S.lineup==='custom'&&!!(effCfg(t).pick&&/^(aca|vb)$/.test(effCfg(t).pick.ln)))); }
 function acaProt(t){ var c=effCfg(t), out=[];
   ((S.packages[t]||{}).products||[]).forEach(function(p){ if(!(+p.monthly>0)||p.k==='base') return;
     out.push({k:p.k,name:(PB_SLOTS.filter(function(x){ return x.k===p.k; })[0]||{}).name||p.name,mo:+p.monthly,sum:pbSummary(p.k,c)||''}); });
   return out; }
-function acaPresentHTML(t){ var first=triadFirst(), a=S.aca||{}, A=acaIn(), base=effCfg(t).base, vb=S.lineup==='vb', LN=(LINEUP_NAMES[S.lineup]||{})[t]||[TIER_NAME[t],''];
+function acaPresentHTML(t){ var PK=(S.lineup==='custom'&&effCfg(t).pick&&/^(aca|vb)$/.test(effCfg(t).pick.ln))?effCfg(t).pick:null, tp=PK?PK.t:t;   /* a Custom column presents as the plan picked for it (Jesse, 9 Nov) */
+  var first=triadFirst(), a=S.aca||{}, A=acaIn(), base=effCfg(t).base, vb=PK?PK.ln==='vb':S.lineup==='vb', LN=(LINEUP_NAMES[PK?PK.ln:S.lineup]||{})[tp]||[TIER_NAME[t],''];
   var m=function(v){ return '$'+Math.round(+v||0).toLocaleString('en-US'); }, ded=+a.ded||0, oop=+a.oop||0, coins=+a.coins||0, net=acaNetPrem(), fam=acaPeople().length>1;
   var P=acaProt(t), sumP=P.reduce(function(x,p){ return x+p.mo; },0), has=function(k){ return P.filter(function(p){ return p.k===k; })[0]; };
   var li=function(L){ return '<ul class="trd-bus">'+L.map(function(p){ return '<li><b>'+esc(p.name)+'</b> <small>'+fmt2(p.mo)+'/mo</small><br>'+esc(p.sum)+'</li>'; }).join('')+'</ul>'; };
@@ -6190,31 +6448,31 @@ function acaPresentHTML(t){ var first=triadFirst(), a=S.aca||{}, A=acaIn(), base
   var pages=[];
   if(!vb){
     pages.push({t:'The ACA plan',h:acaSay+acaDo});
-    if(t==='good') pages.push({t:'The accident plan',h:triadSay('“The marketplace plan is a good plan for you. The big thing is if you have an accident — you could have to come up with as much as that '+m(ded)+' deductible. So for <b>'+fmt2(sumP)+' a month</b> we add a 24-Hour Accident plan. If you get hurt, it pays you cash'+(has('acc')?' — '+esc(has('acc').sum.replace(/^\d+ units? · /,''))+'':'')+'.”')
+    if(tp==='good') pages.push({t:'The accident plan',h:triadSay('“The marketplace plan is a good plan for you. The big thing is if you have an accident — you could have to come up with as much as that '+m(ded)+' deductible. So for <b>'+fmt2(sumP)+' a month</b> we add a 24-Hour Accident plan. If you get hurt, it pays you cash'+(has('acc')?' — '+esc(has('acc').sum.replace(/^\d+ units? · /,''))+'':'')+'.”')
         +triadSay('“And you can get it no matter what your health is.”')
         +triadDo('<b>This column is for a health history the deductible buster can’t take.</b> If they can qualify, the buster (the middle column) is the better recommendation — say so.')
         +(P.length?li(P):'')});
     else pages.push({t:'The deductible buster',h:triadSay('“We strongly recommend you don’t leave that deductible open. Otherwise one hospital stay can cost you the whole '+m(ded)+' deductible'+(oop?', and up to '+m(oop)+' in a bad year':'')+'. So we put two Manhattan plans next to it that pay <i>you</i> cash when you’re admitted:”')
         +li(P.filter(function(p){ return p.k!=='dvh'; }))
-        +(t==='best'&&has('dvh')?triadSay('“And we’re adding dental, so your teeth are looked after too: '+esc(has('dvh').sum)+'.”')+li([has('dvh')]):'')
+        +(tp==='best'&&has('dvh')?triadSay('“And we’re adding dental, so your teeth are looked after too: '+esc(has('dvh').sum)+'.”')+li([has('dvh')]):'')
         +triadSay('“All of that is <b>'+fmt2(sumP)+' a month</b> on top of your marketplace plan.”')
         +triadDo('These are ManhattanLife plans — they pay the client directly, on top of the ACA plan, with their own application. The Client View shows what a hospital stay costs with and without them.')});
-    pages.push({t:'The close',h:triadSay('“So here’s what we’ll do. I’m going to send you the application for the ACA plan so you can apply for that, and I’ll take care of your application for the Manhattan '+(t==='good'?'accident plan — so an accident doesn’t leave you scrambling.”':'hospital plan and out-of-pocket protection'+(t==='best'&&has('dvh')?', and the dental':'')+' — so you’re not stuck with that deductible.”'))
+    pages.push({t:'The close',h:triadSay('“So here’s what we’ll do. I’m going to send you the application for the ACA plan so you can apply for that, and I’ll take care of your application for the Manhattan '+(tp==='good'?'accident plan — so an accident doesn’t leave you scrambling.”':'hospital plan and out-of-pocket protection'+(tp==='best'&&has('dvh')?', and the dental':'')+' — so you’re not stuck with that deductible.”'))
         +triadDo('Send them the marketplace application (HealthSherpa). The ManhattanLife application is on Enroll.')
         +'<button type="button" class="btn-gold" onclick="enrollAsPresented()">Go to Enroll →</button>'});
-  } else if(t==='good'){
+  } else if(tp==='good'){
     pages.push({t:'The ACA plan',h:acaSay+acaDo+triadDo('This column is the <b>anchor</b>: the marketplace plan on its own, so they see what it really costs them. Virtual Basic A and B are what it’s compared with.')});
     pages.push({t:'The close',h:triadSay('“If the marketplace plan is the one for you, I’ll send you the application so you can apply.”')+triadDo('Send them the marketplace application (HealthSherpa).')});
   } else {
     pages.push({t:'Why not the ACA',h:(ded?triadSay('“We looked at the marketplace first. '+(A.plan?esc(A.plan)+' would':'It would')+' cost you <b>'+fmt2(net)+'</b> a month, and before it paid for anything big you’d owe <b>'+m(ded)+'</b>'+(oop?', up to '+m(oop)+' in a year':'')+'. With money tight, that’s a lot to pay for a plan you can’t afford to use.”'):triadDo('<b>No ACA plan on the Intake yet.</b> Put it in the Intake’s ACA section — this page compares against it.'))
-        +triadDo(t==='better'?'Virtual Basic A is for someone <b>healthy, but funds are tight</b>.':'Virtual Basic B is for someone <b>unhealthy, and funds are very tight</b>: the accident plan is the one they can get whatever their health.')});
+        +triadDo(tp==='better'?'Virtual Basic A is for someone <b>healthy, but funds are tight</b>.':'Virtual Basic B is for someone <b>unhealthy, and funds are very tight</b>: the accident plan is the one they can get whatever their health.')});
     pages.push({t:'Amaze for everyday care',h:amaze});
     var prot=P.filter(function(p){ return p.k!=='base'; });
-    pages.push({t:t==='better'?'Protection for the big things':'The accident plan',h:(t==='better'?triadSay('“Amaze is for everyday care. For the big things — a hospital stay, an accident — we add three Manhattan plans that pay <i>you</i> cash:”'):triadSay('“Amaze is for everyday care. For an accident we add a 24-Hour Accident plan that pays <i>you</i> cash — and you can get it no matter what your health is.”'))
+    pages.push({t:tp==='better'?'Protection for the big things':'The accident plan',h:(tp==='better'?triadSay('“Amaze is for everyday care. For the big things — a hospital stay, an accident — we add three Manhattan plans that pay <i>you</i> cash:”'):triadSay('“Amaze is for everyday care. For an accident we add a 24-Hour Accident plan that pays <i>you</i> cash — and you can get it no matter what your health is.”'))
         +li(prot)+triadDo('These pay the client directly. They’re not health insurance: they don’t pay the hospital, they pay the client.')});
     pages.push({t:'The price',h:triadSay('“All together that’s <b>'+fmt2(pkMonthly(S.packages[t]||{}))+' a month</b>'+(ded&&net>pkMonthly(S.packages[t]||{})?' — against <b>'+fmt2(net)+'</b> for the marketplace plan alone':'')+'.”')
         +triadDo('Be clear what this is: everyday care plus cash for the big things — <b>not</b> major medical. A big bill still lands on them; these plans put money in their hands toward it.')});
-    pages.push({t:'The close',h:triadSay('“So here’s what we’ll do: I’ll get you signed up with Amaze, and I’ll take care of your Manhattan application'+(t==='better'?'s':'')+'.”')
+    pages.push({t:'The close',h:triadSay('“So here’s what we’ll do: I’ll get you signed up with Amaze, and I’ll take care of your Manhattan application'+(tp==='better'?'s':'')+'.”')
         +triadDo('Amaze: use your Amaze member sign-up link'+(amazeLink()?', and send the <a href="'+amazeDoc('setup')+'" target="_blank" rel="noopener">setup steps ↗</a> with it':' (add it in Setup first — the setup steps start with “use the link your agent sent”)')+'. The ManhattanLife application is on Enroll.')
         +'<button type="button" class="btn-gold" onclick="enrollAsPresented()">Go to Enroll →</button>'});
   }
@@ -6699,6 +6957,15 @@ function glp1FromSuite(h){ var one=function(pre){ var k=function(f){ return h[pr
    items the agent hasn't opened yet (localStorage pp_news_seen = newest date they've seen). */
 var NEWS_DAYS=30;
 var NEWS=[
+ {d:'2026-11-10',t:'The new look, Client View and locking in the plan you present',h:[
+  ['A new look','The steps run down a navy rail on the left with “On this page” under them, the household sits on one line at the top of every step, and How to use and Setup walk you in. Every feature you had is still here.'],
+  ['Present this plan → Enroll','On the Quote, “Present this plan →” is how a plan gets presented, and every presentation ends with a gold Enroll → button. What you presented is the record: Enroll, the emails and the follow-up all use it. Change the Quote after presenting and it warns you.'],
+  ['Enroll with plan edits','Enroll asks: as presented, or with plan edits? Edits happen in one panel at the top of Enroll, including switching the base plan. Anything less than what you presented shows as a gap the client acknowledges.'],
+  ['Enroll names the whole plan','“Cigna PPO 7350 + Manhattan Hospital Indemnity”, with the Cigna 2027 rate guide, and Bright Life and Amaze get their own Enroll cards.'],
+  ['Client View, cleaner','One complete plan, no line-by-line prices. Tick what to show: other plans, a side-by-side with the ACA and their current plan (most expensive on the left, with the savings), and the POP Score or TFRA. Examples show what the deductible buster pays them.'],
+  ['Share screen','Shares just the MyPopPro window, not your whole screen. Esc stops it.'],
+  ['Custom plan','Each column can be any plan and version, the same list as Enroll’s edits, and the column is named after it everywhere.'],
+  ['ACA + protection','Out-of-Pocket now defaults to $1,000 outpatient, and it is included even when the marketplace deductible is $8,000 or more (it was being left out). The Cigna email no longer quotes a rate range.']]},
  {d:'2026-11-07',t:'Present: objections for every plan, real claims and Amaze',h:[
   ['Jump buttons on Present','💬 Objections, 🧾 Real claims and 📖 Real stories sit in the Present header and take you straight to that part of the side panel, which now scrolls on its own.'],
   ['Objections answer for the plan you present','Manhattan, Bright Life, Cigna and ACA + protection each have their own quick answers and follow-ups, so a Bright Life or Cigna client never hears about First Health or ManhattanLife. “That sounds expensive” compares with what you anchored against on the Quote.'],
@@ -6847,7 +7114,7 @@ var NEWS=[
   ['Savings and TFRA','Savings against their ACA or current plan, and TFRA sized from the real monthly savings.'],
   ['Four-page printout','A recap, the plans, the examples and the partner benefits.'],
   ['Intake in script order','Children, medication type-ahead and conditions for each person.'],
-  ['Load a Script Navigator profile','Load Quote opens a navigator profile file, and your agent details stay put.']]},
+  ['Load a Script Navigator profile','Load client opens a navigator profile file, and your agent details stay put.']]},
  {d:'2026-09-24',t:'Script Navigator handoff',i:[
   ['Push from the Script Navigator','Send the client from the navigator’s discovery call straight into the Intake.'],
   ['ZIP fills the state','Type the ZIP code and the state is filled in for you.']]},
@@ -6903,11 +7170,16 @@ var TOUR=[null,
    'The review covers <b>only what they bought</b>, and you fill their care card (doctors, urgent care, hospital) as you go. The call ends with the referral ask and their annual review month.',
    'The last step is the <b>recap email</b> and a <b>&ldquo;recap sent&rdquo; text</b>: every link they need and their care card, built from the call. Every message along the way is written for their plan and their details. Your benefits page link lives in <b>⚙ Setup</b>.']}];
 var tourAt=0;
-function showTour(i){ tourAt=i; var fb=$('wlFlowBox'); if(fb&&i>0) fb.open=true; var card=document.querySelector('#setupModal .wl-card'); card.classList.toggle('touring',i>0);
+/* How to use MyPopPro, step zero (Jesse, 7 Nov): read the six steps first, then set yourself up */
+var TOUR0={t:'Start here',d:['<b>First, take a minute with the six steps to the right.</b> Hover over each one, or click <b>Next</b>. Knowing how a client moves through MyPopPro now saves you a lot of confusion later.',
+  'Then <b>set yourself up</b>: your name, phone, email, NPN, your links and your introduction. It goes on every script, email and text you send.',
+  'When you reach <b>Benefits Review</b>, <b>Let&rsquo;s go</b> takes you straight to Setup.']};
+function showTour(i){ tourAt=i; var fb=$('wlFlowBox'); var card=document.querySelector('#setupModal .wl-card'), guide=card.classList.contains('mode-guide'); if(fb&&(i>0||guide)) fb.open=true; card.classList.toggle('touring',i>0||guide); card.classList.toggle('tour0',guide&&i===0);
+  var rsb=$('railSetup'); if(rsb) rsb.classList.toggle('beckon',guide&&i===6);
   document.querySelectorAll('#setupModal .wl-step').forEach(function(el){ el.classList.toggle('cur',+el.dataset.tour===i); });
-  if(i>0){ var T=TOUR[i]; $('wlTip').innerHTML='<h3>'+i+' · '+T.t+'<small>STEP '+i+' OF 6</small></h3><ol>'+T.d.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ol>';
-    $('wlGo').textContent=i<6?'Next: '+TOUR[i+1].t+' →':'Let’s go! →'; }
-  else $('wlGo').textContent='Save →';
+  if(i>0||guide){ var T=i>0?TOUR[i]:TOUR0; $('wlTip').innerHTML='<h3>'+i+' · '+T.t+'<small>STEP '+i+' OF 6</small></h3><ol>'+T.d.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ol>';
+    $('wlGo').textContent=i<6?'Next: '+TOUR[i+1].t+' →':(guide?'Let’s go — set yourself up →':'Let’s go! →'); }
+  else $('wlGo').textContent=(document.querySelector('#setupModal .wl-card.mode-guide')?'Set yourself up →':'Save →');
   var b=document.querySelector('#setupModal .wl-body'); if(b) b.scrollTop=0; $('setupModal').scrollTop=0; }
 function letsGo(){
   var gold=['#c69a3c','#e3c47a','#a8853a','#f2dc9b','#d4af37','#fff1c1'], w=document.createElement('div'); w.className='lg-wrap';
@@ -6919,8 +7191,41 @@ function letsGo(){
   document.body.appendChild(w); document.body.appendChild(m);
   setTimeout(function(){ w.remove(); m.remove(); },4200); }
 function finishSetup(){ var keep=inProgress(); closeSetup(); if(!keep) goStep('call'); }
-function openSetup(){ fillAgent(); var fb=$('wlFlowBox'); if(fb) fb.open=!welcomeSeen(); $('setupModal').classList.add('open'); showTour(0); var b=document.querySelector('#setupModal .wl-body'); if(b) b.scrollTop=0; }
-function closeSetup(){ readAgent(); try{ localStorage.setItem('pp_welcome_v',WELCOME_V); }catch(e){} $('setupModal').classList.remove('open'); if(typeof goStep==='function') goStep(S.step||'call'); }
+/* ===== REDESIGN (Jesse, 7 Nov): two pages instead of one window. "How to use MyPopPro" is the process - the six steps, and
+   step zero is setting yourself up; its button goes straight into Setup. "Setup" is your details in three tabs, each tab
+   showing how many are still missing. Same window, same fields, same saving underneath. ===== */
+var SETUP_TABS=[['identity','Identity',['in_agency','in_agent','in_aphone','in_aemail','in_anpn'],['agency','your name','phone','email','NPN']],
+  ['links','Links & resources',['in_aweb','in_acard','in_abook','in_abenefits','in_adrxlink','in_adrxcode','in_ahslink','in_aamazelink'],['website','digital business card','booking link']],
+  ['intro','Introduction',['in_abio'],[]]];
+var SETUP_HEADS={identity:['Set up your basics','Who you are and how clients reach you.'],links:['Your links and resources','Where clients book, read about their plan and sign up for their extras.'],intro:['Your introduction','Optional - read at the start of every discovery call. Leave it empty and MyPopPro uses its own.']};
+var setupTab='identity';
+function setupMode(m){ var card=document.querySelector('#setupModal .wl-card'), md=$('setupModal'); if(!card||!md) return;
+  card.classList.toggle('mode-guide',m==='guide'); card.classList.toggle('mode-setup',m==='setup'); md.classList.toggle('page',!!m);
+  document.body.classList.toggle('setup-open',!!m); var rg=$('railGuide'), rs=$('railSetup'); if(rg) rg.classList.toggle('on',m==='guide'); if(rs) rs.classList.toggle('on',m==='setup');
+  var t=$('wlTitle'); if(t) t.textContent=m==='guide'?'How to use MyPopPro':m==='setup'?'Setup — make it yours':'Welcome to MyPopPro';
+  var hp=document.querySelector('#setupModal .wl-head p'); if(hp){ if(!hp.dataset.orig) hp.dataset.orig=hp.textContent; hp.textContent=m==='setup'?'Set this once. Your details go on every script, email and text you send from MyPopPro.':hp.dataset.orig; }
+  if(m==='guide'){ var fb=$('wlFlowBox'); if(fb) fb.open=true; }
+  if(m==='guide') tourAt=0;
+  if(m!=='guide'){ card.classList.remove('touring','tour0'); var rsb=$('railSetup'); if(rsb) rsb.classList.remove('beckon'); }
+  if(m==='setup'){ var miss=agentSetupMissing(); var first=SETUP_TABS.filter(function(T){ return T[3].some(function(n){ return miss.indexOf(n)>=0; }); })[0]; setupTabGo(first?first[0]:'identity'); }
+  setTimeout(function(){ if(!$('setupModal').classList.contains('open')) return; var now=card.classList.contains('mode-setup')?'setup':card.classList.contains('mode-guide')?'guide':''; if(now!==m) return; if(m==='setup') setupTabGo(setupTab); else if(typeof showTour==='function') showTour(tourAt||0); },0); }
+function setupTabsInit(){ var grid=document.querySelector('#agentSetup .agentgrid'); if(!grid||$('setupTabs')) return;
+  SETUP_TABS.forEach(function(T){ T[2].forEach(function(id){ var el=$(id), f=el&&el.closest('.fld'); if(f) f.setAttribute('data-stab',T[0]); }); });
+  var bar=document.createElement('div'); bar.id='setupTabs'; bar.className='st-tabs'; bar.setAttribute('role','tablist');
+  bar.innerHTML=SETUP_TABS.map(function(T){ return '<button type="button" role="tab" data-stab="'+T[0]+'">'+T[1]+'<em></em></button>'; }).join('');
+  var as=$('agentSetup'); as.parentNode.insertBefore(bar,as);
+  var hd=document.createElement('div'); hd.id='setupTabHead'; hd.className='st-head'; as.parentNode.insertBefore(hd,as);
+  bar.querySelectorAll('button').forEach(function(b){ b.onclick=function(){ setupTabGo(b.dataset.stab); }; });
+  as.addEventListener('input',function(){ setTimeout(setupTabsPaint,0); }); setupTabsPaint(); }
+function setupTabGo(t){ setupTab=t; var as=$('agentSetup'); if(as) as.setAttribute('data-stab',t); var H=SETUP_HEADS[t], hd=$('setupTabHead'); if(hd&&H) hd.innerHTML='<b>'+H[0]+'</b><span>'+H[1]+'</span>';
+  var go=$('wlGo'), bk=$('wlBack'), card=document.querySelector('#setupModal .wl-card'); if(card&&card.classList.contains('mode-setup')){ if(go) go.textContent=t==='identity'?'Next: Links & resources →':t==='links'?'Next: Introduction →':'💾 Save my Setup →'; if(bk) bk.classList.toggle('st-show',t!=='identity'); }
+  document.querySelectorAll('#setupTabs button').forEach(function(b){ var on=b.dataset.stab===t; b.classList.toggle('on',on); b.setAttribute('aria-selected',String(on)); }); setupTabsPaint(); }
+function setupTabsPaint(){ var miss=(typeof agentSetupMissing==='function')?agentSetupMissing():[];
+  document.querySelectorAll('#setupTabs button').forEach(function(b){ var T=SETUP_TABS.filter(function(x){ return x[0]===b.dataset.stab; })[0], n=T[3].filter(function(x){ return miss.indexOf(x)>=0; }).length, em=b.querySelector('em');
+    var opt=b.dataset.stab==='intro', bio=String(($('in_abio')||{}).value||'').trim();
+    em.textContent=n?String(n):(opt&&!bio?'?':'✓'); if(opt&&!bio) b.title='Optional: your introduction for the discovery call'; b.classList.toggle('need',!!n); b.classList.toggle('maybe',opt&&!bio); b.classList.toggle('done',!n&&!(opt&&!bio)); b.title=n?'Still to fill in: '+T[3].filter(function(x){ return miss.indexOf(x)>=0; }).join(', '):'All set'; }); }
+function openSetup(mode){ setupMode(typeof mode==='string'?mode:(window.innerWidth>=1000&&!welcomeSeen()?'guide':'')); fillAgent(); var fb=$('wlFlowBox'); if(fb) fb.open=!welcomeSeen()||document.querySelector('#setupModal .wl-card.mode-guide')!==null; $('setupModal').classList.add('open'); showTour(0); var b=document.querySelector('#setupModal .wl-body'); if(b) b.scrollTop=0; }
+function closeSetup(){ setupMode(''); readAgent(); try{ localStorage.setItem('pp_welcome_v',WELCOME_V); }catch(e){} $('setupModal').classList.remove('open'); if(typeof goStep==='function') goStep(S.step||'call'); }
 document.addEventListener('input',function(e){ if(e.target&&e.target.closest&&e.target.closest('#agentSetup')) readAgent(); });
 function keepAgent(ag){
   if(ag.agency && (!S.agency || S.agency==='HealthFirst')) S.agency=ag.agency;
@@ -6954,7 +7259,7 @@ function applySetupFile(o){ setAgent(o.agent); if(o.goatSkip){ try{ localStorage
   if(typeof fill==='function'){ fill(); compute(); } if($('in_agent')) fillAgent(); autosave(); }
 function loadSetupFile(file){ var rd=new FileReader();
   rd.onload=function(){ var o=null; try{ o=JSON.parse(rd.result); }catch(e){}
-    if(!isSetupFile(o)){ alert(o&&typeof o==='object'?'That’s a client file, not a Setup file. Open clients with Load Quote; load your Setup here.':'Could not read that file — is it a MyPopPro Setup file (.json)?'); return; }
+    if(!isSetupFile(o)){ alert(o&&typeof o==='object'?'That’s a client file, not a Setup file. Open clients with Load client; load your Setup here.':'Could not read that file — is it a MyPopPro Setup file (.json)?'); return; }
     applySetupFile(o); alert('Your Setup is loaded'+(o.agent.agent?': '+o.agent.agent:'')+'.'); };
   rd.readAsText(file); }
 function loadQuoteObject(obj){ var ag=agentOf(S);
@@ -7844,7 +8149,7 @@ function nonMhNotice(t){ var N=tierNonMh(t); if(!N) return; var first=((S.client
     +'<li><b>Send the quote</b> — the three steps at the bottom of Quote work for any lineup, Manhattan and '+esc(N.name)+' side by side included.</li>'
     +'<li><b>Use Enroll to collect their details</b> — names, beneficiaries and notes, all in one place. The Manhattan and life steps are there if you need them.</li>'
     +'<li><b>Enroll them with '+esc(N.name)+'</b>: <a href="'+esc(N.url())+'" target="_blank" rel="noopener">'+esc(N.lab)+' ↗</a></li></ul>'
-    +'<p style="margin:0;padding:10px 12px;background:#fff8e6;border:1px solid #e6d3a3;border-radius:8px"><b>💾 Save Quote/Package of Protection when you’re done.</b> It keeps everything you collected; <b>Load Quote</b> brings it all back later.</p>';
+    +'<p style="margin:0;padding:10px 12px;background:#fff8e6;border:1px solid #e6d3a3;border-radius:8px"><b>💾 Save client when you’re done.</b> It keeps everything you collected; <b>Load client</b> brings it all back later.</p>';
   $('nmhModal').classList.add('open'); }
 function presentOpen(){ if(triadFlowOn(chosenTier())||blFlowOn(chosenTier())||acaFlowOn(chosenTier())){ if(!enrollConfirmed()) recLock(chosenTier()); goStep('present'); return; } if(tierNonMh(chosenTier())){ nonMhNotice(chosenTier()); return; } if(!chosenTier()){ var t=S.activeTab||'best'; if(!confirm('No package is marked as their plan yet. Present '+TIER_NAME[t]+'?')) return; chooseTier(t); }
   S.present=S.present||{}; S.present.pg=S.present.pg||0; if(!enrollConfirmed()) recLock(chosenTier()); goStep('present'); }
@@ -8587,10 +8892,75 @@ function presentShow(where){ S.present=S.present||{}; S.present.returning=true; 
   setTimeout(function(){ var el=where==='cmp'?document.querySelector('#printout .po-cmp'):where==='ev'?document.querySelector('#printout .po-evpage'):document.querySelector('#printout .po-head');
     if(el){ var r=el.getBoundingClientRect(); document.scrollingElement.scrollTop+=r.top-20; } },60); }
 function presentBack(){ var b=$('presentBack'); if(b) b.style.display='none'; if(S.present) S.present.returning=false; setView('agent'); goStep('present'); }
+/* ===== On this page (Jesse, 7 Nov): under the steps, jumps to the parts of the page you're on. Quote: his list. Present:
+   the side panel's own boxes (so a Bright Life, Cigna or ACA panel lists what it actually has) plus Objections, Real
+   claims and Real stories. Intake: its sections. A part that isn't showing for this client isn't listed. ===== */
+var ONPAGE_QUOTE=[['Package builder','#sec_builder'],['POP Score / TFRA','#popScoreCard'],['Coverage example 1','#ev0_editor'],['Coverage example 2','#ev1_editor'],['Plan benefits','#afcPartners'],['Send quote / Brochures','#sendQuote']];
+function onpVisible(el){ return !!(el&&el.offsetParent!==null&&el.getClientRects().length); }
+function onpLabel(el){ var t=''; el.childNodes.forEach(function(n){ if(!t&&n.nodeType===3&&n.textContent.trim()) t=n.textContent.trim(); }); if(!t){ var b=el.querySelector('b,h3'); t=b?b.textContent.trim():el.textContent.trim(); } return t.replace(/^●\s*/,'').replace(/\s+/g,' ').slice(0,38); }
+function onpPresentLabel(t){ t=String(t||'').replace(/\s+/g,' ').trim(); if(!t) return '';
+  if(/^quick answers/i.test(t)) return 'Objections'+((t.match(/\(([^)]+)\)\s*$/)||[])[1]?' ('+t.match(/\(([^)]+)\)\s*$/)[1]+')':'');
+  if(/^story repository/i.test(t)) return 'Real stories';
+  return t.split(' — ')[0].slice(0,38); }
+/* who is on the case right now: on Intake the Spouse / Children switches themselves (saved only when you leave the page) */
+function onpWho(){ var W=(S.intake||{}).who||{}, sp=$('in_who_spouse'), kd=$('in_who_kids');
+  return S.step==='intake'&&sp&&kd?{app:true,spouse:sp.checked,kids:kd.checked}:W; }
+function railOnPageRender(){ var box=$('railOnPage'); if(!box) return; var st=S.step, items=[];
+  if(st==='quote') ONPAGE_QUOTE.forEach(function(q){ var el=document.querySelector(q[1]); if(el&&q[1].indexOf('_editor')>0) el=el.closest('.card')||el; if(onpVisible(el)) items.push({l:q[0],el:el}); });
+  else if(st==='present'){ var p=(typeof presentProd==='function')?presentProd(presentTier()):null;
+    if(p&&p!=='mh') items.push({l:'Objections ('+(PROD_TAG[p]||'')+')',bub:'obj'});
+    /* every heading in the side panel (the Objections box has two: quick answers, then follow-up questions) */
+    document.querySelectorAll('#step-present .pr-rail > .box').forEach(function(b){ if(!onpVisible(b)) return;
+      [].filter.call(b.querySelectorAll('b'),function(h){ return !h.closest('summary,details,button,li,p,small')&&(h.parentElement===b||h.parentElement.parentElement===b); }).forEach(function(h,k){
+        var l=onpPresentLabel(h.textContent); if(l) items.push({l:l,el:k?h:b,rail:1}); }); }); }
+  else if(st==='intake'){ var W=onpWho();
+    document.querySelectorAll('#step-intake .intake-sec').forEach(function(el){ if(!onpVisible(el)) return; var l=onpLabel(el);
+      if(/^who needs coverage/i.test(l)||/^GLP-1/i.test(l)) return; if(/^spouse/i.test(l)&&!W.spouse) return; if(/^children/i.test(l)&&!W.kids) return; items.push({l:l,el:el}); }); }
+  else if(st==='enroll'){ var add=function(l,el){ if(onpVisible(el)) items.push({l:l,el:el}); };
+    add('Their plan',$('enrollSummary')); add('Life application',$('enLife'));
+    var ppl=[].slice.call(document.querySelectorAll('#enPeople .en-person')), kidsN=ppl.filter(function(x){ return /—\s*child/i.test(x.innerText.split('\n')[0]); }).length;
+    ppl.forEach(function(x){ var h=x.innerText.split('\n')[0], nm=h.split(' — ')[0].trim().split(/\s+/)[0];
+      add(/—\s*applicant/i.test(h)?'Primary app':/—\s*spouse/i.test(h)?'Spouse app':/—\s*child/i.test(h)?(kidsN>1?'Child app — '+nm:'Child app'):h.slice(0,30),x); });
+    add('Wrap up',$('enScriptEnd')); add('Health carriers',$('enHealth'));
+    [].forEach.call(document.querySelectorAll('#step-enroll .sectitle'),function(t){ if(/items to follow up/i.test(t.innerText)) add('Agent follow-ups',t); });
+    add('Enrollment email & text',$('enBrochHost')); }
+  else if(st==='review'){ var conf=document.querySelector('#step-review .rv-conf'); if(onpVisible(conf)) items.push({l:'Approval',el:conf});
+    [].forEach.call(document.querySelectorAll('#step-review .rv-ch'),function(h){ if(/client care card/i.test(h.innerText)&&onpVisible(h)) items.push({l:'Client care card',el:h.parentElement&&h.parentElement!==conf?h.parentElement:h}); });
+    var ch=$('rvChips'); if(onpVisible(ch)) items.push({l:'Benefits review',el:ch}); }
+  box._items=items;
+  box.innerHTML=items.length?'<div class="onp-h">On this page</div>'+items.map(function(it,i){ return '<button type="button" data-onp="'+i+'"'+(it.bub?' data-bub="'+it.bub+'"':'')+'>'+esc(it.l)+'</button>'; }).join(''):'';
+  box.querySelectorAll('button[data-onp]').forEach(function(b){ if(b.dataset.bub) return; b.onclick=function(){ var want=box._items[+b.dataset.onp], at=+b.dataset.onp;
+    if(want&&!document.contains(want.el)){ railOnPageRender(); var fresh=(box._items||[]).filter(function(x){ return x.l===want.l; })[0]; if(fresh) want=fresh; }   /* the page rebuilt itself since the list was drawn */
+    var it=want; if(!it||!it.el) return;
+    if(it.rail){ var rl=it.el.closest('.pr-rail'); if(rl){ var top=Math.max(0,rl.scrollTop+it.el.getBoundingClientRect().top-rl.getBoundingClientRect().top-6);
+      var room=top-(rl.scrollHeight-rl.clientHeight); if(room>0) rl.style.paddingBottom=(parseFloat(getComputedStyle(rl).paddingBottom)||0)+room+'px';
+      rl.scrollTo({top:top,behavior:'smooth'}); } }
+    else window.scrollTo({top:Math.max(0,it.el.getBoundingClientRect().top+window.scrollY-48),behavior:'smooth'});
+    it.el.classList.remove('pr-flash'); void it.el.offsetWidth; it.el.classList.add('pr-flash'); setTimeout(function(){ it.el.classList.remove('pr-flash'); },2200); }; });
+  onpSpy(); }
+/* the part you're looking at is highlighted as you scroll (Quote and Intake) */
+function onpSpy(){ var box=$('railOnPage'); if(!box||!box._items) return; var cur=-1, best=-1e9; box._items.forEach(function(it,i){ if(!it.el||it.rail) return; var t=it.el.getBoundingClientRect().top; if(t<160&&t>best){ best=t; cur=i; } });   /* the heading nearest above the line, by position on the page */
+  if(cur<0&&box._items.length&&!box._items[0].rail&&!box._items[0].bub) cur=0;
+  box.querySelectorAll('button[data-onp]').forEach(function(b){ var on=+b.dataset.onp===cur; b.classList.toggle('on',on);
+    if(on&&box.scrollHeight>box.clientHeight){ var bt=b.offsetTop-box.offsetTop; if(bt<box.scrollTop+24) box.scrollTop=Math.max(0,bt-24); else if(bt+b.offsetHeight>box.scrollTop+box.clientHeight) box.scrollTop=bt+b.offsetHeight-box.clientHeight; } }); }   /* a long list keeps the lit line in view */
+window.addEventListener('scroll',function(){ if(window._onpT) return; window._onpT=setTimeout(function(){ window._onpT=0; onpSpy(); },120); },{passive:true});
+(function(){ var src=document.getElementById('newsCount'), dst=document.getElementById('railNewsCount'); if(!src||!dst) return;
+  var sync=function(){ dst.textContent=src.textContent; }; sync(); new MutationObserver(sync).observe(src,{childList:true,characterData:true,subtree:true}); })();
+function railToggle(min){ if(min==null) min=!document.body.classList.contains('rail-min'); document.body.classList.toggle('rail-min',!!min);
+  var b=$('railCollapse'); if(b){ b.querySelector('.ri').textContent=min?'→':'←'; b.querySelector('.rl').textContent=min?'Expand navigation':'Collapse navigation'; b.setAttribute('aria-expanded',String(!min)); }
+  try{ localStorage.setItem('pp_rail_min',min?'1':''); }catch(e){} }
+try{ if(localStorage.getItem('pp_rail_min')) setTimeout(function(){ railToggle(true); },0); }catch(e){}
+/* the household line (Jesse, 7 Nov): everyone on the case with their age - "Dana Reyes (41), Sam (42), Kit (12) · FL · household of 4" */
+function householdLine(){ var C=S.client||{}, I=S.intake||{}, W=I.who||{}, first=function(n){ return String(n||'').trim().split(/\s+/)[0]; }, ppl=[];
+  var p=String(C.pname||'').trim(); if(p) ppl.push(p+(C.page?' ('+C.page+')':''));
+  var sn=String(C.sname||'').trim(); if(sn&&W.spouse!==false) ppl.push(first(sn)+(C.sage?' ('+C.sage+')':''));
+  if(W.kids!==false) (I.kids||[]).forEach(function(k,i){ var n=first(k.n)||('Child '+(i+1)); ppl.push(n+(k.age?' ('+k.age+')':'')); });
+  if(!ppl.length) return 'No client yet';
+  return [ppl.join(', '),[C.state,C.zip].filter(Boolean).join(' '),'household of '+ppl.length].filter(Boolean).join('  ·  '); }
 function clientStripSum(){ var el=$('csSum'), cs=$('clientStrip'); if(!el||!cs) return; var C=S.client||{};
   var who=[C.pname,C.sname].filter(function(x){ return String(x||'').trim(); }).join(' & ')||'No client yet';
   var ages=[C.page,C.sage].filter(Boolean).join(' / ');
-  el.textContent=[who,[C.state,C.zip].filter(Boolean).join(' '),ages?'ages '+ages:'',C.dob||C.date?'DOB '+(C.dob||C.date):'',C.agent?'Agent '+C.agent:''].filter(Boolean).join('  ·  ');
+  el.textContent=householdLine(); el.title=[who,ages?'ages '+ages:'',C.dob||C.date?'DOB '+(C.dob||C.date):'',C.agent?'Agent '+C.agent:''].filter(Boolean).join('  ·  ');
   cs.classList.toggle('pinned',!!(S.present&&S.present.stripOpen)); var cb=$('csCaret'); if(cb) cb.setAttribute('aria-expanded',String(!!(S.present&&S.present.stripOpen))); }
 /* ===== Discovery call inside POP Pro (Jesse, 14 Oct) =====
    The Script Navigator's own Health Discovery, framed - one script, so every navigator edit shows here. POP Pro hands in
@@ -8633,6 +9003,7 @@ function goStep(s){
   if(s==='present') renderPresent();
   if(s==='quote'){ syncRateBasis(); acaSync(); autoPriceTiers(); fill(); compute(); }
   autosave(); window.scrollTo(0,0);
+  if(window.railOnPageRender){ railOnPageRender(); setTimeout(railOnPageRender,700); setTimeout(railOnPageRender,2200); }
 }
 
 /* the follow-up as you'd say it: "later today at 6:00 pm", "tomorrow, Thursday, at 6:00 pm", "Thursday at 6:00 pm"
@@ -8778,9 +9149,13 @@ function bindInputs(){
   $('newsBtn').onclick=openNews; $('newsClose').onclick=closeNews; $('newsScrim').onclick=closeNews;
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&$('newsPanel').classList.contains('open')) closeNews(); });
   newsBadge();
-  $('wlGo').onclick=function(){ if(tourAt===0){ readAgent(); try{ localStorage.setItem('pp_welcome_v',WELCOME_V); }catch(e){} showTour(1); } else if(tourAt<6) showTour(tourAt+1); else { finishSetup(); letsGo(); } };
-  $('wlBack').onclick=function(){ showTour(Math.max(0,tourAt-1)); };
+  $('wlGo').onclick=function(){ var card=document.querySelector('#setupModal .wl-card'); if(card&&card.classList.contains('mode-setup')){ if(setupTab==='identity'){ readAgent(); setupTabGo('links'); } else if(setupTab==='links'){ readAgent(); setupTabGo('intro'); } else { saveSetup(); try{ localStorage.setItem('pp_welcome_v',WELCOME_V); }catch(e){} var keep=inProgress(); setupMode(''); $('setupModal').classList.remove('open'); goStep(keep?(S.step||'call'):'call'); } var sm=$('setupModal'); if(sm) sm.scrollTop=0; return; } if(card&&card.classList.contains('mode-guide')){ if(tourAt<6) showTour(tourAt+1); else { try{ localStorage.setItem('pp_welcome_v',WELCOME_V); }catch(e){} setupMode('setup'); } return; } if(tourAt===0){ readAgent(); try{ localStorage.setItem('pp_welcome_v',WELCOME_V); }catch(e){} showTour(1); } else if(tourAt<6) showTour(tourAt+1); else { finishSetup(); letsGo(); } };
+  $('wlBack').onclick=function(){ var c=document.querySelector('#setupModal .wl-card'); if(c&&c.classList.contains('mode-setup')){ setupTabGo(setupTab==='intro'?'links':'identity'); return; } showTour(Math.max(0,tourAt-1)); };
   $('wlSkip').onclick=finishSetup;
+  setupTabsInit();
+  ['in_who_app','in_who_spouse','in_who_kids'].forEach(function(id){ var el=$(id); if(el) el.addEventListener('change',function(){ setTimeout(railOnPageRender,60); }); });
+  document.querySelectorAll('#setupModal .wl-step[data-tour]').forEach(function(el){ el.addEventListener('mouseenter',function(){ if(document.querySelector('#setupModal .wl-card.mode-guide')&&tourAt!==+el.dataset.tour) showTour(+el.dataset.tour); }); });
+  $('rail').addEventListener('click',function(e){ if(e.target.closest('#stepper button')&&$('setupModal').classList.contains('open')){ setupMode(''); readAgent(); try{ localStorage.setItem('pp_welcome_v',WELCOME_V); }catch(x){} $('setupModal').classList.remove('open'); } },true);
   document.querySelectorAll('#setupModal .wl-step[data-tour]').forEach(function(el){ el.onclick=function(){ showTour(+el.dataset.tour); }; });
   var ppUpd=false; try{ ppUpd=!!sessionStorage.getItem('pp_updated'); }catch(e){}
   if(!welcomeSeen()&&!ppUpd) openSetup();   /* an automatic update never interrupts with the Welcome window */
@@ -9100,7 +9475,7 @@ function evTierCarrier(t){ var c=effCfg(t);
   if(c.base==='brightlife') return {co:'Bright Life', plan:c.blPlan||BL_DEFAULT};
   if(c.base==='triad') return {co:'Cigna', plan:'$'+Number(c.triadPlan||3500).toLocaleString('en-US')};
   return {co:'ManhattanLife', plan:(LVLNAME&&LVLNAME[c.afc])||c.afc||''}; }
-function evTierName(t,mixed,fallback){ var LN=LINEUP_NAMES[S.lineup]; if(LN&&LN[t]) return LN[t][0]; if(!mixed) return fallback;
+function evTierName(t,mixed,fallback){ var LN=LINEUP_NAMES[S.lineup]; if(LN&&LN[t]) return LN[t][0]; if(S.lineup==='custom'&&effCfg(t).pick) return effCfg(t).pick.short; if(!mixed) return fallback;
   var x=evTierCarrier(t); return x.plan?x.co+' '+x.plan:x.co; }
 function evIncluded(){ var inc=S.include||{}, rows=EV_TIERS.filter(function(T){ return inc[T[0]]!==false&&tierTotals(T[0]).mo>0; });
   var cos=rows.map(function(T){ return evTierCarrier(T[0]).co; }), mixed=cos.some(function(c){ return c!==cos[0]; });
@@ -9144,7 +9519,7 @@ function evAcaTerms(){ var fam=acaPeople().length>1, r=S.acaRes||{}, bz=ACA26.br
     if(fam){ oop=estO?Math.min(bz.avgMoop||cap,cap):Math.min(oop,cap); ded=estD?(bz.avgDeductible||ded/2):0; }
     var dPer=fam?ded:(+S.aca.ded||0), co=S.aca.coins;
     return {fam:fam,oop:oop,ded:dPer||null,coins:co,visit:+S.aca.copay||0}; }
-function evAnchor(){ var B=anchorBase(); if(!B) return null;
+function evAnchor(force){ var B=anchorBase(force); if(!B) return null;
   if(B.k==='aca'){ var fam=acaPeople().length>1, r=S.acaRes||{}, bz=ACA26.bronze||{}, cap=(ACA26.moop||{}).self||12000;
     /* An event happens to one person. ACA family plans must cap each person at the self-only limit
        (embedded out-of-pocket, federal rule since 2016), so one person's bill stops there. */
@@ -9158,6 +9533,9 @@ function evMoneyTxt(v){ return (v<0?'+':'')+fmt2(Math.abs(v)); }
 function evTableHTML(i,opt){ var O=opt||{}, tiers=O.tiers?EV_TIERS.filter(function(T){ return O.tiers.indexOf(T[0])>=0; }):evIncluded(); if(!tiers.length) return ''; var kind=i, sc=O.sc||S.ev[i]||evScn('');
   var negA=function(b){ return O.neg?(+(S.negot||{}).pct>0&&b>(+((S.negot||{}).min)||2500)):negApplies(i,b); };
   var A=O.noAnchor?null:evAnchor(), B=anchorBase(), res=[], bill, head;
+  /* Client View with both "Compare with" boxes ticked (Jesse, 9 Nov): one column per comparison, ACA and current plan */
+  var ZZ=[]; if(!O.noAnchor&&O.anchors&&O.anchors.length){ O.anchors.forEach(function(k){ var a1=evAnchor(k), b1=anchorBase(k); if(a1&&b1) ZZ.push({A:a1,B:b1}); }); A=ZZ.length?ZZ[0].A:null; B=ZZ.length?ZZ[0].B:null; }
+  else if(A) ZZ.push({A:A,B:B});
   var bb=evScnBill(sc), bill=bb.total, head, adds=[]; if(!(bill>0)) return '';
   EV_ADDONS.forEach(function(a){ var x=(sc.add||{})[a[0]]; if(x&&+x.n>0) adds.push((+x.n)+' '+a[1].toLowerCase()+(+x.n>1?'s':'')+' at '+fmt2(+x.each||0)); });
   head=(bb.main>0?((+sc.disc||0)>0?'Billed '+fmt2(+sc.charge)+', network price after a '+fmt2(+sc.disc)+' discount':'Network price — what insurance actually pays'):'')
@@ -9165,43 +9543,60 @@ function evTableHTML(i,opt){ var O=opt||{}, tiers=O.tiers?EV_TIERS.filter(functi
     +(adds.length?(bb.main>0?' · plus ':'')+adds.join(', '):'');
   head=head.replace(/^ · /,'');
   tiers.forEach(function(T){ var o=evTierPack(T[0]); res.push({T:T,o:o,r:evEvent(sc,Object.assign({},o,{negotPct:negA(bill)?S.negot.pct:0}))}); });
+  ZZ.forEach(function(Z){ Z.aOwe=evAnchorOweEv(sc,Z.A); Z.aYr=Z.B?Z.B.prem*12+Z.aOwe:0; });
+  var ZP=ZZ[0]||null;   /* the anchor - what the savings are measured against */
+  if(ZZ.length>1) ZZ.sort(function(a,b){ return b.aYr-a.aYr; });   /* most expensive on the left (Jesse, 9 Nov) */
   var aOwe=A?evAnchorOweEv(sc,A):null, negAny=negA(bill)&&res.some(function(x){ return !x.o.major; });   /* Bill Saver is a Manhattan package's - none here, none shown */
   var billed=(+sc.disc||0)>0&&!bb.extra?+sc.charge:0, negB=negAny?Math.round(bill*(1-S.negot.pct/100)*100)/100:null;
-  var cols=(A?1:0)+res.length, h='<div class="evbill"><span>This event costs</span>'+(billed?'<b class="was">'+fmt2(billed)+'</b><i class="arr">→</i>':'')+'<b>'+fmt2(bill)+'</b>'+(billed?'<em>network price — every plan pays this, not the sticker price</em>':'')+(negB!=null?'<i class="arr">→</i><b class="neg">'+fmt2(negB)+'</b><em>with Medical Bill Saver (CareGuide), Manhattan packages</em>':'')+'<small>'+head+'</small>'+(negAny?'<small class="printonly negfine">Medical Bill Saver (CareGuide): illustrated at '+S.negot.pct+'% off the network price on the Manhattan packages; CareGuide states savings are not guaranteed.</small>':'')+'</div>'+((O.neg||negOn(i))&&!negA(bill)&&res.some(function(x){ return !x.o.major; })?'<div class="evneg off">Medical Bill Saver is for bills over '+fmt(+S.negot.min||2500)+' — this one is not negotiated.</div>':'')+(negAny?'<div class="evneg"><b>Medical Bill Saver (CareGuide) is on.</b><span class="ex"> On the Manhattan packages, ManhattanLife’s care-negotiation service (CareGuide) works the bill down before you pay it — illustrated here at '+S.negot.pct+'%. The plan still pays its full benefits, so more of that money stays with you.</span><span class="printonly" style="display:none"> CareGuide negotiates the bill down; the plan still pays in full.</span><small>Illustration: assumes a '+S.negot.pct+'% reduction. CareGuide states savings are not guaranteed.</small></div>':'')+'<div class="evtab'+((O.open||(S.evOpen||{})[i])?' open':'')+'" style="grid-template-columns:var(--evlab,minmax(120px,1.1fr)) repeat('+cols+',1fr)">';
+  var cols=ZZ.length+res.length, h='<div class="evbill"><span>This event costs</span>'+(billed?'<b class="was">'+fmt2(billed)+'</b><i class="arr">→</i>':'')+'<b>'+fmt2(bill)+'</b>'+(billed?'<em>network price — every plan pays this, not the sticker price</em>':'')+(negB!=null?'<i class="arr">→</i><b class="neg">'+fmt2(negB)+'</b><em>with Medical Bill Saver (CareGuide), Manhattan packages</em>':'')+'<small>'+head+'</small>'+(negAny?'<small class="printonly negfine">Medical Bill Saver (CareGuide): illustrated at '+S.negot.pct+'% off the network price on the Manhattan packages; CareGuide states savings are not guaranteed.</small>':'')+'</div>'+((O.neg||negOn(i))&&!negA(bill)&&res.some(function(x){ return !x.o.major; })?'<div class="evneg off">Medical Bill Saver is for bills over '+fmt(+S.negot.min||2500)+' — this one is not negotiated.</div>':'')+(negAny?'<div class="evneg"><b>Medical Bill Saver (CareGuide) is on.</b><span class="ex"> On the Manhattan packages, ManhattanLife’s care-negotiation service (CareGuide) works the bill down before you pay it — illustrated here at '+S.negot.pct+'%. The plan still pays its full benefits, so more of that money stays with you.</span><span class="printonly" style="display:none"> CareGuide negotiates the bill down; the plan still pays in full.</span><small>Illustration: assumes a '+S.negot.pct+'% reduction. CareGuide states savings are not guaranteed.</small></div>':'')+'<div class="evtab'+((O.open||(S.evOpen||{})[i])?' open':'')+'" style="grid-template-columns:var(--evlab,minmax(120px,1.1fr)) repeat('+cols+',1fr)">';
   /* the corner: on Quote it holds the picture button; in the picture itself it names the example instead */
   var exName=sc.desc||sc.label||(EV_SCENARIOS.filter(function(x){ return x.id===sc.id; })[0]||{}).desc||'';
-  h+='<div class="c l evcorner">'+(O.pic?(exName?'<b class="evname">'+esc(exName)+'</b>':''):'')+'</div>'+(A?'<div class="c h anc">'+A.lab+'</div>':'')+res.map(function(x){ return '<div class="c h">'+x.T[1]+'</div>'; }).join('');
-  h+='<div class="c l evtog" data-evtog="'+i+'" role="button" tabindex="0"><span class="car">▸</span> Your plan pays<small class="noprint">click to see why</small></div>'+(A?'<div class="c anc">'+fmt2(Math.max(0,bill-aOwe))+'<small>toward the bill</small></div>':'')
-    +res.map(function(x){ return '<div class="c">'+(x.o.unknown&&!x.r.pays?'—':fmt2(x.r.pays+(x.o.major?Math.max(0,bill-x.r.owe0):0)))+'<small>'+(x.o.major?'plan + cash benefits':'paid to you')+'</small></div>'; }).join('');
+  h+='<div class="c l evcorner">'+(O.pic?(exName?'<b class="evname">'+esc(exName)+'</b>':''):'')+'</div>'+ZZ.map(function(Z){ var A=Z.A, aOwe=Z.aOwe, B=Z.B; return '<div class="c h anc">'+A.lab+(ZZ.length>1&&Z===ZP?'<small style="display:block;font-weight:600;opacity:.85">compared against</small>':'')+'</div>'; }).join('')+res.map(function(x){ return '<div class="c h">'+x.T[1]+'</div>'; }).join('');
+  /* Jesse, 9 Nov: on Client View a Manhattan plan never shows money beyond the bill (the Bill Saver part is a gray area) - it
+     reads "You pay $0". A Cigna / Bright Life plan's math is set by the plan, so its net stays, with the deductible buster shown. */
+  var CL=!!O.client, gray=function(x){ return CL&&!x.o.major; };
+  h+='<div class="c l evtog" data-evtog="'+i+'" role="button" tabindex="0"><span class="car">▸</span> Your plan pays<small class="noprint">click to see why</small></div>'+ZZ.map(function(Z){ var A=Z.A, aOwe=Z.aOwe, B=Z.B; return '<div class="c anc">'+fmt2(Math.max(0,bill-aOwe))+'<small>toward the bill</small></div>'; }).join('')
+    +res.map(function(x){ if(gray(x)&&!(x.o.unknown&&!x.r.pays)) return '<div class="c">'+fmt2(Math.min(x.r.pays,bill))+'<small>'+(x.r.pays>=bill?'the whole bill':'paid to you, toward the bill')+'</small></div>';
+      return '<div class="c">'+(x.o.unknown&&!x.r.pays?'—':fmt2(x.r.pays+(x.o.major?Math.max(0,bill-x.r.owe0):0)))+'<small>'+(x.o.major?'plan + cash benefits':'paid to you')+'</small></div>'; }).join('');
   /* Itemised: what each benefit pays and why - behind the caret on screen, always shown in print. */
   /* Jesse, 5 Nov: read it like a receipt - what the client pays is a red minus, every benefit paid to them is a green plus,
      and the lines add up to the net. The plan's payment to the hospital is shown but not counted: it never reaches the client. */
   var li=function(lab,v,k){ var sg=/\bin\b/.test(k||'')?'+':/\bout\b/.test(k||'')?'−':''; return '<div class="it'+(k?' '+k:'')+'"><span>'+esc(lab)+'</span><b>'+sg+fmt2(Math.abs(v))+'</b></div>'; };
   h+='<div class="c l evit">What each benefit pays</div>'
-    +(A?'<div class="c anc evit">'+li('Plan pays toward the bill',Math.max(0,bill-aOwe),'bill')+'<div class="why">Your share first: '+(A.how||'up to the out-of-pocket limit')+'.</div></div>':'')
+    +ZZ.map(function(Z){ var A=Z.A, aOwe=Z.aOwe, B=Z.B; return '<div class="c anc evit">'+li('Plan pays toward the bill',Math.max(0,bill-aOwe),'bill')+'<div class="why">Your share first: '+(A.how||'up to the out-of-pocket limit')+'.</div></div>'; }).join('')
     +res.map(function(x){ var its=x.r.parts.map(function(p){ return li(p.lab,p.v,'in'); });
       if(x.o.major&&bill-x.r.owe0>0) its.unshift(li('The plan pays the rest of the bill (to the hospital)',bill-x.r.owe0,'bill'));
       if(x.o.major&&x.r.oweParts&&x.r.oweParts.length){ its=its.concat(x.r.oweParts.map(function(p){ return p.v<0?li(p.lab,-p.v,'in'):li('You pay — '+p.lab,p.v,'out'); }));
         var nt=x.r.net; its.push(li(nt<=0?'You NET':'You pay',nt,nt<=0?'tot in':'tot out')); }
       if(x.o.unknown&&!x.r.pays) its=['<div class="why">'+esc(x.o.unknown)+'</div>'];
+      else if(gray(x)) its=['<div class="why">Your benefits pay you directly'+(x.r.pays>=bill?' — enough to cover this bill.':', toward this bill.')+'</div>'];
       return '<div class="c evit">'+(its.join('')||'<div class="why">No benefit applies to this event.</div>')+(x.o.afc&&(+sc.days||0)>0?'<div class="why surg">Surgery benefits (paid on the policy fee schedule) are extra and not counted here.</div>':'')+'</div>'; }).join('');
-  if(negAny) h+='<div class="c l">Bill after Medical Bill Saver <small>'+S.negot.pct+'% average reduction</small></div>'+(A?'<div class="c anc">—<small>network price already</small></div>':'')
+  if(negAny) h+='<div class="c l">Bill after Medical Bill Saver <small>'+S.negot.pct+'% average reduction</small></div>'+ZZ.map(function(Z){ var A=Z.A, aOwe=Z.aOwe, B=Z.B; return '<div class="c anc">—<small>network price already</small></div>'; }).join('')
     +res.map(function(x){ return '<div class="c">'+(x.r.negotiated!=null?fmt2(x.r.negotiated):'—<small>major medical</small>')+'</div>'; }).join('');
-  h+='<div class="c l">You pay <small>(or net)</small></div>'+(A?'<div class="c anc big">'+fmt2(aOwe)+(A.note?'<small>'+A.note+'</small>':(A.how&&aOwe>=A.oop?'<small>'+A.how+'</small>':''))+'</div>':'')
-    +res.map(function(x){ var n=x.r.net; return '<div class="c big '+(n<=0?'up':'dn')+'">'+(x.o.unknown&&!x.r.pays?'<small>'+x.o.unknown+'</small>':(n<=0?'You NET '+fmt2(-n):'You pay '+fmt2(n)))+'</div>'; }).join('');
+  var dbx=CL&&res.some(function(x){ return x.o.major&&x.r.parts&&x.r.parts.length; });
+  if(dbx) h+='<div class="c l">Your deductible buster <small>pays you cash toward your share</small></div>'+ZZ.map(function(Z){ var A=Z.A, aOwe=Z.aOwe, B=Z.B; return '<div class="c anc">—</div>'; }).join('')
+    +res.map(function(x){ var pd=(x.r.parts||[]).reduce(function(s2,q){ return s2+(+q.v||0); },0);
+      return x.o.major&&pd>0?'<div class="c evdb">Your share '+fmt2(x.r.owe0)+'<b>Deductible buster pays you '+fmt2(pd)+'</b></div>':'<div class="c">—</div>'; }).join('');
+  h+='<div class="c l">You pay <small>'+(CL?'':'(or net)')+'</small></div>'+ZZ.map(function(Z){ var A=Z.A, aOwe=Z.aOwe, B=Z.B; return '<div class="c anc big">'+fmt2(aOwe)+(A.note?'<small>'+A.note+'</small>':(A.how&&aOwe>=A.oop?'<small>'+A.how+'</small>':''))+'</div>'; }).join('')
+    +res.map(function(x){ var n=x.r.net; if(gray(x)&&n<=0&&!(x.o.unknown&&!x.r.pays)) return '<div class="c big up">You pay $0</div>'; return '<div class="c big '+(n<=0?'up':'dn')+'">'+(x.o.unknown&&!x.r.pays?'<small>'+x.o.unknown+'</small>':(n<=0?'You NET '+fmt2(-n):'You pay '+fmt2(n)))+'</div>'; }).join('');
   /* Two lines with the math showing (team call, 3 Nov - Kyle: "I want to see the numbers that got me to this"):
      the monthly premium saving against the anchor, then the year with this event, each side worked out. The total is
      the same as before - 12 x the premium difference + (their share of the event - the package's net). */
-  if(A&&B){ var aYr=B.prem*12+aOwe;
+  if(ZZ.length&&B){ var multi=ZZ.length>1, ZA=[ZP];   /* savings: against the anchor only */
     var allAdd=res.every(function(x){ return acaAddsOn(x.T[0],B); });   /* ACA + protection: the columns add to the marketplace plan, they don't save on it */
-    h+='<div class="c l">'+(allAdd?'Monthly cost <small>with '+esc(B.your)+'</small>':'Monthly premium savings <small>vs '+esc(B.your)+'</small>')+'</div><div class="c anc">'+fmt2(B.prem)+'/mo<small>what '+esc(B.your)+' costs a month</small></div>'
-    +res.map(function(x){ var d=B.prem-pkgPremMo(x.T[0]); if(acaAddsOn(x.T[0],B)) return '<div class="c evmo">Adds '+fmt2(-d)+'/mo<small>'+fmt2(pkgPremMo(x.T[0]))+'/mo with the marketplace plan</small></div>'; return '<div class="c evmo '+(d>=0?'up':'dn')+'">'+(d>=0?'Saves '+fmt2(d):'Costs '+fmt2(-d)+' more')+'/mo<small>'+fmt2(pkgPremMo(x.T[0]))+'/mo</small></div>'; }).join('');
+    h+='<div class="c l">'+(allAdd?'Monthly cost <small>with '+esc(B.your)+'</small>':'Monthly premium savings <small>vs '+(multi?'each':esc(B.your))+'</small>')+'</div>'
+    +ZZ.map(function(Z){ return '<div class="c anc">'+fmt2(Z.B.prem)+'/mo<small>what '+esc(Z.B.your)+' costs a month</small></div>'; }).join('')
+    +res.map(function(x){ var pm=pkgPremMo(x.T[0]);
+      return '<div class="c evmo">'+ZA.map(function(Z){ var d=Z.B.prem-pm; if(acaAddsOn(x.T[0],Z.B)) return '<span>Adds '+fmt2(-d)+'/mo</span>';
+        return '<span class="'+(d>=0?'up':'dn')+'">'+(d>=0?'Saves '+fmt2(d):'Costs '+fmt2(-d)+' more')+'/mo'+(multi?' <i>vs '+(Z.B.k==='aca'?'ACA':'current')+'</i>':'')+'</span>'; }).join('')+'<small>'+fmt2(pm)+'/mo'+(acaAddsOn(x.T[0],B)?' with the marketplace plan':'')+'</small></div>'; }).join('');
     h+='<div class="c l">This year, with this event <small>12 months of premium + what this event costs them</small></div>'
-    +'<div class="c anc evyr">12 × '+fmt2(B.prem)+' + '+fmt2(aOwe)+'<small>premiums + their share of this event</small><b>= '+fmt(aYr)+'</b></div>'
-    +res.map(function(x){ var pm=pkgPremMo(x.T[0]), n=x.r.net, y=pm*12+n, v=aYr-y;
-      return '<div class="c evyr '+(v>=0?'up':'dn')+'">12 × '+fmt2(pm)+(n>=0?' + '+fmt2(n):' − '+fmt2(-n))+'<small>premiums '+(n>=0?'+ what they still pay for this event':'− what the benefits pay them beyond the bill')+'</small><b>= '+(y>=0?fmt(y):fmt(-y)+' back to them')+'</b><em>'+(v>=0?'Ahead '+fmt(v):(acaAddsOn(x.T[0],B)?fmt(-v)+' more this year':'Behind '+fmt(-v)))+'</em></div>'; }).join(''); }   /* no "Behind" on an ACA + protection column (Jesse, 4 Nov) */
+    +ZZ.map(function(Z){ return '<div class="c anc evyr">12 × '+fmt2(Z.B.prem)+' + '+fmt2(Z.aOwe)+'<small>premiums + their share of this event</small><b>= '+fmt(Z.aYr)+'</b></div>'; }).join('')
+    +res.map(function(x){ var pm=pkgPremMo(x.T[0]), n=gray(x)?Math.max(0,x.r.net):x.r.net, y=pm*12+n, v0=ZZ[0].aYr-y;
+      v0=ZP.aYr-y; return '<div class="c evyr '+(v0>=0?'up':'dn')+'">12 × '+fmt2(pm)+(n>=0?' + '+fmt2(n):' − '+fmt2(-n))+'<small>premiums '+(n>=0?'+ what they still pay for this event':'− what the benefits pay them beyond the bill')+'</small><b>= '+(y>=0?fmt(y):fmt(-y)+' back to them')+'</b>'
+        +ZA.map(function(Z){ var v=Z.aYr-y; return '<em class="'+(v>=0?'up':'dn')+'">'+(v>=0?'Ahead '+fmt(v):(acaAddsOn(x.T[0],Z.B)?fmt(-v)+' more this year':'Behind '+fmt(-v)))+(multi?' vs '+(Z.B.k==='aca'?'ACA':'current'):'')+'</em>'; }).join('')+'</div>'; }).join(''); }   /* no "Behind" on an ACA + protection column (Jesse, 4 Nov) */
   h+='</div>';
-  if(res.some(function(x){ return !x.o.major; })) h+='<div class="evhow"><b>How the money reaches you:</b> the Manhattan benefits are fixed amounts paid for the event, not a share of the bill. In network, show the card and the provider bills ManhattanLife directly; whatever the benefits pay beyond the bill comes back to you. Out of network, you pay the provider and the benefits are paid to you.</div>';
+  if(ZZ.length>1&&ZP&&ZP.B) h+='<div class="evhow"><b>Savings</b> are measured against '+esc(ZP.B.your)+' — the plan we compared against. Both are shown so you can see each one’s cost.</div>';
+  if(res.some(function(x){ return !x.o.major; })) h+='<div class="evhow"><b>How the money reaches you:</b> the Manhattan benefits are fixed amounts paid for the event, not a share of the bill. In network, show the card and the provider bills ManhattanLife directly'+(CL?'.':'; whatever the benefits pay beyond the bill comes back to you.')+' Out of network, you pay the provider and the benefits are paid to you.</div>';
   if((+sc.days||0)>0&&res.some(function(x){ return x.o.afc; })) h+='<div class="evsrc printonly">Affordable Choice surgery benefits (paid on the policy fee schedule) are extra and not counted above.</div>';
   var src=sc.src; if(src) h+='<div class="evsrc">National average (what insurance pays): '+esc(src)+'</div>';
   return h; }
@@ -9240,7 +9635,11 @@ function renderTfraHint(){ var el=$('tfraHint'); if(!el) return; var B=anchorBas
   el.innerHTML=h;
   el.querySelectorAll('.tfrause').forEach(function(b){ b.onclick=function(){ var inp=$('p_pension'); inp.value=b.dataset.amt; inp.dispatchEvent(new Event('input')); compute(); autosave(); }; }); }
 /* ===== The client's choice (builder + Client View -> Enroll) ===== */
-var TIER_NAME={good:'Essential',better:'Complete',best:'Comprehensive'};
+var TIER_NAME={};
+/* Jesse, 9 Nov: on "Create your custom plan" each column holds whatever plan was picked for it (Cigna PPO, Virtual Basic A,
+   Manhattan Comprehensive...), so a column's name is that plan's - never "Complete" just because it sits in the middle. */
+var TIER_NAME0={good:'Essential',better:'Complete',best:'Comprehensive'};
+['good','better','best'].forEach(function(t){ Object.defineProperty(TIER_NAME,t,{enumerable:true,get:function(){ try{ if(S&&S.lineup==='custom'){ var c=S.cfg&&S.cfg[t]; if(c&&c.pick&&c.pick.short) return c.pick.short; } }catch(e){} return TIER_NAME0[t]; }}); });
 /* The ACA and Virtual Basic lineups aren't Essential / Complete / Comprehensive - the client reads what each column is (Kyle, 4 Nov). */
 var LINEUP_NAMES={aca:{good:['ACA + accident','24-Hour Accident'],better:['ACA + deductible buster','Hospital + Out-of-Pocket'],best:['ACA + deductible buster + dental','Deductible buster + dental']},
   vb:{good:['The ACA plan','The marketplace plan alone'],better:['Virtual Basic A','Real out-of-pocket protection','healthy, but funds are tight'],best:['Virtual Basic B','Basic protection','unhealthy, and funds are very tight']}};
@@ -9328,10 +9727,10 @@ function pbColHTML(T,anc){ var t=T[0], act=(t==='actual'), st=(S.client.state||'
     var c=effCfg(t), pk=S.packages[t]||{products:[]}, dropped=pk.dropped||[];
     var built=buildTierProducts(c,null,[]), byK={}; built.forEach(function(p){ byK[p.k]=p; });
     var byKpk={}; (pk.products||[]).forEach(function(p){ if(p.k) byKpk[p.k]=p; });
-    var hdr=LINEUP_NAMES[S.lineup]?(LINEUP_NAMES[S.lineup][t]||[T[1],T[2]]):(S.lineup==='lx-mh-cg'||S.lineup==='custom')&&c.base&&c.base!=='afc'?['',c.base==='lifex'?'LifeX':c.base==='brightlife'?'Bright Life':'Cigna']:(S.lineup==='lx-mh-cg'?['','Manhattan']:[T[1],T[2]]);   /* no Pivot down / Lead / Pivot up over the columns (Jesse, 5 Nov) */
+    var hdr=(S.lineup==='custom'&&c.pick&&c.pick.short)?['',c.pick.short]:LINEUP_NAMES[S.lineup]?(LINEUP_NAMES[S.lineup][t]||[T[1],T[2]]):(S.lineup==='lx-mh-cg'||S.lineup==='custom')&&c.base&&c.base!=='afc'?['',c.base==='lifex'?'LifeX':c.base==='brightlife'?'Bright Life':'Cigna']:(S.lineup==='lx-mh-cg'?['','Manhattan']:[T[1],T[2]]);   /* no Pivot down / Lead / Pivot up over the columns (Jesse, 5 Nov) */
     var incT=(S.include||{})[t]!==false;
     if(act) html+=pbActHead(); else html+='<div class="pbcol'+(S.recommended===t?' rec':'')+(rfBadge(t)?' dtpick':'')+(incT?'':' excl')+(chosenTier()===t?' chosen':'')+'" data-t="'+t+'"><div class="pbhd"><div class="pbbadge">'+rfBadge(t)+'</div>'+(hdr[0]||hdr[2]?'<div class="r1"><span class="tt">'+hdr[0]+(hdr[2]?' <span class="tfor">('+hdr[2]+')</span>':'')+'</span></div>':'')+'<div class="r2"><div class="nm">'+hdr[1]+'</div><button type="button" class="pbreset" data-act="reset1" title="Put this package back to the recommendation">↺ Reset</button></div><div class="r3"><label class="pbshow"><input type="checkbox" data-act="inc"'+(incT?' checked':'')+'> Show on quote</label></div></div>'
-      +((S.lineup==='custom')?'':'<!--')+'<div style="padding:0 12px 4px"><select data-act="base" aria-label="Base plan" style="width:100%;font:inherit;font-size:13px;padding:6px 8px;border:1px solid #d6cdb4;border-radius:7px">'+pbOpts([['afc','Base: Manhattan — Affordable Choice']].concat(blOn()?(c.base==='lifex'?[['lifex','Base: LifeX (replaced by Bright Life)']]:[]).concat([['brightlife','Base: Bright Life']]):[['lifex','Base: LifeX']].concat(c.base==='brightlife'?[['brightlife','Base: Bright Life']]:[])).concat([['triad','Base: Cigna — Triad PPO']]),c.base||'afc')+'</select></div>'+((S.lineup==='custom')?'':'-->');
+      +((S.lineup==='custom')?'<div style="padding:0 12px 4px">'+colPickSelect(t)+'</div>':'')+'<!--'+'<div style="padding:0 12px 4px"><select data-act="base" aria-label="Base plan" style="width:100%;font:inherit;font-size:13px;padding:6px 8px;border:1px solid #d6cdb4;border-radius:7px">'+pbOpts([['afc','Base: Manhattan — Affordable Choice']].concat(blOn()?(c.base==='lifex'?[['lifex','Base: LifeX (replaced by Bright Life)']]:[]).concat([['brightlife','Base: Bright Life']]):[['lifex','Base: LifeX']].concat(c.base==='brightlife'?[['brightlife','Base: Bright Life']]:[])).concat([['triad','Base: Cigna — Triad PPO']]),c.base||'afc')+'</select></div>'+'-->';
     var sum=0, addable=[], unavail=[];
     PB_SLOTS.forEach(function(sl){
       var k=sl.k; if(k==='lbs'&&!pbHasSpouse()) return;
@@ -9493,6 +9892,7 @@ function renderBuilder(){
   host.querySelectorAll('.pbinfo').forEach(function(b){ b.onclick=function(e){ e.stopPropagation(); var col=b.closest('.pbcol'); benOpen(col?col.dataset.t:(b.dataset.bt||'best'),b.dataset.ben); }; });
   benRefresh();
   host.querySelectorAll('.pbcol').forEach(function(col){ pbColBind(col,pbReprice,renderBuilder); });
+  host.querySelectorAll('[data-act="colpick"]').forEach(function(sel){ sel.onchange=function(){ colPick(sel.closest('.pbcol').dataset.t,sel.value); }; });
   host.querySelectorAll('[data-act="base"]').forEach(function(sel){ sel.onchange=function(){ var t=sel.closest('.pbcol').dataset.t; var c=effCfg(t); c.base=sel.value;
       if(sel.value==='lifex') c.lifexPlan='$500 PPO'; if(sel.value==='brightlife'){ c.blPlan=c.blPlan||BL_DEFAULT; c.his=c.his||{amb:1,outp:0}; c.his.ben=2000; c.his.outp=1500; } if(sel.value==='triad'){ c.triadPlan=c.triadPlan||'7350'; c.his=c.his||{amb:1,outp:0}; c.his.ben=cignaHIS(c.triadPlan); }
       PB_OPEN[t+'|base']=sel.value!=='afc'; pbReprice(); }; });
@@ -9522,6 +9922,20 @@ var LINEUP_BASES={'aca':['aca','aca','aca'],'vb':['aca','amaze','amaze'],'mh':['
 function acaBuster(c,ded){ ded=+ded||5000; c.his={ben:Math.max(1000,Math.min(10000,Math.floor((ded-2500)/1000)*1000)),amb:1,outp:0};
   c.gap={daily:'200',adm:'2500',outp:'1000',ea:1}; return c; }   /* Jesse, 9 Nov: Out-of-Pocket on the ACA lineup defaults to $1,000 outpatient */
 function cignaHIS(ded){ return Math.min(10000,Math.ceil((+ded||3500)/1000)*1000); }
+/* Custom column picker: the same list as the Enroll edits - every plan and its levels. Picking one loads that package exactly
+   as its own lineup builds it into this column. */
+function colPickOpts(){ return enBaseOpts().filter(function(g){ return g[1].every(function(o){ return o[0]!=='custom'&&o[0]!=='cg'; }); }); }
+function colPickSelect(t){ var c=effCfg(t), cur=c.pick?c.pick.ln+'|'+c.pick.t:'';
+  return '<select data-act="colpick" aria-label="Plan in this column" style="width:100%;font:inherit;font-size:13px;font-weight:600;padding:7px 8px;border:1.5px solid #c3a14e;border-radius:8px;background:#fffdf7;color:#10233e">'
+    +(cur?'':'<option value="" selected>Pick a plan for this column…</option>')
+    +colPickOpts().map(function(g){ return '<optgroup label="'+esc(g[0])+'">'+g[1].map(function(o){ var v=o[0]+'|'+o[1]; return '<option value="'+esc(v)+'"'+(v===cur?' selected':'')+'>'+esc(o[2])+'</option>'; }).join('')+'</optgroup>'; }).join('')+'</select>'; }
+function colPick(t,v){ var a=String(v||'').split('|'), ln=a[0], st=a[1]; if(!st) return; var lab='';
+  colPickOpts().forEach(function(g){ g[1].forEach(function(o){ if(o[0]===ln&&o[1]===st) lab=o[2]; }); });
+  if(ln==='mh') lab='Manhattan '+lab;   /* beside other carriers, say whose */
+  var d=pbTierDefaults(st,ln); S.cfg=S.cfg||{}; S.cfg[t]=d.c; d.c.pick={ln:ln,t:st,short:lab};
+  var pk=S.packages[t]=S.packages[t]||{products:[]}, keepDvh=(pk.dropped||[]).indexOf('dvh')>=0; pk.dropped=d.drop.slice(); if(keepDvh&&pk.dropped.indexOf('dvh')<0&&ln!=='aca') pk.dropped.push('dvh');
+  (pk.products||[]).forEach(function(p){ if(p.k) delete p.manual; }); Object.keys(PB_OPEN).forEach(function(k){ if(k.indexOf(t+'|')===0) delete PB_OPEN[k]; });
+  pbReprice(); if(typeof renderBuilder==='function') renderBuilder(); }
 function pbTierDefaults(t,lu,baseOverride){
   var i=['good','better','best'].indexOf(t), c=cfgClone(TIERCFG[t]), drop=[];
   c.base=baseOverride||(LINEUP_BASES[lu]||LINEUP_BASES.mh)[i];
@@ -9547,11 +9961,17 @@ function pbResetTier(t){
   var pk=S.packages[t], keepDvh=(pk.dropped||[]).indexOf('dvh')>=0&&!(lu==='aca'&&t==='best');   /* that column is the dental one */
   S.cfg=S.cfg||{};
   if(lu){ var d=pbTierDefaults(t,lu); S.cfg[t]=d.c; pk.dropped=(keepDvh?['dvh']:[]).concat(d.drop); }
-  else { var d2=pbTierDefaults(t,'mh',(S.cfg[t]||{}).base||'afc'); S.cfg[t]=d2.c; pk.dropped=(keepDvh?['dvh']:[]).concat(d2.drop); }   // Custom: keep each package's base
+  else { var pk0=(S.cfg[t]||{}).pick;   // Custom: back to the plan picked for this column, else keep its base
+    if(pk0){ var d3=pbTierDefaults(pk0.t,pk0.ln); d3.c.pick=pk0; S.cfg[t]=d3.c; pk.dropped=(keepDvh?['dvh']:[]).concat(d3.drop); }
+    else { var d2=pbTierDefaults(t,'mh',(S.cfg[t]||{}).base||'afc'); S.cfg[t]=d2.c; pk.dropped=(keepDvh?['dvh']:[]).concat(d2.drop); } }
   (pk.products||[]).forEach(function(p){ if(p.k) delete p.manual; });
   Object.keys(PB_OPEN).forEach(function(k){ if(k.indexOf(t+'|')===0) delete PB_OPEN[k]; });
 }
 function pbApplyLineup(id){
+  /* Jesse, 9 Nov: which plans show on Client View belongs to the lineup - Comprehensive picked on Manhattan only must not
+     carry over to Bright Life · Manhattan · Cigna. Each lineup keeps its own; a lineup not visited yet shows all three. */
+  S.includeBy=S.includeBy||{}; S.includeBy[S.lineup||'mh']=Object.assign({},S.include||{});
+  S.include=Object.assign({good:true,better:true,best:true},S.includeBy[id]||{});
   chosenKeep(); S.lineup=id;
   if(chosenRestore(id)){ pbReprice(); return; }
   if(id==='custom'){ pbReprice(); return; }            // keep what's there; the Base pickers appear on each package
@@ -9862,6 +10282,23 @@ loadBaseRates();
   html.qn-attached .fab-save{border-radius:0 14px 14px 0;padding:9px 12px 9px 10px;max-width:44px}
   html.qn-attached .fab-save:hover,html.qn-attached .fab-save:focus-visible{max-width:280px}
   @media print{.qn-tab,.qn-pad{display:none!important}}
+  /* Redesign (Jesse, 9 Nov: "the quick notes look odd"): same tab family as the save tab - white with a gold edge, navy
+     text - and the pad is a clean card in the redesign's type, not a tilted yellow Post-it. */
+  html body .qn-tab{background:#fff;color:#10233e;border-color:#c3a14e;box-shadow:-2px 4px 14px rgba(16,35,62,.16);padding:11px 0 10px;gap:7px}
+  html body .qn-tab:hover{background:#fbf6e8}
+  html body .qn-tab .qn-lbl{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#10233e}
+  html body .qn-tab .qn-dot{background:#c3a14e}
+  html body .qn-pad{background:#fff;border:1px solid #e3dcc8;border-top:4px solid #c3a14e;border-radius:12px;transform:none;padding:12px 14px 12px;width:320px;
+    box-shadow:0 14px 34px rgba(16,35,62,.22);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+  html body .qn-head{color:#10233e;margin-bottom:8px}html body .qn-head b{font-family:var(--serif,Georgia,serif);font-size:16px}
+  html body .qn-head button{color:#6b7280;font-size:20px}
+  html body .qn-pad textarea{background:#fbfaf6;border:1px solid #e3dcc8;border-radius:9px;color:#1f2937;font:14px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:10px 11px}
+  html body .qn-pad textarea:focus{outline:2px solid #c3a14e;outline-offset:0;background:#fff}
+  html body .qn-pad textarea::placeholder{color:#9aa1ab;font-style:normal}
+  html body .qn-foot{color:#6b7280;font-size:11.5px}
+  @media (min-width:1200px){html body:not(.client) .wrap{padding-right:62px}}   /* the Quick notes / save tabs get their own lane (Jesse, 9 Nov: they sat on the Quote) */
+  @media (min-width:761px){html body .qn-tab{width:44px;box-sizing:border-box}html body:not(.client) .fab-save{box-sizing:border-box;max-width:44px;overflow:hidden;padding-left:12px;transition:max-width .18s}
+    html body .fab-save:hover,html body .fab-save:focus-visible{max-width:280px}}
 </style>
 <button type="button" class="qn-tab noprint hidein-client" id="qnTab" title="Quick notes — for the random stuff"><span class="qn-ico">🗒</span><span class="qn-lbl">Quick notes</span><span class="qn-dot"></span></button>
 <div class="qn-pad noprint hidein-client" id="qnPad" role="dialog" aria-label="Quick notes">
